@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F42BAF11C47FC2C0013531F /* GPRSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F42BAF01C47FC2C0013531F /* GPRSession.swift */; };
+		3F42BAF31C47FE470013531F /* Displacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F42BAF21C47FE470013531F /* Displacement.swift */; };
+		3F42BAF81C480ACD0013531F /* GPRMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F42BAF71C480ACD0013531F /* GPRMode.swift */; };
+		3F42BAFA1C480C960013531F /* DSP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F42BAF91C480C960013531F /* DSP.swift */; };
+		3F42BAFC1C480E8D0013531F /* DataAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F42BAFB1C480E8D0013531F /* DataAnalyzer.swift */; };
+		3F42BAFF1C480F850013531F /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F42BAFE1C480F850013531F /* Networking.swift */; };
+		3F42BB011C4810650013531F /* GPRDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F42BB001C4810650013531F /* GPRDataSource.swift */; };
+		3F42BB031C4811FB0013531F /* GPRSessionSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F42BB021C4811FB0013531F /* GPRSessionSource.swift */; };
+		3F42BB051C48123C0013531F /* GPRSessionOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F42BB041C48123C0013531F /* GPRSessionOutput.swift */; };
+		3F42BB071C4812620013531F /* GPRDataOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F42BB061C4812620013531F /* GPRDataOutput.swift */; };
+		3F42BB091C4813570013531F /* NetworkGPRDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F42BB081C4813570013531F /* NetworkGPRDevice.swift */; };
+		3F42BB0B1C4814810013531F /* GPRFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F42BB0A1C4814810013531F /* GPRFileReader.swift */; };
+		3F42BB0D1C481B8D0013531F /* GPRFileWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F42BB0C1C481B8D0013531F /* GPRFileWriter.swift */; };
+		3F42BB0F1C481C680013531F /* GPRDataFileWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F42BB0E1C481C680013531F /* GPRDataFileWriter.swift */; };
 		3FE0AAD21BEFE107004632F9 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE0AAD11BEFE107004632F9 /* SWRevealViewController.m */; };
 		3FE0AAD41BEFE6C0004632F9 /* OurViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE0AAD31BEFE6C0004632F9 /* OurViewController.swift */; };
 		C6C880171BDAA753000ACF37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C880161BDAA753000ACF37 /* AppDelegate.swift */; };
@@ -36,6 +50,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F42BAF01C47FC2C0013531F /* GPRSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRSession.swift; sourceTree = "<group>"; };
+		3F42BAF21C47FE470013531F /* Displacement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Displacement.swift; sourceTree = "<group>"; };
+		3F42BAF71C480ACD0013531F /* GPRMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRMode.swift; sourceTree = "<group>"; };
+		3F42BAF91C480C960013531F /* DSP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSP.swift; sourceTree = "<group>"; };
+		3F42BAFB1C480E8D0013531F /* DataAnalyzer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataAnalyzer.swift; sourceTree = "<group>"; };
+		3F42BAFE1C480F850013531F /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		3F42BB001C4810650013531F /* GPRDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRDataSource.swift; sourceTree = "<group>"; };
+		3F42BB021C4811FB0013531F /* GPRSessionSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRSessionSource.swift; sourceTree = "<group>"; };
+		3F42BB041C48123C0013531F /* GPRSessionOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRSessionOutput.swift; sourceTree = "<group>"; };
+		3F42BB061C4812620013531F /* GPRDataOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRDataOutput.swift; sourceTree = "<group>"; };
+		3F42BB081C4813570013531F /* NetworkGPRDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkGPRDevice.swift; sourceTree = "<group>"; };
+		3F42BB0A1C4814810013531F /* GPRFileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRFileReader.swift; sourceTree = "<group>"; };
+		3F42BB0C1C481B8D0013531F /* GPRFileWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRFileWriter.swift; sourceTree = "<group>"; };
+		3F42BB0E1C481C680013531F /* GPRDataFileWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRDataFileWriter.swift; sourceTree = "<group>"; };
 		3FE0AACF1BEFE106004632F9 /* ghoul-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ghoul-Bridging-Header.h"; sourceTree = "<group>"; };
 		3FE0AAD01BEFE107004632F9 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		3FE0AAD11BEFE107004632F9 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -80,6 +108,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F42BAEF1C47FC0A0013531F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3F42BAF01C47FC2C0013531F /* GPRSession.swift */,
+				3F42BAF21C47FE470013531F /* Displacement.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		3F42BAF41C480A7E0013531F /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				3F42BAF71C480ACD0013531F /* GPRMode.swift */,
+				3F42BAF91C480C960013531F /* DSP.swift */,
+				3F42BAFB1C480E8D0013531F /* DataAnalyzer.swift */,
+			);
+			name = Logic;
+			sourceTree = "<group>";
+		};
+		3F42BAFD1C480F5F0013531F /* IO */ = {
+			isa = PBXGroup;
+			children = (
+				3F42BAFE1C480F850013531F /* Networking.swift */,
+				3F42BB001C4810650013531F /* GPRDataSource.swift */,
+				3F42BB021C4811FB0013531F /* GPRSessionSource.swift */,
+				3F42BB041C48123C0013531F /* GPRSessionOutput.swift */,
+				3F42BB061C4812620013531F /* GPRDataOutput.swift */,
+				3F42BB081C4813570013531F /* NetworkGPRDevice.swift */,
+				3F42BB0A1C4814810013531F /* GPRFileReader.swift */,
+				3F42BB0C1C481B8D0013531F /* GPRFileWriter.swift */,
+				3F42BB0E1C481C680013531F /* GPRDataFileWriter.swift */,
+			);
+			name = IO;
+			sourceTree = "<group>";
+		};
 		3FE0AACE1BEFE0F3004632F9 /* SWRevealViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +176,9 @@
 		C6C880151BDAA753000ACF37 /* ghoul */ = {
 			isa = PBXGroup;
 			children = (
+				3F42BAFD1C480F5F0013531F /* IO */,
+				3F42BAF41C480A7E0013531F /* Logic */,
+				3F42BAEF1C47FC0A0013531F /* Models */,
 				3FE0AACE1BEFE0F3004632F9 /* SWRevealViewController */,
 				C6C880161BDAA753000ACF37 /* AppDelegate.swift */,
 				C6C880181BDAA753000ACF37 /* ViewController.swift */,
@@ -273,10 +339,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F42BB0D1C481B8D0013531F /* GPRFileWriter.swift in Sources */,
+				3F42BB091C4813570013531F /* NetworkGPRDevice.swift in Sources */,
+				3F42BB0F1C481C680013531F /* GPRDataFileWriter.swift in Sources */,
+				3F42BAF81C480ACD0013531F /* GPRMode.swift in Sources */,
+				3F42BAFF1C480F850013531F /* Networking.swift in Sources */,
+				3F42BB071C4812620013531F /* GPRDataOutput.swift in Sources */,
+				3F42BB011C4810650013531F /* GPRDataSource.swift in Sources */,
 				C6C880191BDAA753000ACF37 /* ViewController.swift in Sources */,
 				C6C880171BDAA753000ACF37 /* AppDelegate.swift in Sources */,
+				3F42BAFA1C480C960013531F /* DSP.swift in Sources */,
+				3F42BB051C48123C0013531F /* GPRSessionOutput.swift in Sources */,
 				3FE0AAD21BEFE107004632F9 /* SWRevealViewController.m in Sources */,
+				3F42BB0B1C4814810013531F /* GPRFileReader.swift in Sources */,
+				3F42BB031C4811FB0013531F /* GPRSessionSource.swift in Sources */,
 				3FE0AAD41BEFE6C0004632F9 /* OurViewController.swift in Sources */,
+				3F42BAFC1C480E8D0013531F /* DataAnalyzer.swift in Sources */,
+				3F42BAF31C47FE470013531F /* Displacement.swift in Sources */,
+				3F42BAF11C47FC2C0013531F /* GPRSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
