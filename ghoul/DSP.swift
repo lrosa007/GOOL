@@ -14,7 +14,7 @@ class DSP {
     
     
     //TODO: stubbed
-    internal func filter(signal: [UInt8], mode: GPRMode) -> [UInt8] {
+    class internal func filter(signal: [UInt8], mode: GPRMode) -> [UInt8] {
         return [UInt8]()
     }
 }

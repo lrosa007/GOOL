@@ -20,23 +20,28 @@ class GPRSession {
     
     // MARK: Properties
     var status: GPRSessionStatus
+    var operationMode: GPRMode
     var gprFrequency: UInt
     var graveLocations: [Displacement]
-    //operationMode: some enum
     var origin: CLLocation
     var startingTime: NSDate
     var gprReadings: [Displacement: Double]
+    
+    var dataSource: GPRDataSource
     
     
     // MARK: Initialization
     init(origin: CLLocation, frequency: UInt, startTime: NSDate) {
         status = .Unstarted
+        operationMode = .Standard
         self.origin = origin
         gprFrequency = frequency
         startingTime = NSDate()
         
         graveLocations = [Displacement]()
         gprReadings = [Displacement: Double]()
+        //TODO: proper assignment of dataSource
+        dataSource = NetworkGPRDevice()!
     }
     
     convenience init(origin: CLLocation, frequency: UInt) {
@@ -63,22 +68,31 @@ class GPRSession {
         
         return false
     }
-
-    // following depend on as-yet undefined types
     
-//    func writeToFile(dest: GPRSessionOutput) {
-//        
-//    }
-//    
-//    private func readGprData(bytes: Int) -> [Byte] {
-//        
-//    }
-//    
-//    private func filterGprData(raw: [Byte]) -> [Byte] {
-//        
-//    }
-//    
-//    private func scoreGprData(data: [Byte], displacement: Displacement) -> Double {
-//        
-//    }
+    func writeToFile(dest: GPRSessionOutput) {
+        dest.writeSession(self)
+    }
+    
+    private func readGprData(inout buf: [UInt8]) -> Int {
+        if(!dataSource.dataStream.hasBytesAvailable) {
+            return 0
+        }
+        
+        return dataSource.dataStream.read(&buf, maxLength: buf.capacity)
+    }
+    
+    // other version of function seems better
+    private func readGprData(nBytes: Int) -> [UInt8] {
+        var buffer = [UInt8](count: nBytes, repeatedValue: 0)
+        dataSource.dataStream.read(&buffer, maxLength: nBytes)
+        return buffer
+    }
+    
+    private func filterGprData(raw: [UInt8]) -> [UInt8] {
+        return DSP.filter(raw, mode: operationMode)
+    }
+    
+    private func scoreGprData(data: [UInt8], displacement: Displacement) -> Double {
+        return DataAnalyzer.analyze(data, mode: operationMode)
+    }
 }

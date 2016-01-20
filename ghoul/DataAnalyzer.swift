@@ -11,7 +11,7 @@ import Foundation
 
 class DataAnalyzer {
     
-    internal func analyze(data: [UInt8], mode: GPRMode) -> Double {
+    class internal func analyze(data: [UInt8], mode: GPRMode) -> Double {
         //TODO: stub
         return 0.0
     }
