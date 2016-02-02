@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F40B9541C6152CF00E6F6F6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F40B9531C6152CF00E6F6F6 /* Constants.swift */; };
 		3F42BAF11C47FC2C0013531F /* GPRSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F42BAF01C47FC2C0013531F /* GPRSession.swift */; };
 		3F42BAF31C47FE470013531F /* Displacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F42BAF21C47FE470013531F /* Displacement.swift */; };
 		3F42BAF81C480ACD0013531F /* GPRMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F42BAF71C480ACD0013531F /* GPRMode.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F40B9531C6152CF00E6F6F6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3F42BAF01C47FC2C0013531F /* GPRSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRSession.swift; sourceTree = "<group>"; };
 		3F42BAF21C47FE470013531F /* Displacement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Displacement.swift; sourceTree = "<group>"; };
 		3F42BAF71C480ACD0013531F /* GPRMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRMode.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				3F42BB0A1C4814810013531F /* GPRFileReader.swift */,
 				3F42BB0C1C481B8D0013531F /* GPRFileWriter.swift */,
 				3F42BB0E1C481C680013531F /* GPRDataFileWriter.swift */,
+				3F40B9531C6152CF00E6F6F6 /* Constants.swift */,
 			);
 			name = IO;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F42BB0D1C481B8D0013531F /* GPRFileWriter.swift in Sources */,
+				3F40B9541C6152CF00E6F6F6 /* Constants.swift in Sources */,
 				3F42BB091C4813570013531F /* NetworkGPRDevice.swift in Sources */,
 				3F42BB0F1C481C680013531F /* GPRDataFileWriter.swift in Sources */,
 				3F42BAF81C480ACD0013531F /* GPRMode.swift in Sources */,
