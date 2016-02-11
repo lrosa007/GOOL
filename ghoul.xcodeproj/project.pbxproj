@@ -156,6 +156,17 @@
 			name = SWRevealViewController;
 			sourceTree = "<group>";
 		};
+		56C1CFEA1C6C134100A763CD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C6C8801D1BDAA753000ACF37 /* Assets.xcassets */,
+				C6C880221BDAA753000ACF37 /* Info.plist */,
+				C6C8801F1BDAA753000ACF37 /* LaunchScreen.storyboard */,
+				C6C880161BDAA753000ACF37 /* AppDelegate.swift */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		C6C8800A1BDAA753000ACF37 = {
 			isa = PBXGroup;
 			children = (
@@ -179,17 +190,14 @@
 		C6C880151BDAA753000ACF37 /* ghoul */ = {
 			isa = PBXGroup;
 			children = (
+				56C1CFEA1C6C134100A763CD /* Supporting Files */,
 				3F42BAFD1C480F5F0013531F /* IO */,
 				3F42BAF41C480A7E0013531F /* Logic */,
 				3F42BAEF1C47FC0A0013531F /* Models */,
 				3FE0AACE1BEFE0F3004632F9 /* SWRevealViewController */,
-				C6C880161BDAA753000ACF37 /* AppDelegate.swift */,
 				C6C880181BDAA753000ACF37 /* ViewController.swift */,
 				C6C8801A1BDAA753000ACF37 /* Main.storyboard */,
 				3FE0AAD31BEFE6C0004632F9 /* OurViewController.swift */,
-				C6C8801D1BDAA753000ACF37 /* Assets.xcassets */,
-				C6C8801F1BDAA753000ACF37 /* LaunchScreen.storyboard */,
-				C6C880221BDAA753000ACF37 /* Info.plist */,
 			);
 			path = ghoul;
 			sourceTree = "<group>";
