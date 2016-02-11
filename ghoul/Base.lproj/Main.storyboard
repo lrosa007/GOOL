@@ -179,6 +179,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="MenuButton" width="50" height="50"/>
+        <image name="MenuButton" width="30" height="30"/>
     </resources>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
 </document>
