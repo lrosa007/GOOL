@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "menubutton.png",
+      "filename" : "MenuButton.png",
       "scale" : "1x"
     },
     {
