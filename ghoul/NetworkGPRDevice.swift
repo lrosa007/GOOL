@@ -9,25 +9,57 @@
 import Foundation
 
 class NetworkGPRDevice : GPRDataSource {
+    enum ConnectionStatus {
+        case CONNECTED
+        case PRE_CONNECTION
+        case DISCONNECTED
+        case FINISHED
+    }
+    
     //TODO: properties and initializer(s) for actual WiFi connection
     private var inputStream: NSInputStream
     private var outputStream: NSOutputStream
     var messageNumber: Int
+    internal var status: ConnectionStatus
     
     internal var dataStream: NSInputStream {
         get {
-            return self.dataStream
+            return inputStream
         }
     }
     
     
     // MARK: initialization
-    init?() {
-        // TODO should actually be passed connection (socket?) to device and init based on that
+    init() {
         inputStream = NSInputStream()
         outputStream = NSOutputStream()
         
         messageNumber = 1;
+        status = ConnectionStatus.PRE_CONNECTION
+    }
+    
+    convenience init?(service: NSNetService) {
+        self.init()
+        
+        let isPtr = UnsafeMutablePointer<NSInputStream?>.alloc(1)
+        let osPtr = UnsafeMutablePointer<NSOutputStream?>.alloc(1)
+        
+        service.getInputStream(isPtr, outputStream: osPtr)
+        
+        let fail = (isPtr == nil || osPtr == nil)
+        
+        if !fail {
+            inputStream = isPtr.move()!
+            outputStream = osPtr.move()!
+            status = ConnectionStatus.CONNECTED
+        }
+        
+        isPtr.dealloc(1)
+        osPtr.dealloc(1)
+        
+        if fail {
+            return nil
+        }
     }
     
     
@@ -60,8 +92,7 @@ class NetworkGPRDevice : GPRDataSource {
     }
     
     func isConnected() -> Bool {
-        //TODO: stub
-        return false
+        return status == ConnectionStatus.CONNECTED
     }
     
     // MARK: GPRDataSource
@@ -87,5 +118,13 @@ class NetworkGPRDevice : GPRDataSource {
         
         
         return false
+    }
+    
+    
+    // MARK: Callbacks
+    func stopped() {
+        inputStream.close()
+        outputStream.close()
+        status = ConnectionStatus.FINISHED
     }
 }

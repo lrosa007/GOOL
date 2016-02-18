@@ -41,7 +41,7 @@ class GPRSession {
         graveLocations = [Displacement]()
         gprReadings = [Displacement: Double]()
         //TODO: proper assignment of dataSource
-        dataSource = NetworkGPRDevice()!
+        dataSource = NetworkGPRDevice()
     }
     
     convenience init(origin: CLLocation, frequency: UInt) {
