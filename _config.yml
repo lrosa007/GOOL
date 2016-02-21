@@ -1,12 +1,12 @@
 title: GOOL
-tagline: UCF Senior Design Project
+tagline: Finding Dead People - UCF SD
 description: >
   Senior Design Project at UCF by EE/CS students.
-baseurl: ""
+url: "https://github.com/lrosa007/GOOL"
 
 author:
-  name: Lucas Rosa
-  url: "lrosa007.github.io/GOOL"
+  name: Dead Squad
+  url: "https://www.youtube.com/watch?v=nMD_iZxpBiw"
   github_username: lrosa007
 
 markdown: kramdown
