@@ -1,9 +1,12 @@
 title: GOOL
-email: lrosa008@knights.ucf.edu
+tagline: UCF Senior Design Project
 description: >
   Senior Design Project at UCF by EE/CS students.
 baseurl: ""
-url: "lrosa007.github.io/GOOL"
-github_username: lrosa007
+
+author:
+  name: Lucas Rosa
+  url: "lrosa007.github.io/GOOL"
+  github_username: lrosa007
 
 markdown: kramdown
