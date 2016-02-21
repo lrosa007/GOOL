@@ -3,6 +3,7 @@ tagline: Finding Dead People - UCF SD
 description: >
   Senior Design Project at UCF by EE/CS students.
 url: "https://github.com/lrosa007/GOOL"
+baseurl: "GOOL/"
 
 author:
   name: Dead Squad
