@@ -22,6 +22,28 @@
 		5670D5781C9B30F300DDE7CA /* GPRSessionSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5761C9B30F300DDE7CA /* GPRSessionSource.swift */; };
 		5670D57A1C9B31EB00DDE7CA /* GPRSessionOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5791C9B31EB00DDE7CA /* GPRSessionOutput.swift */; };
 		5670D57B1C9B31EB00DDE7CA /* GPRSessionOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5791C9B31EB00DDE7CA /* GPRSessionOutput.swift */; };
+		5670D57D1C9B3BDA00DDE7CA /* GPRDataOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D57C1C9B3BDA00DDE7CA /* GPRDataOutput.swift */; };
+		5670D57E1C9B3BDA00DDE7CA /* GPRDataOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D57C1C9B3BDA00DDE7CA /* GPRDataOutput.swift */; };
+		5670D5801C9B3C1E00DDE7CA /* NetworkGPRDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D57F1C9B3C1E00DDE7CA /* NetworkGPRDevice.swift */; };
+		5670D5811C9B3C1E00DDE7CA /* NetworkGPRDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D57F1C9B3C1E00DDE7CA /* NetworkGPRDevice.swift */; };
+		5670D5831C9B3D3C00DDE7CA /* GPRFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5821C9B3D3C00DDE7CA /* GPRFileReader.swift */; };
+		5670D5841C9B3D3C00DDE7CA /* GPRFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5821C9B3D3C00DDE7CA /* GPRFileReader.swift */; };
+		5670D5861C9B3D8100DDE7CA /* GPRFileWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5851C9B3D8100DDE7CA /* GPRFileWriter.swift */; };
+		5670D5871C9B3D8100DDE7CA /* GPRFileWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5851C9B3D8100DDE7CA /* GPRFileWriter.swift */; };
+		5670D5891C9B3DCB00DDE7CA /* GPRDataFileWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5881C9B3DCB00DDE7CA /* GPRDataFileWriter.swift */; };
+		5670D58A1C9B3DCB00DDE7CA /* GPRDataFileWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5881C9B3DCB00DDE7CA /* GPRDataFileWriter.swift */; };
+		5670D58C1C9B3E1500DDE7CA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D58B1C9B3E1500DDE7CA /* Constants.swift */; };
+		5670D58D1C9B3E1500DDE7CA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D58B1C9B3E1500DDE7CA /* Constants.swift */; };
+		5670D58F1C9B3E9500DDE7CA /* GPRMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D58E1C9B3E9500DDE7CA /* GPRMode.swift */; };
+		5670D5901C9B3E9500DDE7CA /* GPRMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D58E1C9B3E9500DDE7CA /* GPRMode.swift */; };
+		5670D5921C9B3EC400DDE7CA /* DSP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5911C9B3EC400DDE7CA /* DSP.swift */; };
+		5670D5931C9B3EC400DDE7CA /* DSP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5911C9B3EC400DDE7CA /* DSP.swift */; };
+		5670D5951C9B3EFB00DDE7CA /* DataAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5941C9B3EFB00DDE7CA /* DataAnalyzer.swift */; };
+		5670D5961C9B3EFB00DDE7CA /* DataAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5941C9B3EFB00DDE7CA /* DataAnalyzer.swift */; };
+		5670D5981C9B3FA500DDE7CA /* GPRSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5971C9B3FA500DDE7CA /* GPRSession.swift */; };
+		5670D5991C9B3FA500DDE7CA /* GPRSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5971C9B3FA500DDE7CA /* GPRSession.swift */; };
+		5670D59B1C9B3FEA00DDE7CA /* Displacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D59A1C9B3FEA00DDE7CA /* Displacement.swift */; };
+		5670D59C1C9B3FEA00DDE7CA /* Displacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D59A1C9B3FEA00DDE7CA /* Displacement.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +81,17 @@
 		5670D5701C9B2FBC00DDE7CA /* GPRDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRDataSource.swift; sourceTree = "<group>"; };
 		5670D5761C9B30F300DDE7CA /* GPRSessionSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRSessionSource.swift; sourceTree = "<group>"; };
 		5670D5791C9B31EB00DDE7CA /* GPRSessionOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRSessionOutput.swift; sourceTree = "<group>"; };
+		5670D57C1C9B3BDA00DDE7CA /* GPRDataOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRDataOutput.swift; sourceTree = "<group>"; };
+		5670D57F1C9B3C1E00DDE7CA /* NetworkGPRDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkGPRDevice.swift; sourceTree = "<group>"; };
+		5670D5821C9B3D3C00DDE7CA /* GPRFileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRFileReader.swift; sourceTree = "<group>"; };
+		5670D5851C9B3D8100DDE7CA /* GPRFileWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRFileWriter.swift; sourceTree = "<group>"; };
+		5670D5881C9B3DCB00DDE7CA /* GPRDataFileWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRDataFileWriter.swift; sourceTree = "<group>"; };
+		5670D58B1C9B3E1500DDE7CA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5670D58E1C9B3E9500DDE7CA /* GPRMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRMode.swift; sourceTree = "<group>"; };
+		5670D5911C9B3EC400DDE7CA /* DSP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSP.swift; sourceTree = "<group>"; };
+		5670D5941C9B3EFB00DDE7CA /* DataAnalyzer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataAnalyzer.swift; sourceTree = "<group>"; };
+		5670D5971C9B3FA500DDE7CA /* GPRSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRSession.swift; sourceTree = "<group>"; };
+		5670D59A1C9B3FEA00DDE7CA /* Displacement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Displacement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +188,12 @@
 				5670D5701C9B2FBC00DDE7CA /* GPRDataSource.swift */,
 				5670D5761C9B30F300DDE7CA /* GPRSessionSource.swift */,
 				5670D5791C9B31EB00DDE7CA /* GPRSessionOutput.swift */,
+				5670D57C1C9B3BDA00DDE7CA /* GPRDataOutput.swift */,
+				5670D57F1C9B3C1E00DDE7CA /* NetworkGPRDevice.swift */,
+				5670D5821C9B3D3C00DDE7CA /* GPRFileReader.swift */,
+				5670D5851C9B3D8100DDE7CA /* GPRFileWriter.swift */,
+				5670D5881C9B3DCB00DDE7CA /* GPRDataFileWriter.swift */,
+				5670D58B1C9B3E1500DDE7CA /* Constants.swift */,
 			);
 			name = IO;
 			sourceTree = "<group>";
@@ -162,6 +201,9 @@
 		5670D56B1C9B2AB600DDE7CA /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				5670D58E1C9B3E9500DDE7CA /* GPRMode.swift */,
+				5670D5911C9B3EC400DDE7CA /* DSP.swift */,
+				5670D5941C9B3EFB00DDE7CA /* DataAnalyzer.swift */,
 			);
 			name = Logic;
 			sourceTree = "<group>";
@@ -169,6 +211,8 @@
 		5670D56C1C9B2AD700DDE7CA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5670D5971C9B3FA500DDE7CA /* GPRSession.swift */,
+				5670D59A1C9B3FEA00DDE7CA /* Displacement.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -306,11 +350,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				5670D56E1C9B2B5200DDE7CA /* Networking.swift in Sources */,
+				5670D58F1C9B3E9500DDE7CA /* GPRMode.swift in Sources */,
 				5670D53E1C9B278500DDE7CA /* ViewController.swift in Sources */,
+				5670D57D1C9B3BDA00DDE7CA /* GPRDataOutput.swift in Sources */,
+				5670D5831C9B3D3C00DDE7CA /* GPRFileReader.swift in Sources */,
+				5670D5861C9B3D8100DDE7CA /* GPRFileWriter.swift in Sources */,
 				5670D5771C9B30F300DDE7CA /* GPRSessionSource.swift in Sources */,
+				5670D5921C9B3EC400DDE7CA /* DSP.swift in Sources */,
+				5670D5981C9B3FA500DDE7CA /* GPRSession.swift in Sources */,
+				5670D5801C9B3C1E00DDE7CA /* NetworkGPRDevice.swift in Sources */,
+				5670D5951C9B3EFB00DDE7CA /* DataAnalyzer.swift in Sources */,
 				5670D5711C9B2FBC00DDE7CA /* GPRDataSource.swift in Sources */,
 				5670D53C1C9B278500DDE7CA /* AppDelegate.swift in Sources */,
+				5670D59B1C9B3FEA00DDE7CA /* Displacement.swift in Sources */,
+				5670D5891C9B3DCB00DDE7CA /* GPRDataFileWriter.swift in Sources */,
 				5670D57A1C9B31EB00DDE7CA /* GPRSessionOutput.swift in Sources */,
+				5670D58C1C9B3E1500DDE7CA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,10 +374,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				5670D5721C9B2FBC00DDE7CA /* GPRDataSource.swift in Sources */,
+				5670D58D1C9B3E1500DDE7CA /* Constants.swift in Sources */,
+				5670D5871C9B3D8100DDE7CA /* GPRFileWriter.swift in Sources */,
 				5670D5511C9B278500DDE7CA /* goolTests.swift in Sources */,
+				5670D5841C9B3D3C00DDE7CA /* GPRFileReader.swift in Sources */,
 				5670D57B1C9B31EB00DDE7CA /* GPRSessionOutput.swift in Sources */,
+				5670D59C1C9B3FEA00DDE7CA /* Displacement.swift in Sources */,
+				5670D5901C9B3E9500DDE7CA /* GPRMode.swift in Sources */,
 				5670D56F1C9B2B5200DDE7CA /* Networking.swift in Sources */,
+				5670D58A1C9B3DCB00DDE7CA /* GPRDataFileWriter.swift in Sources */,
+				5670D5991C9B3FA500DDE7CA /* GPRSession.swift in Sources */,
+				5670D5811C9B3C1E00DDE7CA /* NetworkGPRDevice.swift in Sources */,
+				5670D5931C9B3EC400DDE7CA /* DSP.swift in Sources */,
+				5670D57E1C9B3BDA00DDE7CA /* GPRDataOutput.swift in Sources */,
 				5670D5781C9B30F300DDE7CA /* GPRSessionSource.swift in Sources */,
+				5670D5961C9B3EFB00DDE7CA /* DataAnalyzer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -4,6 +4,7 @@
 //
 //  Protocol for a source of GPR data. The source must provide a stream containing
 //  GPR data, and frequency may be set.
+//
 //  Copyright © 2016 Dead Squad. All rights reserved.
 //
 
