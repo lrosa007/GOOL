@@ -16,6 +16,12 @@
 		5670D55C1C9B278500DDE7CA /* goolUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D55B1C9B278500DDE7CA /* goolUITests.swift */; };
 		5670D56E1C9B2B5200DDE7CA /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D56D1C9B2B5200DDE7CA /* Networking.swift */; };
 		5670D56F1C9B2B5200DDE7CA /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D56D1C9B2B5200DDE7CA /* Networking.swift */; };
+		5670D5711C9B2FBC00DDE7CA /* GPRDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5701C9B2FBC00DDE7CA /* GPRDataSource.swift */; };
+		5670D5721C9B2FBC00DDE7CA /* GPRDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5701C9B2FBC00DDE7CA /* GPRDataSource.swift */; };
+		5670D5771C9B30F300DDE7CA /* GPRSessionSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5761C9B30F300DDE7CA /* GPRSessionSource.swift */; };
+		5670D5781C9B30F300DDE7CA /* GPRSessionSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5761C9B30F300DDE7CA /* GPRSessionSource.swift */; };
+		5670D57A1C9B31EB00DDE7CA /* GPRSessionOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5791C9B31EB00DDE7CA /* GPRSessionOutput.swift */; };
+		5670D57B1C9B31EB00DDE7CA /* GPRSessionOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5791C9B31EB00DDE7CA /* GPRSessionOutput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +56,9 @@
 		5670D55B1C9B278500DDE7CA /* goolUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = goolUITests.swift; sourceTree = "<group>"; };
 		5670D55D1C9B278500DDE7CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5670D56D1C9B2B5200DDE7CA /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		5670D5701C9B2FBC00DDE7CA /* GPRDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRDataSource.swift; sourceTree = "<group>"; };
+		5670D5761C9B30F300DDE7CA /* GPRSessionSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRSessionSource.swift; sourceTree = "<group>"; };
+		5670D5791C9B31EB00DDE7CA /* GPRSessionOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRSessionOutput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +152,9 @@
 			isa = PBXGroup;
 			children = (
 				5670D56D1C9B2B5200DDE7CA /* Networking.swift */,
+				5670D5701C9B2FBC00DDE7CA /* GPRDataSource.swift */,
+				5670D5761C9B30F300DDE7CA /* GPRSessionSource.swift */,
+				5670D5791C9B31EB00DDE7CA /* GPRSessionOutput.swift */,
 			);
 			name = IO;
 			sourceTree = "<group>";
@@ -295,7 +307,10 @@
 			files = (
 				5670D56E1C9B2B5200DDE7CA /* Networking.swift in Sources */,
 				5670D53E1C9B278500DDE7CA /* ViewController.swift in Sources */,
+				5670D5771C9B30F300DDE7CA /* GPRSessionSource.swift in Sources */,
+				5670D5711C9B2FBC00DDE7CA /* GPRDataSource.swift in Sources */,
 				5670D53C1C9B278500DDE7CA /* AppDelegate.swift in Sources */,
+				5670D57A1C9B31EB00DDE7CA /* GPRSessionOutput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,8 +318,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5670D5721C9B2FBC00DDE7CA /* GPRDataSource.swift in Sources */,
 				5670D5511C9B278500DDE7CA /* goolTests.swift in Sources */,
+				5670D57B1C9B31EB00DDE7CA /* GPRSessionOutput.swift in Sources */,
 				5670D56F1C9B2B5200DDE7CA /* Networking.swift in Sources */,
+				5670D5781C9B30F300DDE7CA /* GPRSessionSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
