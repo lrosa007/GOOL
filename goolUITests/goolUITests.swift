@@ -1,14 +1,14 @@
 //
-//  ghoulUITests.swift
-//  ghoulUITests
+//  goolUITests.swift
+//  goolUITests
 //
-//  Created by Janet on 10/23/15.
-//  Copyright © 2015 deadsquad. All rights reserved.
+//  Created by Janet on 3/17/16.
+//  Copyright © 2016 Dead Squad. All rights reserved.
 //
 
 import XCTest
 
-class ghoulUITests: XCTestCase {
+class goolUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()

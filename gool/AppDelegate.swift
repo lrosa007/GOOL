@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  ghoul
+//  gool
 //
-//  Created by Janet on 10/23/15.
-//  Copyright © 2015 deadsquad. All rights reserved.
+//  Created by Janet on 3/17/16.
+//  Copyright © 2016 Dead Squad. All rights reserved.
 //
 
 import UIKit
@@ -15,9 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-        //UINavigationBar.appearance().barTintColor = UIColor.blueColor()
-        
+        // Override point for customization after application launch.
         return true
     }
 
