@@ -14,6 +14,8 @@
 		5670D5461C9B278500DDE7CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5670D5441C9B278500DDE7CA /* LaunchScreen.storyboard */; };
 		5670D5511C9B278500DDE7CA /* goolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5501C9B278500DDE7CA /* goolTests.swift */; };
 		5670D55C1C9B278500DDE7CA /* goolUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D55B1C9B278500DDE7CA /* goolUITests.swift */; };
+		5670D56E1C9B2B5200DDE7CA /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D56D1C9B2B5200DDE7CA /* Networking.swift */; };
+		5670D56F1C9B2B5200DDE7CA /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D56D1C9B2B5200DDE7CA /* Networking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,7 @@
 		5670D5571C9B278500DDE7CA /* goolUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = goolUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5670D55B1C9B278500DDE7CA /* goolUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = goolUITests.swift; sourceTree = "<group>"; };
 		5670D55D1C9B278500DDE7CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5670D56D1C9B2B5200DDE7CA /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +100,12 @@
 		5670D53A1C9B278500DDE7CA /* gool */ = {
 			isa = PBXGroup;
 			children = (
-				5670D53B1C9B278500DDE7CA /* AppDelegate.swift */,
+				5670D5691C9B2A7600DDE7CA /* Supporting Files */,
+				5670D56A1C9B2A9B00DDE7CA /* IO */,
+				5670D56B1C9B2AB600DDE7CA /* Logic */,
+				5670D56C1C9B2AD700DDE7CA /* Models */,
 				5670D53D1C9B278500DDE7CA /* ViewController.swift */,
 				5670D53F1C9B278500DDE7CA /* Main.storyboard */,
-				5670D5421C9B278500DDE7CA /* Assets.xcassets */,
-				5670D5441C9B278500DDE7CA /* LaunchScreen.storyboard */,
-				5670D5471C9B278500DDE7CA /* Info.plist */,
 			);
 			path = gool;
 			sourceTree = "<group>";
@@ -123,6 +126,39 @@
 				5670D55D1C9B278500DDE7CA /* Info.plist */,
 			);
 			path = goolUITests;
+			sourceTree = "<group>";
+		};
+		5670D5691C9B2A7600DDE7CA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5670D5421C9B278500DDE7CA /* Assets.xcassets */,
+				5670D5471C9B278500DDE7CA /* Info.plist */,
+				5670D5441C9B278500DDE7CA /* LaunchScreen.storyboard */,
+				5670D53B1C9B278500DDE7CA /* AppDelegate.swift */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5670D56A1C9B2A9B00DDE7CA /* IO */ = {
+			isa = PBXGroup;
+			children = (
+				5670D56D1C9B2B5200DDE7CA /* Networking.swift */,
+			);
+			name = IO;
+			sourceTree = "<group>";
+		};
+		5670D56B1C9B2AB600DDE7CA /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Logic;
+			sourceTree = "<group>";
+		};
+		5670D56C1C9B2AD700DDE7CA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5670D56E1C9B2B5200DDE7CA /* Networking.swift in Sources */,
 				5670D53E1C9B278500DDE7CA /* ViewController.swift in Sources */,
 				5670D53C1C9B278500DDE7CA /* AppDelegate.swift in Sources */,
 			);
@@ -267,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5670D5511C9B278500DDE7CA /* goolTests.swift in Sources */,
+				5670D56F1C9B2B5200DDE7CA /* Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,6 +529,7 @@
 				5670D5621C9B278500DDE7CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5670D5631C9B278500DDE7CA /* Build configuration list for PBXNativeTarget "goolTests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +538,7 @@
 				5670D5651C9B278500DDE7CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5670D5661C9B278500DDE7CA /* Build configuration list for PBXNativeTarget "goolUITests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +547,7 @@
 				5670D5681C9B278500DDE7CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
