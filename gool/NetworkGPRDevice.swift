@@ -89,7 +89,7 @@ class NetworkGPRDevice : GPRDataSource {
         let formattedMessage = (messageNumber++).description
             + " " + Constants.STX + msg + Constants.EOT
         
-        return send((messageNumber++).description + " " + msg)
+        return send(formattedMessage)
     }
     
     func isConnected() -> Bool {

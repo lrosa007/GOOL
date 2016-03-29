@@ -44,6 +44,10 @@
 		5670D5991C9B3FA500DDE7CA /* GPRSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5971C9B3FA500DDE7CA /* GPRSession.swift */; };
 		5670D59B1C9B3FEA00DDE7CA /* Displacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D59A1C9B3FEA00DDE7CA /* Displacement.swift */; };
 		5670D59C1C9B3FEA00DDE7CA /* Displacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D59A1C9B3FEA00DDE7CA /* Displacement.swift */; };
+		7125D47F1CAA364F00624E39 /* DSP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5911C9B3EC400DDE7CA /* DSP.swift */; };
+		7125D4801CAA365700624E39 /* GPRTrace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173E6A61CAA2D3100356F32 /* GPRTrace.swift */; };
+		7125D4811CAA365800624E39 /* GPRTrace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173E6A61CAA2D3100356F32 /* GPRTrace.swift */; };
+		7173E6A71CAA2D3100356F32 /* GPRTrace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173E6A61CAA2D3100356F32 /* GPRTrace.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +96,7 @@
 		5670D5941C9B3EFB00DDE7CA /* DataAnalyzer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataAnalyzer.swift; sourceTree = "<group>"; };
 		5670D5971C9B3FA500DDE7CA /* GPRSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRSession.swift; sourceTree = "<group>"; };
 		5670D59A1C9B3FEA00DDE7CA /* Displacement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Displacement.swift; sourceTree = "<group>"; };
+		7173E6A61CAA2D3100356F32 /* GPRTrace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRTrace.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +218,7 @@
 			children = (
 				5670D5971C9B3FA500DDE7CA /* GPRSession.swift */,
 				5670D59A1C9B3FEA00DDE7CA /* Displacement.swift */,
+				7173E6A61CAA2D3100356F32 /* GPRTrace.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -362,6 +368,7 @@
 				5670D5951C9B3EFB00DDE7CA /* DataAnalyzer.swift in Sources */,
 				5670D5711C9B2FBC00DDE7CA /* GPRDataSource.swift in Sources */,
 				5670D53C1C9B278500DDE7CA /* AppDelegate.swift in Sources */,
+				7173E6A71CAA2D3100356F32 /* GPRTrace.swift in Sources */,
 				5670D59B1C9B3FEA00DDE7CA /* Displacement.swift in Sources */,
 				5670D5891C9B3DCB00DDE7CA /* GPRDataFileWriter.swift in Sources */,
 				5670D57A1C9B31EB00DDE7CA /* GPRSessionOutput.swift in Sources */,
@@ -388,6 +395,7 @@
 				5670D5931C9B3EC400DDE7CA /* DSP.swift in Sources */,
 				5670D57E1C9B3BDA00DDE7CA /* GPRDataOutput.swift in Sources */,
 				5670D5781C9B30F300DDE7CA /* GPRSessionSource.swift in Sources */,
+				7125D4801CAA365700624E39 /* GPRTrace.swift in Sources */,
 				5670D5961C9B3EFB00DDE7CA /* DataAnalyzer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,6 +405,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5670D55C1C9B278500DDE7CA /* goolUITests.swift in Sources */,
+				7125D4811CAA365800624E39 /* GPRTrace.swift in Sources */,
+				7125D47F1CAA364F00624E39 /* DSP.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

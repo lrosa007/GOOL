@@ -28,7 +28,9 @@ class GPRSession {
     var graveLocations: [Displacement]
     var origin: CLLocation
     var startingTime: NSDate
-    var gprReadings: [Displacement: Double]
+    var gprReadings: [GPRTrace]
+    var traceByLocation: [CLLocation: GPRTrace]
+    var gprResults: [Double]
     
     var dataSource: GPRDataSource
     
@@ -42,7 +44,9 @@ class GPRSession {
         startingTime = NSDate()
         
         graveLocations = [Displacement]()
-        gprReadings = [Displacement: Double]()
+        gprReadings = [GPRTrace]()
+        traceByLocation = [CLLocation: GPRTrace]()
+        gprResults = [Double]()
         //TODO: proper assignment of dataSource
         dataSource = NetworkGPRDevice()
     }
