@@ -70,6 +70,7 @@ class MockDataSource : GPRDataSource {
     }
     
     func getMessage() -> String {
+        // probably axe this
         return Constants.kTraceResponseHeader
     }
     
@@ -80,7 +81,7 @@ class MockDataSource : GPRDataSource {
         let header = Constants.kMessageNumber + " " + (deviceMsgNo++).description + " " + Constants.STX
                    + Constants.kTraceResponseHeader + " " + seqNo.description + " " + Constants.SOH
         let tail = Constants.ETX + Constants.kTraceResponseTail + "\n"
-        let encodedHeader = [UInt8](header.utf8), encodedTail = [UInt8](tail.utf8)
+        var encodedHeader = [UInt8](header.utf8), encodedTail = [UInt8](tail.utf8)
         
         let randomData = UnsafeMutablePointer<UInt8>()
         SecRandomCopyBytes(kSecRandomDefault, nBytes, randomData)
@@ -88,9 +89,20 @@ class MockDataSource : GPRDataSource {
         outputStream.write(encodedHeader, maxLength: encodedHeader.count)
         outputStream.write(randomData, maxLength: nBytes)
         outputStream.write(encodedTail, maxLength: encodedTail.count)
+        outputStream.close()
+        
+        var encodedData = [UInt8]()
+        for i in 0...nBytes-1 {
+            encodedData.append(randomData[i])
+        }
         
         Mocker.delay(0.2) {
-            self.outputStream.delegate?.stream!(self.outputStream, handleEvent: NSStreamEvent.HasBytesAvailable)
+            Mocker.globalSession?.receiveData(encodedHeader + encodedData + encodedTail)
         }
+        
+        //Mocker.delay(0.2) {
+        //    self.outputStream.close()
+        //    self.outputStream.delegate?.stream!(self.inputStream, handleEvent: NSStreamEvent.HasBytesAvailable)
+        //}
     }
 }

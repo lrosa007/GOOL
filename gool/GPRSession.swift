@@ -71,7 +71,7 @@ class GPRSession : NSObject, NSStreamDelegate {
             case NSStreamEvent.HasBytesAvailable :
                 if dataSource!.hasFullMessage() {
                     // process dataSource.getMessage()
-                    if (dataSource!.getMessage() == Constants.kTraceResponseHeader) {
+                    if (dataSource!.getMessage() == "") {
                         let seqNo = dataSource!.runTrace()
                         seqNoQueue.insert(seqNo, atIndex: 0)
                     } else {
@@ -80,7 +80,7 @@ class GPRSession : NSObject, NSStreamDelegate {
                         
                         var rawdata = [UInt8]()
                         
-                        let iStream = aStream as! NSInputStream
+                        let iStream = dataSource!.dataStream
                         
                         while (iStream.hasBytesAvailable) {
                             var len = iStream.read(&buffer, maxLength: 1)
@@ -132,6 +132,24 @@ class GPRSession : NSObject, NSStreamDelegate {
         }
     }
     
+    func receiveData(rawdata: [UInt8]) {
+        let tail = rawdata.dropFirst(rawdata.count-6)
+        if(tail.elementsEqual(Constants.kTraceTailBuf)) {
+            // create trace
+            let seqNo = seqNoQueue.popLast()!
+            let trace = GPRTrace(sequenceNumber: seqNo, rawData: [UInt8](rawdata.dropLast(6)))
+            // fucking do something with the trace
+            gprReadings.append(trace)
+            
+            // replace with delegate stuff
+            let score = DataAnalyzer.analyze(DSP.filter(trace.data, mode: operationMode), mode: operationMode)
+            
+            gprResults.append(score)
+            
+            // UI display score
+            NSLog("\(score)")
+        }
+    }
     
     
     // MARK: Functions
