@@ -27,6 +27,9 @@
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="r0X-99-JRk"/>
                                         </constraints>
                                         <state key="normal" title="Load Session"/>
+                                        <connections>
+                                            <action selector="loadSession:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hQS-0c-Owx"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pjf-Gn-iDF">
                                         <rect key="frame" x="0.0" y="40" width="118" height="40"/>
@@ -35,6 +38,9 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="118" id="YvA-ac-uFR"/>
                                         </constraints>
                                         <state key="normal" title="New Session"/>
+                                        <connections>
+                                            <action selector="newSession:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fb3-7p-bon"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -48,7 +54,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="234" y="348"/>
+            <point key="canvasLocation" x="-89" y="317"/>
         </scene>
     </scenes>
 </document>
