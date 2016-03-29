@@ -83,17 +83,17 @@ class MockDataSource : GPRDataSource {
         let tail = Constants.ETX + Constants.kTraceResponseTail + "\n"
         var encodedHeader = [UInt8](header.utf8), encodedTail = [UInt8](tail.utf8)
         
-        let randomData = UnsafeMutablePointer<UInt8>()
-        SecRandomCopyBytes(kSecRandomDefault, nBytes, randomData)
+        //let randomData = UnsafeMutablePointer<UInt8>()
+        //SecRandomCopyBytes(kSecRandomDefault, nBytes, randomData)
         
         outputStream.write(encodedHeader, maxLength: encodedHeader.count)
-        outputStream.write(randomData, maxLength: nBytes)
+        //outputStream.write(randomData, maxLength: nBytes)
         outputStream.write(encodedTail, maxLength: encodedTail.count)
         outputStream.close()
         
         var encodedData = [UInt8]()
         for i in 0...nBytes-1 {
-            encodedData.append(randomData[i])
+            encodedData.append(UInt8(rand()%256))
         }
         
         Mocker.delay(0.2) {

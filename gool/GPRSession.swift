@@ -131,12 +131,14 @@ class GPRSession : NSObject, NSStreamDelegate {
                 break;
         }
     }
-    
+     var counter = 0
     func receiveData(rawdata: [UInt8]) {
+        
         let tail = rawdata.dropFirst(rawdata.count-6)
-        if(tail.elementsEqual(Constants.kTraceTailBuf)) {
+        if(tail.elementsEqual(Constants.kTraceTailBuf) || true) {
             // create trace
-            let seqNo = seqNoQueue.popLast()!
+            let seqNo = counter
+            counter = counter+1//seqNoQueue.popLast()!
             let trace = GPRTrace(sequenceNumber: seqNo, rawData: [UInt8](rawdata.dropLast(6)))
             // fucking do something with the trace
             gprReadings.append(trace)
