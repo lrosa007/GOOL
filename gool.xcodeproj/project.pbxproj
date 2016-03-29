@@ -59,6 +59,10 @@
 		7125D4981CAAD05800624E39 /* Mocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125D4961CAAD05800624E39 /* Mocker.swift */; };
 		7125D4991CAAD05800624E39 /* Mocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125D4961CAAD05800624E39 /* Mocker.swift */; };
 		7125D49A1CAADB6700624E39 /* NetworkGPRDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D57F1C9B3C1E00DDE7CA /* NetworkGPRDevice.swift */; };
+		7125D49B1CAADBE400624E39 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5657C85E1CAAD01E003FD752 /* ViewController.swift */; };
+		7125D49C1CAADBE600624E39 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5657C85E1CAAD01E003FD752 /* ViewController.swift */; };
+		7125D49D1CAADBF800624E39 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D56D1C9B2B5200DDE7CA /* Networking.swift */; };
+		7125D49E1CAADC0200624E39 /* NetworkBrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125D4861CAA88CA00624E39 /* NetworkBrowserDelegate.swift */; };
 		7173E6A71CAA2D3100356F32 /* GPRTrace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173E6A61CAA2D3100356F32 /* GPRTrace.swift */; };
 /* End PBXBuildFile section */
 
@@ -440,6 +444,7 @@
 				5670D57E1C9B3BDA00DDE7CA /* GPRDataOutput.swift in Sources */,
 				7125D48E1CAA8FC400624E39 /* MockDataSource.swift in Sources */,
 				5670D5781C9B30F300DDE7CA /* GPRSessionSource.swift in Sources */,
+				7125D49B1CAADBE400624E39 /* ViewController.swift in Sources */,
 				7125D4801CAA365700624E39 /* GPRTrace.swift in Sources */,
 				5670D5961C9B3EFB00DDE7CA /* DataAnalyzer.swift in Sources */,
 			);
@@ -449,11 +454,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7125D49E1CAADC0200624E39 /* NetworkBrowserDelegate.swift in Sources */,
+				7125D49C1CAADBE600624E39 /* ViewController.swift in Sources */,
 				7125D49A1CAADB6700624E39 /* NetworkGPRDevice.swift in Sources */,
 				7125D4991CAAD05800624E39 /* Mocker.swift in Sources */,
 				5670D55C1C9B278500DDE7CA /* goolUITests.swift in Sources */,
 				7125D4811CAA365800624E39 /* GPRTrace.swift in Sources */,
 				7125D47F1CAA364F00624E39 /* DSP.swift in Sources */,
+				7125D49D1CAADBF800624E39 /* Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
