@@ -79,7 +79,7 @@ class MockDataSource : GPRDataSource {
         let nBytes = 1 << 14
         let header = Constants.kMessageNumber + " " + (deviceMsgNo++).description + " " + Constants.STX
                    + Constants.kTraceResponseHeader + " " + seqNo.description + " " + Constants.SOH
-        let tail = Constants.ETX + Constants.kTraceResponseTail
+        let tail = Constants.ETX + Constants.kTraceResponseTail + "\n"
         let encodedHeader = [UInt8](header.utf8), encodedTail = [UInt8](tail.utf8)
         
         let randomData = UnsafeMutablePointer<UInt8>()
@@ -88,5 +88,9 @@ class MockDataSource : GPRDataSource {
         outputStream.write(encodedHeader, maxLength: encodedHeader.count)
         outputStream.write(randomData, maxLength: nBytes)
         outputStream.write(encodedTail, maxLength: encodedTail.count)
+        
+        Mocker.delay(0.2) {
+            self.outputStream.delegate?.stream!(self.outputStream, handleEvent: NSStreamEvent.HasBytesAvailable)
+        }
     }
 }

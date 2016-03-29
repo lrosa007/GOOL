@@ -61,11 +61,12 @@ class GPRSession : NSObject, NSStreamDelegate {
     convenience init(mock: MockDataSource) {
         self.init(origin: CLLocation(), frequency: UInt(1e9), startTime: NSDate())
         dataSource = mock
+        mock.inputStream.delegate = self
         mock.outputStream.delegate = self
     }
     
     
-    @objc func stream(aStream: NSStream, handleEvent eventCode: NSStreamEvent) {
+    func stream(aStream: NSStream, handleEvent eventCode: NSStreamEvent) {
         switch eventCode {
             case NSStreamEvent.HasBytesAvailable :
                 if dataSource!.hasFullMessage() {
