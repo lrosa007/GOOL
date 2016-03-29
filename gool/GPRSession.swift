@@ -58,6 +58,11 @@ class GPRSession {
     
     // MARK: Functions
     
+    // returns sequence number for trace requested by this call
+    func runTrace() ->Int {
+        return dataSource.runTrace()
+    }
+    
     func start() -> Bool {
         if(status == .Unstarted) {
             status = .Active

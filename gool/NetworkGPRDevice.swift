@@ -97,6 +97,15 @@ class NetworkGPRDevice : GPRDataSource {
     }
     
     // MARK: GPRDataSource
+    
+    // returns sequence number that will be associated with this trace
+    // once its data is generated, or -1 if sending message fails
+    func runTrace() -> Int {
+        let seqNum = messageNumber+1
+        
+        return sendMessage(Constants.kRunTrace) ? seqNum : -1
+    }
+    
     func start() {
         if(!isConnected()) {
             // log? otherwise handle?

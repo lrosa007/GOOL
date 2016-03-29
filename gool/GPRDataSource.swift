@@ -15,6 +15,7 @@ protocol GPRDataSource {
     var dataStream: NSInputStream {get}
     
     // MARK: Functions
+    func runTrace() -> Int
     func start()
     func stop()
     func setFrequency(hertz: UInt) -> Bool
