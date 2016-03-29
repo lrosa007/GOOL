@@ -55,11 +55,12 @@
 		7125D48A1CAA8ED200624E39 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7125D4891CAA8ED200624E39 /* MapKit.framework */; };
 		7125D48D1CAA8FC400624E39 /* MockDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125D48C1CAA8FC400624E39 /* MockDataSource.swift */; };
 		7125D48E1CAA8FC400624E39 /* MockDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125D48C1CAA8FC400624E39 /* MockDataSource.swift */; };
-		7125D4901CAA9BB700624E39 /* GPRStreamHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125D48F1CAA9BB700624E39 /* GPRStreamHandler.swift */; };
-		7125D4911CAA9BB700624E39 /* GPRStreamHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125D48F1CAA9BB700624E39 /* GPRStreamHandler.swift */; };
 		7125D4931CAAA12800624E39 /* COPIPES.DZT in Resources */ = {isa = PBXBuildFile; fileRef = 7125D4921CAAA12800624E39 /* COPIPES.DZT */; };
 		7125D4941CAAA12800624E39 /* COPIPES.DZT in Resources */ = {isa = PBXBuildFile; fileRef = 7125D4921CAAA12800624E39 /* COPIPES.DZT */; };
 		7125D4951CAAA12800624E39 /* COPIPES.DZT in Resources */ = {isa = PBXBuildFile; fileRef = 7125D4921CAAA12800624E39 /* COPIPES.DZT */; };
+		7125D4971CAAD05800624E39 /* Mocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125D4961CAAD05800624E39 /* Mocker.swift */; };
+		7125D4981CAAD05800624E39 /* Mocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125D4961CAAD05800624E39 /* Mocker.swift */; };
+		7125D4991CAAD05800624E39 /* Mocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125D4961CAAD05800624E39 /* Mocker.swift */; };
 		7173E6A71CAA2D3100356F32 /* GPRTrace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173E6A61CAA2D3100356F32 /* GPRTrace.swift */; };
 /* End PBXBuildFile section */
 
@@ -113,8 +114,8 @@
 		7125D4861CAA88CA00624E39 /* NetworkBrowserDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkBrowserDelegate.swift; sourceTree = "<group>"; };
 		7125D4891CAA8ED200624E39 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		7125D48C1CAA8FC400624E39 /* MockDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDataSource.swift; sourceTree = "<group>"; };
-		7125D48F1CAA9BB700624E39 /* GPRStreamHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRStreamHandler.swift; sourceTree = "<group>"; };
 		7125D4921CAAA12800624E39 /* COPIPES.DZT */ = {isa = PBXFileReference; lastKnownFileType = file; name = COPIPES.DZT; path = ../../GPR/COPIPES.DZT; sourceTree = "<group>"; };
+		7125D4961CAAD05800624E39 /* Mocker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mocker.swift; sourceTree = "<group>"; };
 		7173E6A61CAA2D3100356F32 /* GPRTrace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRTrace.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -224,7 +225,6 @@
 				5670D5851C9B3D8100DDE7CA /* GPRFileWriter.swift */,
 				5670D5881C9B3DCB00DDE7CA /* GPRDataFileWriter.swift */,
 				5670D58B1C9B3E1500DDE7CA /* Constants.swift */,
-				7125D48F1CAA9BB700624E39 /* GPRStreamHandler.swift */,
 			);
 			name = IO;
 			sourceTree = "<group>";
@@ -253,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				7125D48C1CAA8FC400624E39 /* MockDataSource.swift */,
+				7125D4961CAAD05800624E39 /* Mocker.swift */,
 			);
 			name = Mocking;
 			sourceTree = "<group>";
@@ -399,6 +400,7 @@
 			files = (
 				7125D48D1CAA8FC400624E39 /* MockDataSource.swift in Sources */,
 				5670D56E1C9B2B5200DDE7CA /* Networking.swift in Sources */,
+				7125D4971CAAD05800624E39 /* Mocker.swift in Sources */,
 				5670D58F1C9B3E9500DDE7CA /* GPRMode.swift in Sources */,
 				5670D53E1C9B278500DDE7CA /* ViewController.swift in Sources */,
 				5670D57D1C9B3BDA00DDE7CA /* GPRDataOutput.swift in Sources */,
@@ -417,7 +419,6 @@
 				5670D59B1C9B3FEA00DDE7CA /* Displacement.swift in Sources */,
 				5670D5891C9B3DCB00DDE7CA /* GPRDataFileWriter.swift in Sources */,
 				5670D57A1C9B31EB00DDE7CA /* GPRSessionOutput.swift in Sources */,
-				7125D4901CAA9BB700624E39 /* GPRStreamHandler.swift in Sources */,
 				5670D58C1C9B3E1500DDE7CA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,8 +436,8 @@
 				5670D59C1C9B3FEA00DDE7CA /* Displacement.swift in Sources */,
 				7125D4881CAA88CA00624E39 /* NetworkBrowserDelegate.swift in Sources */,
 				5670D5901C9B3E9500DDE7CA /* GPRMode.swift in Sources */,
-				7125D4911CAA9BB700624E39 /* GPRStreamHandler.swift in Sources */,
 				5670D56F1C9B2B5200DDE7CA /* Networking.swift in Sources */,
+				7125D4981CAAD05800624E39 /* Mocker.swift in Sources */,
 				7125D4841CAA87E000624E39 /* NetworkConnectionVC.swift in Sources */,
 				5670D58A1C9B3DCB00DDE7CA /* GPRDataFileWriter.swift in Sources */,
 				5670D5991C9B3FA500DDE7CA /* GPRSession.swift in Sources */,
@@ -454,6 +455,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7125D4991CAAD05800624E39 /* Mocker.swift in Sources */,
 				5670D55C1C9B278500DDE7CA /* goolUITests.swift in Sources */,
 				7125D4811CAA365800624E39 /* GPRTrace.swift in Sources */,
 				7125D47F1CAA364F00624E39 /* DSP.swift in Sources */,

@@ -14,6 +14,14 @@ class Networking : NSObject, NSNetServiceBrowserDelegate {
     func startBrowsing(nbDelegate: NetworkBrowserDelegate) {
         delegate = nbDelegate
         
+        if Mocker.mockEnabled {
+            Mocker.delay(1.2) { // delay simulates network search
+                self.delegate?.serviceResolved(NSNetService())
+            }
+            
+            return
+        }
+        
         if browser == nil {
             browser = NSNetServiceBrowser()
         }

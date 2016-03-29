@@ -16,8 +16,13 @@ class NetworkConnectionVC : UIViewController, NetworkBrowserDelegate {
     }
     
     func serviceResolved(service: NSNetService) {
+        if Mocker.mockEnabled {
+            var session = GPRSession(mock: MockDataSource())
+            return
+        }
+        
         // create NetworkGPRDevice like so:
-        let gprDevice = NetworkGPRDevice(service: service)
+        let gprDevice = NetworkGPRDevice(service: service)!
         // use it or assign it properly, then perform UI actions to inform user of connection
     }
     
