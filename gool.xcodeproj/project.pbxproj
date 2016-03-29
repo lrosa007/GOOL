@@ -173,8 +173,8 @@
 				5670D56A1C9B2A9B00DDE7CA /* IO */,
 				5670D56B1C9B2AB600DDE7CA /* Logic */,
 				5670D56C1C9B2AD700DDE7CA /* Models */,
-				5670D53D1C9B278500DDE7CA /* ViewController.swift */,
 				5670D53F1C9B278500DDE7CA /* Main.storyboard */,
+        5670D53D1C9B278500DDE7CA /* ViewController.swift */,
 				7125D4821CAA87E000624E39 /* NetworkConnectionVC.swift */,
 				7125D4861CAA88CA00624E39 /* NetworkBrowserDelegate.swift */,
 			);
