@@ -52,6 +52,14 @@
 		7125D4851CAA87E000624E39 /* NetworkConnectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125D4821CAA87E000624E39 /* NetworkConnectionVC.swift */; };
 		7125D4871CAA88CA00624E39 /* NetworkBrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125D4861CAA88CA00624E39 /* NetworkBrowserDelegate.swift */; };
 		7125D4881CAA88CA00624E39 /* NetworkBrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125D4861CAA88CA00624E39 /* NetworkBrowserDelegate.swift */; };
+		7125D48A1CAA8ED200624E39 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7125D4891CAA8ED200624E39 /* MapKit.framework */; };
+		7125D48D1CAA8FC400624E39 /* MockDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125D48C1CAA8FC400624E39 /* MockDataSource.swift */; };
+		7125D48E1CAA8FC400624E39 /* MockDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125D48C1CAA8FC400624E39 /* MockDataSource.swift */; };
+		7125D4901CAA9BB700624E39 /* GPRStreamHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125D48F1CAA9BB700624E39 /* GPRStreamHandler.swift */; };
+		7125D4911CAA9BB700624E39 /* GPRStreamHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125D48F1CAA9BB700624E39 /* GPRStreamHandler.swift */; };
+		7125D4931CAAA12800624E39 /* COPIPES.DZT in Resources */ = {isa = PBXBuildFile; fileRef = 7125D4921CAAA12800624E39 /* COPIPES.DZT */; };
+		7125D4941CAAA12800624E39 /* COPIPES.DZT in Resources */ = {isa = PBXBuildFile; fileRef = 7125D4921CAAA12800624E39 /* COPIPES.DZT */; };
+		7125D4951CAAA12800624E39 /* COPIPES.DZT in Resources */ = {isa = PBXBuildFile; fileRef = 7125D4921CAAA12800624E39 /* COPIPES.DZT */; };
 		7173E6A71CAA2D3100356F32 /* GPRTrace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173E6A61CAA2D3100356F32 /* GPRTrace.swift */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +111,10 @@
 		5670D59A1C9B3FEA00DDE7CA /* Displacement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Displacement.swift; sourceTree = "<group>"; };
 		7125D4821CAA87E000624E39 /* NetworkConnectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConnectionVC.swift; sourceTree = "<group>"; };
 		7125D4861CAA88CA00624E39 /* NetworkBrowserDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkBrowserDelegate.swift; sourceTree = "<group>"; };
+		7125D4891CAA8ED200624E39 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		7125D48C1CAA8FC400624E39 /* MockDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDataSource.swift; sourceTree = "<group>"; };
+		7125D48F1CAA9BB700624E39 /* GPRStreamHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRStreamHandler.swift; sourceTree = "<group>"; };
+		7125D4921CAAA12800624E39 /* COPIPES.DZT */ = {isa = PBXFileReference; lastKnownFileType = file; name = COPIPES.DZT; path = ../../GPR/COPIPES.DZT; sourceTree = "<group>"; };
 		7173E6A61CAA2D3100356F32 /* GPRTrace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRTrace.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7125D48A1CAA8ED200624E39 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +147,7 @@
 		5670D52F1C9B278500DDE7CA = {
 			isa = PBXGroup;
 			children = (
+				7125D4891CAA8ED200624E39 /* MapKit.framework */,
 				5670D53A1C9B278500DDE7CA /* gool */,
 				5670D54F1C9B278500DDE7CA /* goolTests */,
 				5670D55A1C9B278500DDE7CA /* goolUITests */,
@@ -154,6 +168,7 @@
 		5670D53A1C9B278500DDE7CA /* gool */ = {
 			isa = PBXGroup;
 			children = (
+				7125D48B1CAA8FAE00624E39 /* Mocking */,
 				5670D5691C9B2A7600DDE7CA /* Supporting Files */,
 				5670D56A1C9B2A9B00DDE7CA /* IO */,
 				5670D56B1C9B2AB600DDE7CA /* Logic */,
@@ -187,6 +202,7 @@
 		5670D5691C9B2A7600DDE7CA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7125D4921CAAA12800624E39 /* COPIPES.DZT */,
 				5670D5421C9B278500DDE7CA /* Assets.xcassets */,
 				5670D5471C9B278500DDE7CA /* Info.plist */,
 				5670D5441C9B278500DDE7CA /* LaunchScreen.storyboard */,
@@ -208,6 +224,7 @@
 				5670D5851C9B3D8100DDE7CA /* GPRFileWriter.swift */,
 				5670D5881C9B3DCB00DDE7CA /* GPRDataFileWriter.swift */,
 				5670D58B1C9B3E1500DDE7CA /* Constants.swift */,
+				7125D48F1CAA9BB700624E39 /* GPRStreamHandler.swift */,
 			);
 			name = IO;
 			sourceTree = "<group>";
@@ -230,6 +247,14 @@
 				7173E6A61CAA2D3100356F32 /* GPRTrace.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		7125D48B1CAA8FAE00624E39 /* Mocking */ = {
+			isa = PBXGroup;
+			children = (
+				7125D48C1CAA8FC400624E39 /* MockDataSource.swift */,
+			);
+			name = Mocking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,6 +326,11 @@
 					5670D5371C9B278500DDE7CA = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 74J2HV8Z25;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					5670D54B1C9B278500DDE7CA = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -339,6 +369,7 @@
 			files = (
 				5670D5461C9B278500DDE7CA /* LaunchScreen.storyboard in Resources */,
 				5670D5431C9B278500DDE7CA /* Assets.xcassets in Resources */,
+				7125D4931CAAA12800624E39 /* COPIPES.DZT in Resources */,
 				5670D5411C9B278500DDE7CA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,6 +378,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7125D4941CAAA12800624E39 /* COPIPES.DZT in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +386,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7125D4951CAAA12800624E39 /* COPIPES.DZT in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +397,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7125D48D1CAA8FC400624E39 /* MockDataSource.swift in Sources */,
 				5670D56E1C9B2B5200DDE7CA /* Networking.swift in Sources */,
 				5670D58F1C9B3E9500DDE7CA /* GPRMode.swift in Sources */,
 				5670D53E1C9B278500DDE7CA /* ViewController.swift in Sources */,
@@ -383,6 +417,7 @@
 				5670D59B1C9B3FEA00DDE7CA /* Displacement.swift in Sources */,
 				5670D5891C9B3DCB00DDE7CA /* GPRDataFileWriter.swift in Sources */,
 				5670D57A1C9B31EB00DDE7CA /* GPRSessionOutput.swift in Sources */,
+				7125D4901CAA9BB700624E39 /* GPRStreamHandler.swift in Sources */,
 				5670D58C1C9B3E1500DDE7CA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,6 +435,7 @@
 				5670D59C1C9B3FEA00DDE7CA /* Displacement.swift in Sources */,
 				7125D4881CAA88CA00624E39 /* NetworkBrowserDelegate.swift in Sources */,
 				5670D5901C9B3E9500DDE7CA /* GPRMode.swift in Sources */,
+				7125D4911CAA9BB700624E39 /* GPRStreamHandler.swift in Sources */,
 				5670D56F1C9B2B5200DDE7CA /* Networking.swift in Sources */,
 				7125D4841CAA87E000624E39 /* NetworkConnectionVC.swift in Sources */,
 				5670D58A1C9B3DCB00DDE7CA /* GPRDataFileWriter.swift in Sources */,
@@ -407,6 +443,7 @@
 				5670D5811C9B3C1E00DDE7CA /* NetworkGPRDevice.swift in Sources */,
 				5670D5931C9B3EC400DDE7CA /* DSP.swift in Sources */,
 				5670D57E1C9B3BDA00DDE7CA /* GPRDataOutput.swift in Sources */,
+				7125D48E1CAA8FC400624E39 /* MockDataSource.swift in Sources */,
 				5670D5781C9B30F300DDE7CA /* GPRSessionSource.swift in Sources */,
 				7125D4801CAA365700624E39 /* GPRTrace.swift in Sources */,
 				5670D5961C9B3EFB00DDE7CA /* DataAnalyzer.swift in Sources */,

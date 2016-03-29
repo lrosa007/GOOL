@@ -16,7 +16,9 @@ protocol GPRDataSource {
     
     // MARK: Functions
     func runTrace() -> Int
-    func start()
+    func start() -> Bool
     func stop()
-    func setFrequency(hertz: UInt) -> Bool
+    func setFrequency(hertz: UInt)
+    func hasFullMessage() -> Bool
+    func getMessage() -> String
 }

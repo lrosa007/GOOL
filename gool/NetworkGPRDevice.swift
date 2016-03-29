@@ -22,6 +22,7 @@ class NetworkGPRDevice : GPRDataSource {
     private var outputStream: NSOutputStream
     var messageNumber: Int
     internal var status: ConnectionStatus
+    var delegate: GPRStreamHandler?
     
     internal var dataStream: NSInputStream {
         get {
@@ -53,6 +54,7 @@ class NetworkGPRDevice : GPRDataSource {
             inputStream = isPtr.move()!
             outputStream = osPtr.move()!
             status = ConnectionStatus.CONNECTED
+            
         }
         
         isPtr.dealloc(1)
@@ -86,7 +88,7 @@ class NetworkGPRDevice : GPRDataSource {
             return false
         }
         
-        let formattedMessage = (messageNumber++).description
+        let formattedMessage = Constants.kMessageNumber + " " + (messageNumber++).description
             + " " + Constants.STX + msg + Constants.EOT
         
         return send(formattedMessage)
@@ -106,12 +108,18 @@ class NetworkGPRDevice : GPRDataSource {
         return sendMessage(Constants.kRunTrace) ? seqNum : -1
     }
     
-    func start() {
+    func start() -> Bool {
+        if(delegate == nil) {
+            return false
+        }
+        
         if(!isConnected()) {
             // log? otherwise handle?
         }
         
         // TODO: send START instruction to device
+        
+        return true
     }
     
     func stop() {
@@ -122,12 +130,22 @@ class NetworkGPRDevice : GPRDataSource {
         //TODO: send STOP instruction to device
     }
     
-    func setFrequency(hertz: UInt) -> Bool {
+    func setFrequency(hertz: UInt) {
         // should require source to stop reading before changing frequency
         // perhaps should be async and not return bool yet
         
+    }
+    
+    func hasFullMessage() -> Bool {
+        //TODO: read bytes into a buf; advance until EOT
         
         return false
+    }
+    
+    func getMessage() -> String {
+        //TODO: create message class to improve this
+        
+        return ""
     }
     
     

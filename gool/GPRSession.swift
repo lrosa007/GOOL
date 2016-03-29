@@ -12,7 +12,7 @@
 import Foundation
 import CoreLocation
 
-class GPRSession {
+class GPRSession : NSObject, NSStreamDelegate {
     enum GPRSessionStatus {
         case Unstarted
         case Active
@@ -55,6 +55,24 @@ class GPRSession {
         self.init(origin: origin, frequency: frequency, startTime: NSDate())
     }
     
+    convenience init(mock: MockDataSource) {
+        self.init(origin: CLLocation(), frequency: UInt(1e9), startTime: NSDate())
+        dataSource = mock
+        mock.inputStream.delegate = self
+    }
+    
+    
+    @objc func stream(aStream: NSStream, handleEvent eventCode: NSStreamEvent) {
+        switch eventCode {
+        case NSStreamEvent.HasBytesAvailable :
+            if dataSource.hasFullMessage() {
+                // process dataSource.getMessage()
+            }
+        default :
+            //TODO: fill out other events
+            break;
+        }
+    }
     
     // MARK: Functions
     
