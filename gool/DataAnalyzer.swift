@@ -14,7 +14,7 @@ class DataAnalyzer {
     //precondition: data is in distance/distance form
     static internal func analyze(data: [UInt8], mode: GPRMode) -> Double {
         //TODO: stub
-        return 0.0
+        return drand48()
     }
     
     // Analyzes several traces at once; may provide better 

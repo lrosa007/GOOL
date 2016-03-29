@@ -22,7 +22,7 @@ class MockDataSource : GPRDataSource {
     }
     
     init() {
-        inputStream = NSInputStream()
+        //inputStream = NSInputStream()
         var readStream: Unmanaged<CFReadStream>?
         var writeStream: Unmanaged<CFWriteStream>?
         
@@ -33,14 +33,19 @@ class MockDataSource : GPRDataSource {
         
         // set delegates for streams
         
+        
         inputStream.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
         outputStream.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
     }
     
     func runTrace() -> Int {
-        let seqNum = msgNo++
+        let seqNum = msgNo+1
         
-        // call some mock function to generate response after a few milliseconds
+        Mocker.delay(0.5) {
+            self.getRandomTrace(seqNum)
+        }
+        
+        msgNo += 1
         
         return seqNum
     }
@@ -70,8 +75,6 @@ class MockDataSource : GPRDataSource {
     
     
     private func getRandomTrace(seqNo: Int) {
-        // replace with pipe to mock input?
-        let ostream = NSOutputStream()
         
         let nBytes = 1 << 14
         let header = Constants.kMessageNumber + " " + (deviceMsgNo++).description + " " + Constants.STX
@@ -82,8 +85,8 @@ class MockDataSource : GPRDataSource {
         let randomData = UnsafeMutablePointer<UInt8>()
         SecRandomCopyBytes(kSecRandomDefault, nBytes, randomData)
         
-        ostream.write(encodedHeader, maxLength: encodedHeader.count)
-        ostream.write(randomData, maxLength: nBytes)
-        ostream.write(encodedTail, maxLength: encodedTail.count)
+        outputStream.write(encodedHeader, maxLength: encodedHeader.count)
+        outputStream.write(randomData, maxLength: nBytes)
+        outputStream.write(encodedTail, maxLength: encodedTail.count)
     }
 }

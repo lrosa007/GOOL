@@ -32,7 +32,10 @@ class GPRSession : NSObject, NSStreamDelegate {
     var traceByLocation: [CLLocation: GPRTrace]
     var gprResults: [Double]
     
-    var dataSource: GPRDataSource
+    var dataSource: GPRDataSource?
+    
+    var seqNoQueue = [Int]()
+    var mainDisplay: ViewController?
     
     
     // MARK: Initialization
@@ -48,7 +51,7 @@ class GPRSession : NSObject, NSStreamDelegate {
         traceByLocation = [CLLocation: GPRTrace]()
         gprResults = [Double]()
         //TODO: proper assignment of dataSource
-        dataSource = NetworkGPRDevice()
+        //dataSource = NetworkGPRDevice()
     }
     
     convenience init(origin: CLLocation, frequency: UInt) {
@@ -58,27 +61,83 @@ class GPRSession : NSObject, NSStreamDelegate {
     convenience init(mock: MockDataSource) {
         self.init(origin: CLLocation(), frequency: UInt(1e9), startTime: NSDate())
         dataSource = mock
-        mock.inputStream.delegate = self
+        mock.outputStream.delegate = self
     }
     
     
     @objc func stream(aStream: NSStream, handleEvent eventCode: NSStreamEvent) {
         switch eventCode {
-        case NSStreamEvent.HasBytesAvailable :
-            if dataSource.hasFullMessage() {
-                // process dataSource.getMessage()
-            }
-        default :
-            //TODO: fill out other events
-            break;
+            case NSStreamEvent.HasBytesAvailable :
+                if dataSource!.hasFullMessage() {
+                    // process dataSource.getMessage()
+                    if (dataSource!.getMessage() == Constants.kTraceResponseHeader) {
+                        let seqNo = dataSource!.runTrace()
+                        seqNoQueue.insert(seqNo, atIndex: 0)
+                    } else {
+                        // handle trace data
+                        var buffer = [UInt8]()
+                        
+                        var rawdata = [UInt8]()
+                        
+                        let iStream = aStream as! NSInputStream
+                        
+                        while (iStream.hasBytesAvailable) {
+                            var len = iStream.read(&buffer, maxLength: 1)
+                            
+                            if len == 0 {
+                                print("Whoops")
+                                return
+                            } else if buffer[0] == 1 { //SOH
+                                break;
+                            }
+                        }
+                        
+                        while(iStream.hasBytesAvailable) {
+                            var len = iStream.read(&buffer, maxLength: 1)
+                            
+                            if(len == 0) {
+                                //fail -- should send bad message response
+                                return;
+                            }
+                            rawdata.append(buffer[0])
+                            if(buffer[0] == 4) { //EOT
+                                //check for ETX DONE
+                                let tail = rawdata.dropFirst(rawdata.count-6)
+                                if(tail.elementsEqual(Constants.kTraceTailBuf)) {
+                                    // create trace
+                                    let seqNo = seqNoQueue.popLast()!
+                                    let trace = GPRTrace(sequenceNumber: seqNo, rawData: [UInt8](rawdata.dropLast(6)))
+                                    // fucking do something with the trace
+                                    gprReadings.append(trace)
+                                    
+                                    // replace with delegate stuff
+                                    let score = DataAnalyzer.analyze(DSP.filter(trace.data, mode: operationMode), mode: operationMode)
+                                    
+                                    gprResults.append(score)
+                                    
+                                    // UI display score
+                                    NSLog("\(score)")
+                                    
+                                    break
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            default :
+                //TODO: fill out other events
+                break;
         }
     }
+    
+    
     
     // MARK: Functions
     
     // returns sequence number for trace requested by this call
     func runTrace() ->Int {
-        return dataSource.runTrace()
+        return dataSource!.runTrace()
     }
     
     func start() -> Bool {
@@ -102,19 +161,20 @@ class GPRSession : NSObject, NSStreamDelegate {
     func writeToFile(dest: GPRSessionOutput) {
         dest.writeSession(self)
     }
+
     
     private func readGprData(inout buf: [UInt8]) -> Int {
-        if(!dataSource.dataStream.hasBytesAvailable) {
+        if(!dataSource!.dataStream.hasBytesAvailable) {
             return 0
         }
         
-        return dataSource.dataStream.read(&buf, maxLength: buf.capacity)
+        return dataSource!.dataStream.read(&buf, maxLength: buf.capacity)
     }
     
     // other version of function seems better
     private func readGprData(nBytes: Int) -> [UInt8] {
         var buffer = [UInt8](count: nBytes, repeatedValue: 0)
-        dataSource.dataStream.read(&buffer, maxLength: nBytes)
+        dataSource!.dataStream.read(&buffer, maxLength: nBytes)
         return buffer
     }
     

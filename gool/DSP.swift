@@ -26,7 +26,7 @@ class DSP {
     
     //TODO: stubbed
     class internal func filter(signal: [UInt8], mode: GPRMode) -> [UInt8] {
-        return [UInt8]()
+        return signal
     }
     
     // does not check that traces match each other; just stacks their data

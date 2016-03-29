@@ -9,6 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController, NetworkBrowserDelegate {
+    var session:GPRSession?
+    
+    @IBOutlet weak var results: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,15 +31,32 @@ class ViewController: UIViewController, NetworkBrowserDelegate {
         self.searchForGPRDevice()
     }
     
+    @IBAction func runTraceClicked(sender: UIButton) {
+        let seqNo = Mocker.globalSession?.runTrace()
+        
+        NSLog("Requested trace #\(seqNo)")
+    }
+    
+    func appendResults(traceNo: Int, score: Double) {
+        results.text.appendContentsOf(String("Trace #\(traceNo): \(score)"))
+    }
     
     func searchForGPRDevice() {
         Networking().startBrowsing(self)
     }
     
     func serviceResolved(service: NSNetService) {
+        if (Mocker.mockEnabled) {
+            session = GPRSession(mock: MockDataSource())
+            session?.mainDisplay = self
+            Mocker.globalSession = session!
+            return
+        }
+        
         // create NetworkGPRDevice like so:
         let gprDevice = NetworkGPRDevice(service: service)
         // use it or assign it properly, then perform UI actions to inform user of connection
+        
     }
     
     func didNotSearch(aNetServiceBrowser: NSNetServiceBrowser, aNetService: NSNetService,

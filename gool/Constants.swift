@@ -22,4 +22,6 @@ struct Constants {
     static let kRunTrace = "RUN_TRACE"
     static let kTraceResponseHeader = "TRACE"
     static let kTraceResponseTail = "DONE"
+    
+    static let kTraceTailBuf: [UInt8] = Array("\u{0001} DONE\u{0004}".utf8)
 }
