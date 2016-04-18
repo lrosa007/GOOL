@@ -30,7 +30,7 @@ class Networking : NSObject, NSNetServiceBrowserDelegate {
         browser?.delegate = self
         
         // check whether local is correct. Also mark as constants or something
-        browser?.searchForServicesOfType("_gsd._tcp", inDomain: "local.")
+        browser?.searchForServicesOfType("_gds._tcp", inDomain: "local.")
     }
     
     // MARK: NSNetServiceBrowser callbacks

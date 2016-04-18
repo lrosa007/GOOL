@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -69,8 +70,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOY-Op-6Ux">
-                                <rect key="frame" x="241" y="67" width="118" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOY-Op-6Ux">
+                                <rect key="frame" x="241" y="28" width="118" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="118" id="sO5-3O-igc"/>
                                     <constraint firstAttribute="height" constant="40" id="xDT-AM-6wa"/>
@@ -80,8 +81,8 @@
                                     <action selector="runTraceClicked:" destination="HWI-UQ-6jQ" eventType="touchUpInside" id="Fo3-05-Rl7"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="Results:" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1EC-3Y-f39">
-                                <rect key="frame" x="340" y="115" width="240" height="465"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Results:" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1EC-3Y-f39">
+                                <rect key="frame" x="20" y="67" width="560" height="465"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -90,7 +91,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="1EC-3Y-f39" firstAttribute="centerX" secondItem="41D-mZ-t24" secondAttribute="centerX" id="3qM-HH-tzK"/>
+                            <constraint firstItem="WOY-Op-6Ux" firstAttribute="centerX" secondItem="41D-mZ-t24" secondAttribute="centerX" id="Fmt-ra-Ncy"/>
+                            <constraint firstItem="1EC-3Y-f39" firstAttribute="trailing" secondItem="41D-mZ-t24" secondAttribute="trailingMargin" id="Ikl-8O-lad"/>
                             <constraint firstItem="1EC-3Y-f39" firstAttribute="centerY" secondItem="41D-mZ-t24" secondAttribute="centerY" id="KMf-p2-Eei"/>
+                            <constraint firstItem="1EC-3Y-f39" firstAttribute="top" secondItem="2ov-DU-BcT" secondAttribute="bottom" constant="47" id="Npy-mU-i27"/>
+                            <constraint firstItem="WOY-Op-6Ux" firstAttribute="top" secondItem="2ov-DU-BcT" secondAttribute="bottom" constant="8" symbolic="YES" id="XhD-nj-RKU"/>
                         </constraints>
                     </view>
                     <connections>

@@ -56,7 +56,13 @@ class ViewController: UIViewController, NetworkBrowserDelegate {
         // create NetworkGPRDevice like so:
         let gprDevice = NetworkGPRDevice(service: service)
         // use it or assign it properly, then perform UI actions to inform user of connection
+        if(gprDevice == nil) {
+            //warn user via UI
+            return
+        }
         
+        session = GPRSession(device: NetworkGPRDevice(service: service)!)
+
     }
     
     func didNotSearch(aNetServiceBrowser: NSNetServiceBrowser, aNetService: NSNetService,

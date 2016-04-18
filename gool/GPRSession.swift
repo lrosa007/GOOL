@@ -58,6 +58,11 @@ class GPRSession : NSObject, NSStreamDelegate {
         self.init(origin: origin, frequency: frequency, startTime: NSDate())
     }
     
+    convenience init(device: GPRDataSource) {
+        self.init(origin: CLLocation(), frequency: UInt(1e9), startTime: NSDate())
+        dataSource = device
+    }
+    
     convenience init(mock: MockDataSource) {
         self.init(origin: CLLocation(), frequency: UInt(1e9), startTime: NSDate())
         dataSource = mock

@@ -10,7 +10,7 @@
 import Foundation
 
 class Mocker {
-    internal static var mockEnabled = true
+    internal static var mockEnabled = false
     
     static var globalSession: GPRSession?
     

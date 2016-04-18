@@ -18,15 +18,15 @@ class NetworkGPRDevice : GPRDataSource {
     }
 
     //TODO: properties and initializer(s) for actual WiFi connection
-    private var inputStream: NSInputStream
-    private var outputStream: NSOutputStream
+    private var inputStream: NSInputStream?
+    private var outputStream: NSOutputStream?
     var messageNumber: Int
     internal var status: ConnectionStatus
     var delegate: ViewController?
 
     internal var dataStream: NSInputStream {
         get {
-            return inputStream
+            return inputStream!
         }
     }
 
@@ -43,24 +43,26 @@ class NetworkGPRDevice : GPRDataSource {
     convenience init?(service: NSNetService) {
         self.init()
 
-        let isPtr = UnsafeMutablePointer<NSInputStream?>.alloc(1)
-        let osPtr = UnsafeMutablePointer<NSOutputStream?>.alloc(1)
+//        let isPtr = UnsafeMutablePointer<NSInputStream?>.alloc(1)
+//        let osPtr = UnsafeMutablePointer<NSOutputStream?>.alloc(1)
+//
+//        service.getInputStream(isPtr, outputStream: osPtr)
+//
+//        let fail = (isPtr == nil || osPtr == nil)
+//
+//        if !fail {
+//            inputStream = isPtr.move()!
+//            outputStream = osPtr.move()!
+//            status = ConnectionStatus.CONNECTED
+//
+//        }
+//
+//        isPtr.dealloc(1)
+//        osPtr.dealloc(1)
 
-        service.getInputStream(isPtr, outputStream: osPtr)
-
-        let fail = (isPtr == nil || osPtr == nil)
-
-        if !fail {
-            inputStream = isPtr.move()!
-            outputStream = osPtr.move()!
-            status = ConnectionStatus.CONNECTED
-
-        }
-
-        isPtr.dealloc(1)
-        osPtr.dealloc(1)
-
-        if fail {
+        let success = service.getInputStream(&inputStream, outputStream: &outputStream)
+        
+        if !success {
             return nil
         }
     }
@@ -77,7 +79,7 @@ class NetworkGPRDevice : GPRDataSource {
         }
 
         let encodedArray = [UInt8](msg.utf8)
-        return outputStream.write(encodedArray, maxLength: encodedArray.count) > 0
+        return outputStream?.write(encodedArray, maxLength: encodedArray.count) > 0
 
 
         //outputStream.write(UnsafePointer<UInt8>(msg), maxLength: msg.lengthOfBytesUsingEncoding(<#encoding: NSStringEncoding#>))
@@ -151,8 +153,8 @@ class NetworkGPRDevice : GPRDataSource {
 
     // MARK: Callbacks
     func stopped() {
-        inputStream.close()
-        outputStream.close()
+        inputStream?.close()
+        outputStream?.close()
         status = ConnectionStatus.FINISHED
     }
 }
