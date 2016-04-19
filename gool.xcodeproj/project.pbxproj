@@ -52,7 +52,6 @@
 		7125D4811CAA365800624E39 /* GPRTrace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173E6A61CAA2D3100356F32 /* GPRTrace.swift */; };
 		7125D4871CAA88CA00624E39 /* NetworkBrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125D4861CAA88CA00624E39 /* NetworkBrowserDelegate.swift */; };
 		7125D4881CAA88CA00624E39 /* NetworkBrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125D4861CAA88CA00624E39 /* NetworkBrowserDelegate.swift */; };
-		7125D48A1CAA8ED200624E39 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7125D4891CAA8ED200624E39 /* MapKit.framework */; };
 		7125D48D1CAA8FC400624E39 /* MockDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125D48C1CAA8FC400624E39 /* MockDataSource.swift */; };
 		7125D48E1CAA8FC400624E39 /* MockDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125D48C1CAA8FC400624E39 /* MockDataSource.swift */; };
 		7125D4931CAAA12800624E39 /* COPIPES.DZT in Resources */ = {isa = PBXBuildFile; fileRef = 7125D4921CAAA12800624E39 /* COPIPES.DZT */; };
@@ -67,6 +66,10 @@
 		7125D49D1CAADBF800624E39 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D56D1C9B2B5200DDE7CA /* Networking.swift */; };
 		7125D49E1CAADC0200624E39 /* NetworkBrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125D4861CAA88CA00624E39 /* NetworkBrowserDelegate.swift */; };
 		7173E6A71CAA2D3100356F32 /* GPRTrace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173E6A61CAA2D3100356F32 /* GPRTrace.swift */; };
+		71938CD41CC5202C00B220F3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71938CD31CC5202C00B220F3 /* MapKit.framework */; };
+		71938CD61CC67B4800B220F3 /* Gravesite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71938CD51CC67B4800B220F3 /* Gravesite.swift */; };
+		71938CD71CC67B4800B220F3 /* Gravesite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71938CD51CC67B4800B220F3 /* Gravesite.swift */; };
+		71938CD81CC67B4800B220F3 /* Gravesite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71938CD51CC67B4800B220F3 /* Gravesite.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,11 +119,12 @@
 		5670D5971C9B3FA500DDE7CA /* GPRSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRSession.swift; sourceTree = "<group>"; };
 		5670D59A1C9B3FEA00DDE7CA /* Displacement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Displacement.swift; sourceTree = "<group>"; };
 		7125D4861CAA88CA00624E39 /* NetworkBrowserDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkBrowserDelegate.swift; sourceTree = "<group>"; };
-		7125D4891CAA8ED200624E39 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		7125D48C1CAA8FC400624E39 /* MockDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDataSource.swift; sourceTree = "<group>"; };
 		7125D4921CAAA12800624E39 /* COPIPES.DZT */ = {isa = PBXFileReference; lastKnownFileType = text; name = COPIPES.DZT; path = ../../GPR/COPIPES.DZT; sourceTree = "<group>"; };
 		7125D4961CAAD05800624E39 /* Mocker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mocker.swift; sourceTree = "<group>"; };
 		7173E6A61CAA2D3100356F32 /* GPRTrace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRTrace.swift; sourceTree = "<group>"; };
+		71938CD31CC5202C00B220F3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		71938CD51CC67B4800B220F3 /* Gravesite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gravesite.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7125D48A1CAA8ED200624E39 /* MapKit.framework in Frameworks */,
+				71938CD41CC5202C00B220F3 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +156,7 @@
 		5670D52F1C9B278500DDE7CA = {
 			isa = PBXGroup;
 			children = (
-				7125D4891CAA8ED200624E39 /* MapKit.framework */,
+				71938CD31CC5202C00B220F3 /* MapKit.framework */,
 				5670D53A1C9B278500DDE7CA /* gool */,
 				5670D54F1C9B278500DDE7CA /* goolTests */,
 				5670D55A1C9B278500DDE7CA /* goolUITests */,
@@ -248,6 +252,7 @@
 				5670D5971C9B3FA500DDE7CA /* GPRSession.swift */,
 				5670D59A1C9B3FEA00DDE7CA /* Displacement.swift */,
 				7173E6A61CAA2D3100356F32 /* GPRTrace.swift */,
+				71938CD51CC67B4800B220F3 /* Gravesite.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -419,6 +424,7 @@
 				5670D53C1C9B278500DDE7CA /* AppDelegate.swift in Sources */,
 				7173E6A71CAA2D3100356F32 /* GPRTrace.swift in Sources */,
 				5670D59B1C9B3FEA00DDE7CA /* Displacement.swift in Sources */,
+				71938CD61CC67B4800B220F3 /* Gravesite.swift in Sources */,
 				5670D5891C9B3DCB00DDE7CA /* GPRDataFileWriter.swift in Sources */,
 				5670D57A1C9B31EB00DDE7CA /* GPRSessionOutput.swift in Sources */,
 				5670D58C1C9B3E1500DDE7CA /* Constants.swift in Sources */,
@@ -447,6 +453,7 @@
 				5670D57E1C9B3BDA00DDE7CA /* GPRDataOutput.swift in Sources */,
 				7125D48E1CAA8FC400624E39 /* MockDataSource.swift in Sources */,
 				5670D5781C9B30F300DDE7CA /* GPRSessionSource.swift in Sources */,
+				71938CD71CC67B4800B220F3 /* Gravesite.swift in Sources */,
 				7125D49B1CAADBE400624E39 /* ViewController.swift in Sources */,
 				7125D4801CAA365700624E39 /* GPRTrace.swift in Sources */,
 				5670D5961C9B3EFB00DDE7CA /* DataAnalyzer.swift in Sources */,
@@ -465,6 +472,7 @@
 				5670D55C1C9B278500DDE7CA /* goolUITests.swift in Sources */,
 				5615D6F01CB436CE00A1503F /* MockDataSource.swift in Sources */,
 				7125D4811CAA365800624E39 /* GPRTrace.swift in Sources */,
+				71938CD81CC67B4800B220F3 /* Gravesite.swift in Sources */,
 				5615D6F11CB439CB00A1503F /* GPRMode.swift in Sources */,
 				7125D47F1CAA364F00624E39 /* DSP.swift in Sources */,
 				7125D49D1CAADBF800624E39 /* Networking.swift in Sources */,

@@ -7,11 +7,77 @@
 //
 
 import UIKit
+import MapKit
 
-class ViewController: UIViewController, NetworkBrowserDelegate {
+class ViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
     var session:GPRSession?
+    let locationManager = CLLocationManager()
     
     @IBOutlet weak var results: UITextView!
+    @IBOutlet weak var mapView: MKMapView! {
+        didSet {
+            mapView.delegate = self
+            mapView.mapType = .Satellite
+            
+            if CLLocationManager.locationServicesEnabled() {
+                initMap()
+            }
+            else {
+                locationManager.requestWhenInUseAuthorization()
+            }
+        }
+    }
+    
+    // set up map stuff
+    private func initMap() {
+        let noLocation = CLLocationCoordinate2D()
+        let viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 500, 500);
+        let adjustedRegion = mapView.regionThatFits(viewRegion);
+        mapView.setRegion(adjustedRegion, animated:true);
+        mapView.showsUserLocation = true;
+    }
+    
+    // Mark: CLLocationManagerDelegate implementations
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        switch status {
+        case .AuthorizedWhenInUse:
+            initMap()
+            
+            break
+        case .Denied:
+            // sorry, can't use without location services -- go to settings to change them
+            break
+        case .Restricted:
+            // sorry, this app won't function without location services
+            break
+        default:
+            // don't do anything
+            return
+        }
+    }
+    
+    //Mark: map controls
+    private func clearAnnotations() {
+        if mapView?.annotations != nil { mapView.removeAnnotations(mapView.annotations) }
+    }
+    
+    // annotation must have coordinate:CLLocationCoordinate2D, title:String!, subtitle:String!
+    private func addAnnotations(annotations: [MKAnnotation]) {
+        mapView.addAnnotations(annotations)
+        mapView.showAnnotations(annotations, animated: true)
+    }
+    
+    // Use this function to mark gravesites on map
+    func markObjectsOnMap(location: [CLLocation], trace: [GPRTrace], score: [Double]) {
+        var annotations = [MKAnnotation]()
+        
+        for i in 0...location.count-1 {
+            annotations[i] = GraveSite(location: location[i], trace: trace[i], score: score[i])
+        }
+        
+        addAnnotations(annotations)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +94,7 @@ class ViewController: UIViewController, NetworkBrowserDelegate {
     }
     
     @IBAction func newSession(sender: UIButton) {
+        CLLocationManager().requestWhenInUseAuthorization()
         self.searchForGPRDevice()
     }
     
