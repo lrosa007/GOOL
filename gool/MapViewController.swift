@@ -92,6 +92,8 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.refresh()
+        
         self.searchForGPRDevice()
         locationManager = CLLocationManager()
         locationManager?.delegate = self

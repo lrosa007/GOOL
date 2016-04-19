@@ -20,44 +20,76 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8aq-dL-rOH">
-                                <rect key="frame" x="241" y="260" width="118" height="80"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LtH-Aq-U3r">
-                                        <rect key="frame" x="0.0" y="0.0" width="118" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="118" id="X48-eb-uXD"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="r0X-99-JRk"/>
-                                        </constraints>
-                                        <state key="normal" title="Load Session"/>
-                                        <connections>
-                                            <action selector="loadSession:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hQS-0c-Owx"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pjf-Gn-iDF">
-                                        <rect key="frame" x="0.0" y="40" width="118" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="BWX-RO-Rde"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="118" id="YvA-ac-uFR"/>
-                                        </constraints>
-                                        <state key="normal" title="New Session"/>
-                                        <connections>
-                                            <segue destination="HWI-UQ-6jQ" kind="show" id="KFX-5s-eih"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LtH-Aq-U3r">
+                                <rect key="frame" x="211" y="194" width="178" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="118" id="X48-eb-uXD"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="r0X-99-JRk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Load Session">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loadSession:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hQS-0c-Owx"/>
+                                    <segue destination="6w8-xk-ShE" kind="show" id="wx1-Cw-pqR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pjf-Gn-iDF">
+                                <rect key="frame" x="211" y="336" width="172" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="BWX-RO-Rde"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="118" id="YvA-ac-uFR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="New Session">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="HWI-UQ-6jQ" kind="show" id="KFX-5s-eih"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="8aq-dL-rOH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="w4Z-hL-6jg"/>
-                            <constraint firstItem="8aq-dL-rOH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zm5-v6-4UG"/>
+                            <constraint firstItem="LtH-Aq-U3r" firstAttribute="leading" secondItem="pjf-Gn-iDF" secondAttribute="leading" id="OUJ-SK-40f"/>
+                            <constraint firstItem="pjf-Gn-iDF" firstAttribute="top" secondItem="LtH-Aq-U3r" secondAttribute="bottom" constant="94" id="V9R-QO-jrd"/>
+                            <constraint firstItem="LtH-Aq-U3r" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="174" id="s48-1y-dni"/>
+                            <constraint firstItem="LtH-Aq-U3r" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tHk-fD-dE2"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-89" y="317"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="egQ-o3-f2Q">
+            <objects>
+                <tableViewController id="6w8-xk-ShE" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4Hu-iw-G4a">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Dbh-c9-hiJ">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dbh-c9-hiJ" id="CDZ-zL-g3L">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="6w8-xk-ShE" id="193-md-bXG"/>
+                            <outlet property="delegate" destination="6w8-xk-ShE" id="3pB-O3-GSL"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VoE-wi-bzc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-89" y="1122"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="WlH-F9-b5H">

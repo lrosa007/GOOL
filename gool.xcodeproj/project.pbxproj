@@ -13,6 +13,9 @@
 		564A78711CC6A976008F70D9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564A78701CC6A976008F70D9 /* MapViewController.swift */; };
 		564A78721CC6AD15008F70D9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564A78701CC6A976008F70D9 /* MapViewController.swift */; };
 		564A78731CC6AD16008F70D9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564A78701CC6A976008F70D9 /* MapViewController.swift */; };
+		564A78751CC6CE14008F70D9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564A78741CC6CE14008F70D9 /* Colors.swift */; };
+		564A78761CC6CE14008F70D9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564A78741CC6CE14008F70D9 /* Colors.swift */; };
+		564A78771CC6CE14008F70D9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564A78741CC6CE14008F70D9 /* Colors.swift */; };
 		5657C85F1CAAD01E003FD752 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5657C85E1CAAD01E003FD752 /* ViewController.swift */; };
 		5670D53C1C9B278500DDE7CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D53B1C9B278500DDE7CA /* AppDelegate.swift */; };
 		5670D5411C9B278500DDE7CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5670D53F1C9B278500DDE7CA /* Main.storyboard */; };
@@ -94,6 +97,7 @@
 
 /* Begin PBXFileReference section */
 		564A78701CC6A976008F70D9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		564A78741CC6CE14008F70D9 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		5657C85E1CAAD01E003FD752 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = gool/ViewController.swift; sourceTree = SOURCE_ROOT; };
 		5670D5381C9B278500DDE7CA /* gool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5670D53B1C9B278500DDE7CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -190,6 +194,7 @@
 				564A78701CC6A976008F70D9 /* MapViewController.swift */,
 				5657C85E1CAAD01E003FD752 /* ViewController.swift */,
 				7125D4861CAA88CA00624E39 /* NetworkBrowserDelegate.swift */,
+				564A78741CC6CE14008F70D9 /* Colors.swift */,
 			);
 			path = gool;
 			sourceTree = "<group>";
@@ -412,6 +417,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7125D48D1CAA8FC400624E39 /* MockDataSource.swift in Sources */,
+				564A78751CC6CE14008F70D9 /* Colors.swift in Sources */,
 				5670D56E1C9B2B5200DDE7CA /* Networking.swift in Sources */,
 				7125D4971CAAD05800624E39 /* Mocker.swift in Sources */,
 				5670D58F1C9B3E9500DDE7CA /* GPRMode.swift in Sources */,
@@ -442,6 +448,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5670D5721C9B2FBC00DDE7CA /* GPRDataSource.swift in Sources */,
+				564A78761CC6CE14008F70D9 /* Colors.swift in Sources */,
 				5670D58D1C9B3E1500DDE7CA /* Constants.swift in Sources */,
 				5670D5871C9B3D8100DDE7CA /* GPRFileWriter.swift in Sources */,
 				5670D5511C9B278500DDE7CA /* goolTests.swift in Sources */,
@@ -474,6 +481,7 @@
 				7125D49E1CAADC0200624E39 /* NetworkBrowserDelegate.swift in Sources */,
 				7125D49C1CAADBE600624E39 /* ViewController.swift in Sources */,
 				7125D49A1CAADB6700624E39 /* NetworkGPRDevice.swift in Sources */,
+				564A78771CC6CE14008F70D9 /* Colors.swift in Sources */,
 				5615D6EF1CB436B600A1503F /* GPRSession.swift in Sources */,
 				7125D4991CAAD05800624E39 /* Mocker.swift in Sources */,
 				5670D55C1C9B278500DDE7CA /* goolUITests.swift in Sources */,
