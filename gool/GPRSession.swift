@@ -35,7 +35,7 @@ class GPRSession : NSObject, NSStreamDelegate {
     var dataSource: GPRDataSource?
     
     var seqNoQueue = [Int]()
-    var mainDisplay: ViewController?
+    var mainDisplay: MapViewController?
     
     
     // MARK: Initialization

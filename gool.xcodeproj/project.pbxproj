@@ -10,6 +10,9 @@
 		5615D6EF1CB436B600A1503F /* GPRSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5971C9B3FA500DDE7CA /* GPRSession.swift */; };
 		5615D6F01CB436CE00A1503F /* MockDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125D48C1CAA8FC400624E39 /* MockDataSource.swift */; };
 		5615D6F11CB439CB00A1503F /* GPRMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D58E1C9B3E9500DDE7CA /* GPRMode.swift */; };
+		564A78711CC6A976008F70D9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564A78701CC6A976008F70D9 /* MapViewController.swift */; };
+		564A78721CC6AD15008F70D9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564A78701CC6A976008F70D9 /* MapViewController.swift */; };
+		564A78731CC6AD16008F70D9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564A78701CC6A976008F70D9 /* MapViewController.swift */; };
 		5657C85F1CAAD01E003FD752 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5657C85E1CAAD01E003FD752 /* ViewController.swift */; };
 		5670D53C1C9B278500DDE7CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D53B1C9B278500DDE7CA /* AppDelegate.swift */; };
 		5670D5411C9B278500DDE7CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5670D53F1C9B278500DDE7CA /* Main.storyboard */; };
@@ -90,6 +93,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		564A78701CC6A976008F70D9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		5657C85E1CAAD01E003FD752 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = gool/ViewController.swift; sourceTree = SOURCE_ROOT; };
 		5670D5381C9B278500DDE7CA /* gool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5670D53B1C9B278500DDE7CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -183,6 +187,7 @@
 				5670D56B1C9B2AB600DDE7CA /* Logic */,
 				5670D56C1C9B2AD700DDE7CA /* Models */,
 				5670D53F1C9B278500DDE7CA /* Main.storyboard */,
+				564A78701CC6A976008F70D9 /* MapViewController.swift */,
 				5657C85E1CAAD01E003FD752 /* ViewController.swift */,
 				7125D4861CAA88CA00624E39 /* NetworkBrowserDelegate.swift */,
 			);
@@ -415,6 +420,7 @@
 				5670D5831C9B3D3C00DDE7CA /* GPRFileReader.swift in Sources */,
 				5670D5861C9B3D8100DDE7CA /* GPRFileWriter.swift in Sources */,
 				5670D5771C9B30F300DDE7CA /* GPRSessionSource.swift in Sources */,
+				564A78711CC6A976008F70D9 /* MapViewController.swift in Sources */,
 				5670D5921C9B3EC400DDE7CA /* DSP.swift in Sources */,
 				7125D4871CAA88CA00624E39 /* NetworkBrowserDelegate.swift in Sources */,
 				5670D5981C9B3FA500DDE7CA /* GPRSession.swift in Sources */,
@@ -444,6 +450,7 @@
 				5670D59C1C9B3FEA00DDE7CA /* Displacement.swift in Sources */,
 				7125D4881CAA88CA00624E39 /* NetworkBrowserDelegate.swift in Sources */,
 				5670D5901C9B3E9500DDE7CA /* GPRMode.swift in Sources */,
+				564A78721CC6AD15008F70D9 /* MapViewController.swift in Sources */,
 				5670D56F1C9B2B5200DDE7CA /* Networking.swift in Sources */,
 				7125D4981CAAD05800624E39 /* Mocker.swift in Sources */,
 				5670D58A1C9B3DCB00DDE7CA /* GPRDataFileWriter.swift in Sources */,
@@ -470,6 +477,7 @@
 				5615D6EF1CB436B600A1503F /* GPRSession.swift in Sources */,
 				7125D4991CAAD05800624E39 /* Mocker.swift in Sources */,
 				5670D55C1C9B278500DDE7CA /* goolUITests.swift in Sources */,
+				564A78731CC6AD16008F70D9 /* MapViewController.swift in Sources */,
 				5615D6F01CB436CE00A1503F /* MockDataSource.swift in Sources */,
 				7125D4811CAA365800624E39 /* GPRTrace.swift in Sources */,
 				71938CD81CC67B4800B220F3 /* Gravesite.swift in Sources */,
@@ -605,7 +613,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = gool/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = deadsquad.gool;
+				PRODUCT_BUNDLE_IDENTIFIER = com.deadsquad.gool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -619,7 +627,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = gool/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = deadsquad.gool;
+				PRODUCT_BUNDLE_IDENTIFIER = com.deadsquad.gool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
