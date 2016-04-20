@@ -96,65 +96,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="q9b-6S-Y98">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="q9b-6S-Y98">
                                 <rect key="frame" x="0.0" y="242" width="600" height="350"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="350" id="2nv-lE-Xcp"/>
-                                    <constraint firstAttribute="height" constant="350" id="44L-Ec-l2s"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="44L-Ec-l2s"/>
-                                    </mask>
-                                </variation>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOY-Op-6Ux">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOY-Op-6Ux">
                                 <rect key="frame" x="190" y="63" width="220" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="220" id="bLS-1z-xEU"/>
-                                    <constraint firstAttribute="height" constant="48" id="gpG-iR-qfx"/>
-                                </constraints>
                                 <state key="normal" title="Run Trace"/>
                                 <connections>
                                     <action selector="runTraceClicked:" destination="HWI-UQ-6jQ" eventType="touchUpInside" id="Fo3-05-Rl7"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acB-4v-Eam">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acB-4v-Eam">
                                 <rect key="frame" x="190" y="145" width="220" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="YOn-vH-2n5"/>
-                                    <constraint firstAttribute="width" constant="220" id="c6r-jw-i9P"/>
-                                </constraints>
                                 <state key="normal" title="Done"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="YOn-vH-2n5"/>
-                                        <exclude reference="c6r-jw-i9P"/>
-                                    </mask>
-                                </variation>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" id="VPU-VO-TL2"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="WOY-Op-6Ux" firstAttribute="leading" secondItem="acB-4v-Eam" secondAttribute="leading" id="7Gf-xV-2H1"/>
-                            <constraint firstItem="q9b-6S-Y98" firstAttribute="leading" secondItem="41D-mZ-t24" secondAttribute="leading" id="DOm-hJ-gGC"/>
-                            <constraint firstItem="q9b-6S-Y98" firstAttribute="centerX" secondItem="acB-4v-Eam" secondAttribute="centerX" id="G4F-7J-tLj"/>
-                            <constraint firstItem="q9b-6S-Y98" firstAttribute="centerX" secondItem="WOY-Op-6Ux" secondAttribute="centerX" id="GFy-nK-6CN"/>
-                            <constraint firstItem="nsS-7s-w51" firstAttribute="top" secondItem="q9b-6S-Y98" secondAttribute="bottom" constant="8" symbolic="YES" id="Ktp-Mp-VH2"/>
-                            <constraint firstItem="q9b-6S-Y98" firstAttribute="top" secondItem="acB-4v-Eam" secondAttribute="bottom" constant="49" id="MbV-aP-yrJ"/>
-                            <constraint firstItem="WOY-Op-6Ux" firstAttribute="top" secondItem="2ov-DU-BcT" secondAttribute="bottom" constant="43" id="i2c-Uj-Z5r"/>
-                            <constraint firstItem="acB-4v-Eam" firstAttribute="top" secondItem="WOY-Op-6Ux" secondAttribute="bottom" constant="34" id="ntY-Lg-u6B"/>
-                            <constraint firstAttribute="trailing" secondItem="q9b-6S-Y98" secondAttribute="trailing" id="pgh-L2-b0T"/>
-                            <constraint firstItem="q9b-6S-Y98" firstAttribute="top" secondItem="acB-4v-Eam" secondAttribute="bottom" constant="49" id="siY-nq-a5d"/>
-                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="done" destination="acB-4v-Eam" id="IKO-gP-gwq"/>
+                        <outlet property="done" destination="acB-4v-Eam" id="EHk-Ag-2Pb"/>
                         <outlet property="mapView" destination="q9b-6S-Y98" id="098-gt-ZIa"/>
-                        <outlet property="run" destination="WOY-Op-6Ux" id="wtx-3u-fMp"/>
+                        <outlet property="run" destination="WOY-Op-6Ux" id="Kjd-6o-XKk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ydx-pw-bPN" userLabel="First Responder" sceneMemberID="firstResponder"/>
