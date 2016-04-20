@@ -129,6 +129,7 @@
                                 <rect key="frame" x="190" y="145" width="220" height="48"/>
                                 <state key="normal" title="Done"/>
                                 <connections>
+                                    <action selector="saveSession:" destination="HWI-UQ-6jQ" eventType="touchUpInside" id="9FK-es-X78"/>
                                     <segue destination="BYZ-38-t0r" kind="show" id="VPU-VO-TL2"/>
                                 </connections>
                             </button>
@@ -148,7 +149,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="done" destination="acB-4v-Eam" id="EHk-Ag-2Pb"/>
+                        <outlet property="done" destination="acB-4v-Eam" id="kV1-ax-old"/>
                         <outlet property="mapView" destination="q9b-6S-Y98" id="098-gt-ZIa"/>
                         <outlet property="run" destination="WOY-Op-6Ux" id="Kjd-6o-XKk"/>
                     </connections>

@@ -128,6 +128,11 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         NSLog("Requested trace #\(seqNo)")
     }
     
+    @IBAction func saveSession(sender: UIButton) {
+        print("confirm function is attached to Done Button")
+    }
+    
+    
     func searchForGPRDevice() {
         if CLLocationManager.authorizationStatus() != .AuthorizedWhenInUse {
             locationManager?.requestWhenInUseAuthorization()
@@ -148,6 +153,7 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         
         // create NetworkGPRDevice like so:
         let gprDevice = NetworkGPRDevice(service: service)
+        
         // use it or assign it properly, then perform UI actions to inform user of connection
         if(gprDevice == nil) {
             //warn user via UI
