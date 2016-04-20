@@ -13,8 +13,8 @@ class Colors {
     static let defaultColors = Colors()
     
     
-    let colorTop = UIColor(red: 24.0/255.0, green: 90.0/255.0, blue: 157.0/255.0, alpha: 1.0).CGColor
-    let colorBottom = UIColor(red: 67.0/255.0, green: 206.0/255.0, blue: 162.0/255.0, alpha: 1.0).CGColor
+    let colorTop = UIColor(red: 25.0/255.0, green: 87.0/255.0, blue: 153.0/255.0, alpha: 1.0).CGColor
+    let colorBottom = UIColor(red: 21.0/255.0, green: 153.0/255.0, blue: 87.0/255.0, alpha: 1.0).CGColor
     
     let gl: CAGradientLayer
     

@@ -13,7 +13,40 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
     var session:GPRSession?
     var locationManager: CLLocationManager?
     
-    @IBOutlet weak var results: UITextView!
+    let borderAlpha : CGFloat = 0.7
+    let cornerRadius : CGFloat = 5.0
+    
+    @IBOutlet weak var run: UIButton!
+    @IBOutlet weak var done: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.refresh()
+        
+        run.frame = CGRectMake(100, 100, 200, 40)
+        run.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        run.backgroundColor = UIColor.clearColor()
+        run.layer.borderWidth = 1.0
+        run.layer.borderColor = UIColor(white: 1.0, alpha: borderAlpha).CGColor
+        run.layer.cornerRadius = cornerRadius
+        
+        done.frame = CGRectMake(100, 100, 200, 40)
+        done.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        done.backgroundColor = UIColor.clearColor()
+        done.layer.borderWidth = 1.0
+        done.layer.borderColor = UIColor(white: 1.0, alpha: borderAlpha).CGColor
+        done.layer.cornerRadius = cornerRadius
+        
+        
+        self.searchForGPRDevice()
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        
+        if CLLocationManager.authorizationStatus() != .AuthorizedWhenInUse {
+            locationManager?.requestWhenInUseAuthorization()
+        }
+    }
+    
     @IBOutlet weak var mapView: MKMapView! {
         didSet {
             mapView.delegate = self
@@ -89,28 +122,10 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         addAnnotations(annotations)
     }
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.refresh()
-        
-        self.searchForGPRDevice()
-        locationManager = CLLocationManager()
-        locationManager?.delegate = self
-        // Do any additional setup after loading the view, typically from a nib.
-        if CLLocationManager.authorizationStatus() != .AuthorizedWhenInUse {
-            locationManager?.requestWhenInUseAuthorization()
-        }
-    }
-    
     @IBAction func runTraceClicked(sender: UIButton) {
         let seqNo = Mocker.globalSession?.runTrace()
         
         NSLog("Requested trace #\(seqNo)")
-    }
-    
-    func appendResults(traceNo: Int, score: Double) {
-        results.text.appendContentsOf(String("Trace #\(traceNo): \(score)"))
     }
     
     func searchForGPRDevice() {
@@ -139,7 +154,7 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
             return
         }
         
-        session = GPRSession(device: NetworkGPRDevice(service: service)!)
+//        session = GPRSession(device: NetworkGPRDevice(service: service)!)
         
     }
     
