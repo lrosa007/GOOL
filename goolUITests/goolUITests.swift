@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import gool
 
 class goolUITests: XCTestCase {
         

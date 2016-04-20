@@ -25,7 +25,7 @@ class GPRSession : NSObject, NSStreamDelegate {
     var status: GPRSessionStatus
     var operationMode: GPRMode
     var gprFrequency: UInt
-    var graveLocations: [Displacement]
+    var graveLocations: [CLLocation]
     var origin: CLLocation
     var startingTime: NSDate
     var gprReadings: [GPRTrace]
@@ -46,7 +46,7 @@ class GPRSession : NSObject, NSStreamDelegate {
         gprFrequency = frequency
         startingTime = NSDate()
         
-        graveLocations = [Displacement]()
+        graveLocations = [CLLocation]()
         gprReadings = [GPRTrace]()
         traceByLocation = [CLLocation: GPRTrace]()
         gprResults = [Double]()
