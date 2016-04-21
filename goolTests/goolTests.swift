@@ -21,9 +21,14 @@ class goolTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
+    func testSmooth() {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let original:[Float] = [1, 1, 1, 10, 10, 10, 1, 1, 1, 1]
+        let smooth3:[Float] = [0, 1, 4, 7, 10, 7, 4, 1, 1, 0]
+        let smoothed = DSP.smooth(original, width: 3)
+        
+        XCTAssert(smoothed.elementsEqual(smooth3))
     }
     
     func testPerformanceExample() {

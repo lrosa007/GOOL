@@ -23,6 +23,8 @@ class DSP {
                RDP_LOAMY_13_77_WATER = 2.00,
                RDP_CLAY_DRY = 2.380 // varies more with frequency than other soil types
     
+    static let FWHM = 2.35482
+    
     //TODO: stubbed
     class internal func filter(signal: [UInt8], mode: GPRMode) -> [UInt8] {
         // plan: select transforms and/or filters based on mode
@@ -90,6 +92,171 @@ class DSP {
         }
         
         return stackedData
+    }
+    
+    static func findPeaks(vector: [Double], dx: Double, minSlope: Double, minAmplitude: Double) -> [Peak] {
+        // 1) Find derivative
+        // 2) Smooth derivative
+        // 3) Find zero crossings in smoothed derivative
+        
+        // TODO: update to determine (or be passed) values for optimal smoothing ratio
+        let smoothedDeriv = smooth(deriv(vector, dx: dx), width: 3)
+        let n = vector.count
+        
+        var peaks = [Peak]()
+        
+        for i in 1 ... n-2 {
+            // zero crossing
+            if smoothedDeriv[i-1] > 0 && smoothedDeriv[i] < 0 {
+                // meets amplitude threshold
+                if vector[i] > minAmplitude || vector[i+1] > minAmplitude {
+                    // meets slope threshold
+                    let slope = (smoothedDeriv[i+1]-smoothedDeriv[i-1])/2.0 // use dx?
+                    if slope >= minSlope {
+                        // not sure the best way to determine range
+                        let from = max(0, i-10), to = min(n-1, i+10)
+                        peaks.append(getPeak(vector, dx: dx, from: from, to: to))
+                    }
+                }
+            }
+        }
+        
+        return peaks
+    }
+    
+    // Uses quadratic least-squares regression to estimate peak attributes
+    static private func getPeak(vector: [Double], dx: Double, from: Int, to: Int) -> Peak {
+        let n = from+1-to
+        var sumX = 0.0,
+            sumY = 0.0,
+            sumXY = 0.0,
+            sumX2 = 0.0,
+            sumX3 = 0.0,
+            sumX4 = 0.0,
+            sumX2Y = 0.0
+        
+        for i in from...to {
+            let x = Double(i) * dx,
+                y = vector[i]
+            sumY += y
+            sumX += x
+            sumXY += x*y
+            sumX2 += x*x
+            sumX2Y += x*x*y
+            sumX3 += x*x*x
+            sumX4 += x*x*x*x
+        }
+        
+        let nd = Double(n)
+        
+        var D = (nd*sumX2*sumX4)
+            D += (2*sumX*sumX2*sumX3)
+            D -= (sumX2*sumX2*sumX2*sumX4)
+            D -= (nd*sumX3*sumX3)
+        
+        var a = nd*sumX2*sumX2Y
+            a += sumX*sumX3*sumY
+            a += sumX*sumX2*sumXY
+            a -= sumX2*sumX2*sumY
+            a -= sumX*sumX*sumX2Y
+            a -= nd*sumX3*sumXY
+            a /= D
+        
+        var b = nd*sumX4*sumXY
+            b += sumX*sumX2*sumX2Y
+            b += sumX2*sumX3*sumY
+            b -= sumX2*sumX2*sumXY
+            b -= sumX*sumX4*sumY
+            b -= nd*sumX3*sumX2Y
+            b /= D
+        
+        var c = sumX2*sumX4*sumY
+            c += sumX2*sumX3*sumXY
+            c += sumX*sumX3*sumX2Y
+            c -= sumX2*sumX2*sumX2Y
+            c -= sumX*sumX4*sumXY
+            c -= sumX3*sumX3*sumY
+            c /= D
+        
+        let position = -b/(2*c)
+        let height = a - c*position*position
+        let width = FWHM/sqrt(-2*c)
+        
+        return Peak(pos: position, h: height, w: width)
+    }
+    
+    // linearly approximates first derivative of signal
+    static func deriv(vector: [Double], dx: Double) -> [Double] {
+        let n = vector.count
+        var deriv = [Double]()
+        
+        deriv[0] = 0
+        for i in 1 ... n-2 {
+            deriv[i] = (vector[i+1]-vector[i-1])/(2*dx)
+        }
+        
+        return deriv
+    }
+    
+    // smooth signal with variable signal width (width must be odd)
+    static func smooth(vector: [Double], width: Int) -> [Double] {
+        let w: Int
+        if width < 1 {
+            w = 1
+        } else if width % 2 == 0 {
+            w = 3
+        } else {
+            w = width
+        }
+        
+        let wf = Double(w), div = wf*wf
+        let n = vector.count
+        var res = [Double].init(count: n, repeatedValue: 0.0)
+        
+        var sum:Double = wf * vector[w-1]
+        //initial sum value
+        for i in 1 ... w-1 {
+            sum += (wf-Double(i)) * (vector[w-1-i] + vector[w-1+i])
+        }
+        
+        res[w-1] = sum/div
+        
+        for i in w ... n-1-w {
+            for j in -w ... w-1 {
+                sum += j < 0 ? -vector[i+j] : vector[i+j]
+            }
+            
+            res[i] = sum/div
+        }
+        
+        return res
+    }
+    
+    // in-place triangular smooth
+    static func smooth(inout vector: [Double]) {
+        let n = vector.count
+        
+        var vim2 = vector[0],
+            vim1 = vector[1],
+            vi   = vector[2],
+            vip1 = vector[3],
+            vip2 = vector[4],
+            sum = vim2 + 2*vim1 + 3*vi + 2*vip1 + vip2,
+            i = 2
+        
+        vector[i] = sum
+        
+        while i+3 < n {
+            i += 1
+            let next = sum/9.0
+            sum -= vim2; vim2 = vim1
+            sum -= vim1; vim1 = vi
+            sum -= vi;   vi = vip1
+            sum += vip1; vip1 = vip2
+            sum += vip2; vip2 = vector[i+2]
+            
+            vector[i] = next
+        }
     }
     
     // Cubic spline function. results of interpolation are stored in yNew
@@ -174,5 +341,15 @@ class DSP {
             temp += (y[i+1]-y[i])/(x[i+1]-x[i]) + y[i]
             yNew[j] = h * temp
         }
+    }
+}
+
+class Peak {
+    var position, height, width: Double
+    
+    init(pos: Double, h: Double, w: Double) {
+        position = pos
+        height = h
+        width = w
     }
 }
