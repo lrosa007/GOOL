@@ -1,10 +1,11 @@
 title: GOOL
 tagline: Finding Dead People - UCF SD
+members: Stefan Lowe (CS), Daniel Seoane (CE), Colburn Schacht (EE), Lucas Rosa (CS)
 description: >
   Senior Design Project at UCF by EE/CS students.
 url: "https://github.com/lrosa007/GOOL"
-baseurl: "/GOOL"
-
+baseurl: "GOOL"
+homeinfo: The objective of this project is to create a cheap but effective device that can scientifically detect the presence of caskets buried underground. Further objectives are to provide more information about detected graves. Casket size, for example, can indicate whether a child or adult is buried. The type of material the casket is made from, how recently the soil was disturbed, and other factors may be useful as well. A secondary objective is to be able to identify skeletal remains that are not buried in a casket. Our goal is to design a grave scanner that can connect to a mobile device like an iPad to offload processing signal data and displaying information. This should drastically reduce the amount of hardware needed, which helps keep the device cheap. Cost of the system is the most significant design constraint.
 author:
   name: Dead Squad
   url: "https://www.youtube.com/watch?v=nMD_iZxpBiw"

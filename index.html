@@ -4,7 +4,13 @@ title: {{ site.name }}
 ---
 
 <div id="home">
-  <h1>Posts</h1>
+  <h2>About</h2>
+  <p>{{ site.homeinfo }}</p>
+  <p>
+    Our project idea was given to us by <strong>Dr. Mark A. Heinrich</strong> along with the $500 he sponsored the project with. This sponsorship money is what comprises majority of our budget. The item which takes the largest portion of the budget is the IOS developer fee which is necessary to publish apps onto the App store. This fee is not necessary, however we included it in the budget if we do decide to publish it later on.
+  </p>
+  <p>Contact: <a href="mailto:heinrich@cs.ucf.edu">heinrich@cs.ucf.edu</a></p>
+  <h2>Project Documents</h2>
   <ul class="posts">
     {% for post in site.posts %}
       <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
