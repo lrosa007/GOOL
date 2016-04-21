@@ -126,13 +126,24 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
     }
     
     @IBAction func runTraceClicked(sender: UIButton) {
+        var response:String
+        
         let seqNo = Mocker.globalSession?.runTrace()
-        
-        
-        
         NSLog("Requested trace #\(seqNo)")
         
+        if true {
+            response = "we found it"
+        } else {
+            response = "dam nothing"
+        }
         
+        let alert = UIAlertController(title: "trace", message: response, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        // cool got it
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        
+        // show the alert
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     @IBAction func saveSession(sender: UIButton) {

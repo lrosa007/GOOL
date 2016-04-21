@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -21,10 +22,6 @@
                                 <rect key="frame" x="190" y="196" width="220" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Load Session"/>
-                                <connections>
-                                    <action selector="loadSession:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hQS-0c-Owx"/>
-                                    <segue destination="6w8-xk-ShE" kind="show" id="wx1-Cw-pqR"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pjf-Gn-iDF">
                                 <rect key="frame" x="190" y="338" width="220" height="48"/>
@@ -56,34 +53,6 @@
             </objects>
             <point key="canvasLocation" x="-89" y="317"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="egQ-o3-f2Q">
-            <objects>
-                <tableViewController id="6w8-xk-ShE" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4Hu-iw-G4a">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Dbh-c9-hiJ">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dbh-c9-hiJ" id="CDZ-zL-g3L">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="6w8-xk-ShE" id="193-md-bXG"/>
-                            <outlet property="delegate" destination="6w8-xk-ShE" id="3pB-O3-GSL"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VoE-wi-bzc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-89" y="1122"/>
-        </scene>
         <!--Map View Controller-->
         <scene sceneID="WlH-F9-b5H">
             <objects>
@@ -96,29 +65,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="v0b-eO-BbJ">
-                                <rect key="frame" x="0.0" y="242" width="600" height="350"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="f3A-mx-N0a">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="350"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3OH-l4-dUg">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="350"/>
-                                                <subviews>
-                                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="q9b-6S-Y98">
-                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="350"/>
-                                                    </mapView>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="q9b-6S-Y98">
+                                <rect key="frame" x="20" y="242" width="560" height="338"/>
+                            </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOY-Op-6Ux">
                                 <rect key="frame" x="190" y="63" width="220" height="48"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="220" id="MK4-7l-lhF"/>
-                                    <constraint firstAttribute="height" constant="48" id="dEJ-gX-BTN"/>
+                                    <constraint firstAttribute="width" constant="220" id="3mb-yY-tjP"/>
+                                    <constraint firstAttribute="height" constant="48" id="Pz1-5o-wzS"/>
                                 </constraints>
                                 <state key="normal" title="Run Trace"/>
                                 <connections>
@@ -127,35 +81,37 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acB-4v-Eam">
                                 <rect key="frame" x="190" y="145" width="220" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="QaH-nJ-xps"/>
+                                </constraints>
                                 <state key="normal" title="Done"/>
                                 <connections>
-                                    <action selector="saveSession:" destination="HWI-UQ-6jQ" eventType="touchUpInside" id="9FK-es-X78"/>
+                                    <action selector="saveSession:" destination="HWI-UQ-6jQ" eventType="touchUpInside" id="14F-3U-Clq"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="WOY-Op-6Ux" firstAttribute="leading" secondItem="acB-4v-Eam" secondAttribute="leading" id="07e-dt-tpS"/>
-                            <constraint firstItem="v0b-eO-BbJ" firstAttribute="top" secondItem="acB-4v-Eam" secondAttribute="bottom" constant="49" id="13f-Tx-6U9"/>
-                            <constraint firstItem="acB-4v-Eam" firstAttribute="top" secondItem="WOY-Op-6Ux" secondAttribute="bottom" constant="34" id="3tt-iH-B31"/>
-                            <constraint firstItem="v0b-eO-BbJ" firstAttribute="centerX" secondItem="acB-4v-Eam" secondAttribute="centerX" id="67Z-nw-kI9"/>
-                            <constraint firstItem="WOY-Op-6Ux" firstAttribute="top" secondItem="2ov-DU-BcT" secondAttribute="bottom" constant="43" id="6ky-D5-gia"/>
-                            <constraint firstItem="nsS-7s-w51" firstAttribute="top" secondItem="v0b-eO-BbJ" secondAttribute="bottom" constant="8" symbolic="YES" id="Iqx-Zb-sTs"/>
-                            <constraint firstAttribute="trailing" secondItem="v0b-eO-BbJ" secondAttribute="trailing" id="S3u-Lp-qya"/>
-                            <constraint firstItem="v0b-eO-BbJ" firstAttribute="leading" secondItem="41D-mZ-t24" secondAttribute="leading" id="VTD-ck-0z6"/>
-                            <constraint firstItem="v0b-eO-BbJ" firstAttribute="centerX" secondItem="WOY-Op-6Ux" secondAttribute="centerX" id="bni-GE-MvO"/>
-                            <constraint firstItem="v0b-eO-BbJ" firstAttribute="top" secondItem="41D-mZ-t24" secondAttribute="top" constant="242" id="lgP-xj-tvV"/>
+                            <constraint firstItem="WOY-Op-6Ux" firstAttribute="leading" secondItem="acB-4v-Eam" secondAttribute="leading" id="1Hw-4d-1PO"/>
+                            <constraint firstItem="q9b-6S-Y98" firstAttribute="trailing" secondItem="41D-mZ-t24" secondAttribute="trailingMargin" id="1qh-lO-RtB"/>
+                            <constraint firstItem="q9b-6S-Y98" firstAttribute="top" secondItem="acB-4v-Eam" secondAttribute="bottom" constant="49" id="BzX-C3-WOh"/>
+                            <constraint firstItem="WOY-Op-6Ux" firstAttribute="top" secondItem="2ov-DU-BcT" secondAttribute="bottom" constant="43" id="Gct-an-RhE"/>
+                            <constraint firstItem="WOY-Op-6Ux" firstAttribute="trailing" secondItem="acB-4v-Eam" secondAttribute="trailing" id="OLa-jC-XeG"/>
+                            <constraint firstItem="acB-4v-Eam" firstAttribute="centerX" secondItem="q9b-6S-Y98" secondAttribute="centerX" id="XGE-QU-rQh"/>
+                            <constraint firstItem="acB-4v-Eam" firstAttribute="top" secondItem="WOY-Op-6Ux" secondAttribute="bottom" constant="34" id="bW1-kq-cJf"/>
+                            <constraint firstItem="q9b-6S-Y98" firstAttribute="leading" secondItem="41D-mZ-t24" secondAttribute="leadingMargin" id="fs9-di-Zjb"/>
+                            <constraint firstAttribute="bottom" secondItem="q9b-6S-Y98" secondAttribute="bottom" constant="20" symbolic="YES" id="tZ1-mU-Xog"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="done" destination="acB-4v-Eam" id="kV1-ax-old"/>
+                        <outlet property="done" destination="acB-4v-Eam" id="EHk-Ag-2Pb"/>
                         <outlet property="mapView" destination="q9b-6S-Y98" id="098-gt-ZIa"/>
                         <outlet property="run" destination="WOY-Op-6Ux" id="Kjd-6o-XKk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ydx-pw-bPN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="627" y="109"/>
+            <point key="canvasLocation" x="696" y="317"/>
         </scene>
     </scenes>
 </document>
