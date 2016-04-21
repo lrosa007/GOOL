@@ -45,6 +45,9 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         if CLLocationManager.authorizationStatus() != .AuthorizedWhenInUse {
             locationManager?.requestWhenInUseAuthorization()
         }
+        
+        let testArr = [1.0, 2.0, 4.0, 6.5, 4.0, 2.0, 1.0]
+        DSP.findPeaks(testArr, dx: 1.0, minSlope: 0.5, minAmplitude: 1.9)
     }
     
     @IBOutlet weak var mapView: MKMapView! {
@@ -125,11 +128,30 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
     @IBAction func runTraceClicked(sender: UIButton) {
         let seqNo = Mocker.globalSession?.runTrace()
         
+        
+        
         NSLog("Requested trace #\(seqNo)")
+        
+        
     }
     
     @IBAction func saveSession(sender: UIButton) {
-        print("confirm function is attached to Done Button")
+        // create the alert
+        let alert = UIAlertController(title: "session", message: "Would you like to save and close this session?", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        // sorry nvm
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+        
+        // save & close
+        alert.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.Default, handler: { action in
+            let vc: AnyObject! = self.storyboard!.instantiateInitialViewController()
+            self.showViewController(vc as! ViewController, sender: vc)
+        }))
+        
+        // show the alert
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        
     }
     
     
