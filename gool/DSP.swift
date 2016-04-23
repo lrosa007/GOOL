@@ -188,9 +188,8 @@ class DSP {
     // linearly approximates first derivative of signal
     static func deriv(vector: [Double], dx: Double) -> [Double] {
         let n = vector.count
-        var deriv = [Double]()
+        var deriv = [Double].init(count: n, repeatedValue: 0.0)
         
-        deriv[0] = 0
         for i in 1 ... n-2 {
             deriv[i] = (vector[i+1]-vector[i-1])/(2*dx)
         }
@@ -262,8 +261,10 @@ class DSP {
     // Cubic spline function. results of interpolation are stored in yNew
     // based on JL_UTIL.C Spline() by Jeff Lucius, USGS Crustal Imaging and Characterization Team
     static func spline(xNew: [Double], yNewValues: [Double], xValues: [Double], yValues: [Double]) {
-        var x = [Double](), y = [Double](), yNew = [Double]()
         let n = xValues.count
+        var x = [Double].init(count: n, repeatedValue: 0.0),
+            y = [Double].init(count: n, repeatedValue: 0.0),
+            yNew = [Double].init(count: n, repeatedValue: 0.0)
         
         for i in 0...n-1 {
             x[i] = xValues[i]
