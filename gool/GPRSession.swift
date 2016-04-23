@@ -30,6 +30,7 @@ class GPRSession : NSObject, NSStreamDelegate {
     var startingTime: NSDate
     var gprReadings: [GPRTrace]
     var traceByLocation: [CLLocation: GPRTrace]
+    var locationBySeqNo: [Int: CLLocation]
     var gprResults: [Double]
     
     var dataSource: GPRDataSource?
@@ -49,6 +50,7 @@ class GPRSession : NSObject, NSStreamDelegate {
         graveLocations = [CLLocation]()
         gprReadings = [GPRTrace]()
         traceByLocation = [CLLocation: GPRTrace]()
+        locationBySeqNo = [Int: CLLocation]()
         gprResults = [Double]()
         //TODO: proper assignment of dataSource
         //dataSource = NetworkGPRDevice()
@@ -88,7 +90,7 @@ class GPRSession : NSObject, NSStreamDelegate {
                         let iStream = dataSource!.dataStream
                         
                         while (iStream.hasBytesAvailable) {
-                            var len = iStream.read(&buffer, maxLength: 1)
+                            let len = iStream.read(&buffer, maxLength: 1)
                             
                             if len == 0 {
                                 print("Whoops")
@@ -99,7 +101,7 @@ class GPRSession : NSObject, NSStreamDelegate {
                         }
                         
                         while(iStream.hasBytesAvailable) {
-                            var len = iStream.read(&buffer, maxLength: 1)
+                            let len = iStream.read(&buffer, maxLength: 1)
                             
                             if(len == 0) {
                                 //fail -- should send bad message response
@@ -115,6 +117,7 @@ class GPRSession : NSObject, NSStreamDelegate {
                                     let trace = GPRTrace(sequenceNumber: seqNo, rawData: [UInt8](rawdata.dropLast(6)))
                                     // fucking do something with the trace
                                     gprReadings.append(trace)
+                                    traceByLocation[trace.location!] = trace
                                     
                                     // replace with delegate stuff
                                     let score = DataAnalyzer.analyze(DSP.filter(trace.data, mode: operationMode), mode: operationMode)
@@ -147,6 +150,7 @@ class GPRSession : NSObject, NSStreamDelegate {
             let trace = GPRTrace(sequenceNumber: seqNo, rawData: [UInt8](rawdata.dropLast(6)))
             // fucking do something with the trace
             gprReadings.append(trace)
+            traceByLocation[trace.location!] = trace
             
             // replace with delegate stuff
             let score = DataAnalyzer.analyze(DSP.filter(trace.data, mode: operationMode), mode: operationMode)
@@ -163,7 +167,11 @@ class GPRSession : NSObject, NSStreamDelegate {
     
     // returns sequence number for trace requested by this call
     func runTrace() ->Int {
-        return dataSource!.runTrace()
+        let seqNo = dataSource!.runTrace()
+        
+        locationBySeqNo[seqNo] = mainDisplay?.locationManager?.location
+        
+        return seqNo
     }
     
     func start() -> Bool {

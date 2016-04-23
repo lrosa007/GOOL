@@ -107,11 +107,11 @@ class DSP {
         
         for i in 1 ... n-2 {
             // zero crossing
-            if smoothedDeriv[i-1] > 0 && smoothedDeriv[i] < 0 {
+            if smoothedDeriv[i-1] >= 0 && smoothedDeriv[i] <= 0 && smoothedDeriv[i-1] != smoothedDeriv[i] {
                 // meets amplitude threshold
                 if vector[i] > minAmplitude || vector[i+1] > minAmplitude {
                     // meets slope threshold
-                    let slope = (smoothedDeriv[i+1]-smoothedDeriv[i-1])/2.0 // use dx?
+                    let slope = max(abs(smoothedDeriv[i+1]-smoothedDeriv[i]), abs(smoothedDeriv[i]-smoothedDeriv[i-1])) // use dx?
                     if slope >= minSlope {
                         // not sure the best way to determine range
                         let from = max(0, i-10), to = min(n-1, i+10)
@@ -220,12 +220,14 @@ class DSP {
         
         res[w-1] = sum/div
         
-        for i in w ... n-1-w {
-            for j in -w ... w-1 {
-                sum += j < 0 ? -vector[i+j] : vector[i+j]
+        if w <= n-w {
+            for i in w ... n-w {
+                for j in -w ... w-1 {
+                    sum += j < 0 ? -vector[i+j] : vector[i+j]
+                }
+                
+                res[i] = sum/div
             }
-            
-            res[i] = sum/div
         }
         
         return res
