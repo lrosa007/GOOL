@@ -375,7 +375,6 @@ class DSP {
             yNew[j] = h * temp
         }
     }
-}
 
 class Peak {
     var position, height, width: Double
@@ -385,4 +384,4 @@ class Peak {
         height = h
         width = w
     }
-}
+}}
