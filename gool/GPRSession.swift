@@ -23,7 +23,7 @@ class GPRSession : NSObject, NSStreamDelegate {
     
     // MARK: Properties
     var status: GPRSessionStatus
-    var operationMode: GPRMode
+    var settings: GPRSettings
     var gprFrequency: UInt
     var graveLocations: [CLLocation]
     var origin: CLLocation
@@ -42,7 +42,7 @@ class GPRSession : NSObject, NSStreamDelegate {
     // MARK: Initialization
     init(origin: CLLocation, frequency: UInt, startTime: NSDate) {
         status = .Unstarted
-        operationMode = .Standard
+        settings = GPRSettings()
         self.origin = origin
         gprFrequency = frequency
         startingTime = NSDate()
@@ -120,7 +120,7 @@ class GPRSession : NSObject, NSStreamDelegate {
                                     traceByLocation[trace.location!] = trace
                                     
                                     // replace with delegate stuff
-                                    let score = DataAnalyzer.analyze(DSP.filter(trace.data, mode: operationMode), mode: operationMode)
+                                    let score = DataAnalyzer.analyze(DSP.filter(trace.data, settings: settings), settings: settings)
                                     
                                     gprResults.append(score)
                                     
@@ -153,7 +153,7 @@ class GPRSession : NSObject, NSStreamDelegate {
             traceByLocation[trace.location!] = trace
             
             // replace with delegate stuff
-            let score = DataAnalyzer.analyze(DSP.filter(trace.data, mode: operationMode), mode: operationMode)
+            let score = DataAnalyzer.analyze(DSP.filter(trace.data, settings: settings), settings: settings)
             
             gprResults.append(score)
             
@@ -213,10 +213,10 @@ class GPRSession : NSObject, NSStreamDelegate {
     }
     
     private func filterGprData(raw: [UInt8]) -> [UInt8] {
-        return DSP.filter(raw, mode: operationMode)
+        return DSP.filter(raw, settings: settings)
     }
     
     private func scoreGprData(data: [UInt8], displacement: Displacement) -> Double {
-        return DataAnalyzer.analyze(data, mode: operationMode)
+        return DataAnalyzer.analyze(data, settings: settings)
     }
 }

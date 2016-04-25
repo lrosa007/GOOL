@@ -12,63 +12,48 @@ import Accelerate
 
 class DSP {
     
-    // relative dielectric permittivity (RDP) of various soils at 100 MHz-2 GHz
+    // relative dielectric permittivity (RDP) of various soils in approx 100 MHz to 1 GHz range
     // taken from http://home.earthlink.net/~w6rmk/soildiel.htm
-    static let RDP_SANDY_DRY = 2.550,
-               RDP_SANDY_2_18_WATER = 2.500,
-               RDP_SANDY_3_88_WATER  = 4.500,
-               RDP_SANDY_18_88_WATER = 2.00,
-               RDP_LOAMY_DRY = 2.470,
-               RDP_LOAMY_2_2_WATER = 3.500,
-               RDP_LOAMY_13_77_WATER = 2.00,
-               RDP_CLAY_DRY = 2.380 // varies more with frequency than other soil types
+    //  and http://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/19750018483.pdf
+    enum SoilType: Double, CustomStringConvertible {
+        case Sandy_dry = 2.25
+        case Sandy_5_water = 5.5
+        case Sandy_10_water = 8.0
+        case Sandy_15_water = 11.9
+        case Sandy_20_water = 18.1
+        case Loamy_dry = 3.5
+        case Loamy_5_water = 5.0
+        case Loamy_12_water = 10.0
+        case Loamy_20_water = 22.0
+        case Clay_dry = 2.38
+        case Clay_10_water = 8.5
+        case Clay_20_water = 12.0
+        
+        var description: String {
+            switch self {
+            case .Sandy_dry: return "Sandy soil (very dry)"
+            case .Sandy_5_water: return "Sandy soil (dry)"
+            case .Sandy_10_water: return "Sandy soil (damp)"
+            case .Sandy_15_water: return "Sandy soil (wet)"
+            case .Sandy_20_water: return "Sandy soil (very wet)"
+            case .Loamy_dry: return "Loamy soil (very dry)"
+            case .Loamy_5_water: return "Loamy soil (dry)"
+            case .Loamy_12_water: return "Loamy soil (damp)"
+            case .Loamy_20_water: return "Loamy soil (wet)"
+            case .Clay_dry: return "Clay (dry)"
+            case .Clay_10_water: return "Clay (damp)"
+            case .Clay_20_water: return "Clay (wet)"
+            }
+        }
+    }
     
     static let FWHM = 2.35482
     
     //TODO: stubbed
-    class internal func filter(signal: [UInt8], mode: GPRMode) -> [UInt8] {
+    class internal func filter(signal: [UInt8], settings: GPRSettings) -> [UInt8] {
         // plan: select transforms and/or filters based on mode
         
         return signal
-    }
-    
-    static func radon(image: [[UInt8]]) -> [[Double]] {
-        // creates matrix of 1D projections at theta in 1-180 degrees
-        var sinogram = [[Double]]()
-        
-        for theta in 0...180 {
-            let mRotated = affineMatrixRotation(image, theta: Double(theta))
-            sinogram[theta] = sum(mRotated)
-        }
-        
-        return sinogram
-    }
-    
-    // used in radon transform
-    static func affineMatrixRotation(mtx: [[UInt8]], theta: Double) -> [[Double]] {
-        //TODO
-        return [[Double]]()
-    }
-    
-    //used in radon transform
-    static internal func sum(matrix: [[Double]], cols:Bool = true) -> [Double] {
-        let len = cols ? matrix[0].count : matrix.count
-        var sum = [Double]()
-        
-        for i in 0...len-1 {
-            if cols {
-                for j in 0...matrix.count-1 {
-                    sum[i] += matrix[j][i]
-                }
-            }
-            else {
-                for j in 0...matrix[0].count-1 {
-                    sum[i] += matrix[i][j]
-                }
-            }
-        }
-        
-        return sum
     }
     
     // does not check that traces match each other; just stacks their data
@@ -258,6 +243,51 @@ class DSP {
             
             vector[i] = next
         }
+    }
+    
+    
+    // Smooths a signal via Fourier Transform. portion of highest frequencies are eliminated
+    static func smoothFourier(vector: [Double], portion: Float) -> [Double] {
+        // FFT setup
+        let n = vector.count
+        var real = [Double](vector)
+        if portion >= 1.0 {
+            return real
+        }
+        var imaginary = [Double](count: n, repeatedValue: 0.0)
+        
+        var splitComplex = DSPDoubleSplitComplex(realp: &real, imagp: &imaginary)
+        
+        let log2n = vDSP_Length(ceil(log2(Float(n))))
+        let radix = FFTRadix(kFFTRadix2)
+        let weights = vDSP_create_fftsetupD(log2n, radix)
+        vDSP_fft_zipD(weights, &splitComplex, 1, log2n, FFTDirection(FFT_FORWARD))
+        
+//        var magnitudes = [Double](count: n, repeatedValue: 0.0)
+//        vDSP_zvmagsD(&splitComplex, 1, &magnitudes, 1, vDSP_Length(n))
+//        
+//        var sqrtMagnitudes = magnitudes.map(sqrt)
+//        var normalizedMagnitudes = [Double](count: n, repeatedValue: 0.0)
+//        vDSP_vsmulD(&sqrtMagnitudes, 1, [2.0/Double(n)], &magnitudes, 1, vDSP_Length(n))
+        
+        // note that vDSP implementation of real FFT yields doubled values. No fix needed for complex
+        // splitComplex now holds the Fourier transform of signal
+        // zero out high frequencies to remove noise
+        let clearInd = Int(ceil(Float(n)*portion))
+        for i in clearInd...n-1 {
+            real[i] = 0.0
+            imaginary[i] = 0.0
+        }
+        
+        // inverse FFT
+        vDSP_fft_zipD(weights, &splitComplex, 1, log2n, FFTDirection(FFT_INVERSE))
+        
+        // cleanup
+        vDSP_destroy_fftsetupD(weights)
+        
+        // vDSP complex inverse FFT yields actual values times n
+        let nd = Double(n)
+        return real.map({(x: Double) -> Double in return x/nd})
     }
     
     // Cubic spline function. results of interpolation are stored in yNew

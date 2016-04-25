@@ -26,7 +26,6 @@
 		5670D5861C9B3D8100DDE7CA /* GPRFileWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5851C9B3D8100DDE7CA /* GPRFileWriter.swift */; };
 		5670D5891C9B3DCB00DDE7CA /* GPRDataFileWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5881C9B3DCB00DDE7CA /* GPRDataFileWriter.swift */; };
 		5670D58C1C9B3E1500DDE7CA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D58B1C9B3E1500DDE7CA /* Constants.swift */; };
-		5670D58F1C9B3E9500DDE7CA /* GPRMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D58E1C9B3E9500DDE7CA /* GPRMode.swift */; };
 		5670D5921C9B3EC400DDE7CA /* DSP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5911C9B3EC400DDE7CA /* DSP.swift */; };
 		5670D5951C9B3EFB00DDE7CA /* DataAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5941C9B3EFB00DDE7CA /* DataAnalyzer.swift */; };
 		5670D5981C9B3FA500DDE7CA /* GPRSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D5971C9B3FA500DDE7CA /* GPRSession.swift */; };
@@ -37,6 +36,7 @@
 		7125D4941CAAA12800624E39 /* COPIPES.DZT in Resources */ = {isa = PBXBuildFile; fileRef = 7125D4921CAAA12800624E39 /* COPIPES.DZT */; };
 		7125D4951CAAA12800624E39 /* COPIPES.DZT in Resources */ = {isa = PBXBuildFile; fileRef = 7125D4921CAAA12800624E39 /* COPIPES.DZT */; };
 		7125D4971CAAD05800624E39 /* Mocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125D4961CAAD05800624E39 /* Mocker.swift */; };
+		717000CA1CCEA8A300B20A40 /* GPRSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717000C91CCEA8A300B20A40 /* GPRSettings.swift */; };
 		7173E6A71CAA2D3100356F32 /* GPRTrace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173E6A61CAA2D3100356F32 /* GPRTrace.swift */; };
 		71938CD41CC5202C00B220F3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71938CD31CC5202C00B220F3 /* MapKit.framework */; };
 		71938CD61CC67B4800B220F3 /* Gravesite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71938CD51CC67B4800B220F3 /* Gravesite.swift */; };
@@ -85,7 +85,6 @@
 		5670D5851C9B3D8100DDE7CA /* GPRFileWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRFileWriter.swift; sourceTree = "<group>"; };
 		5670D5881C9B3DCB00DDE7CA /* GPRDataFileWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRDataFileWriter.swift; sourceTree = "<group>"; };
 		5670D58B1C9B3E1500DDE7CA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		5670D58E1C9B3E9500DDE7CA /* GPRMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRMode.swift; sourceTree = "<group>"; };
 		5670D5911C9B3EC400DDE7CA /* DSP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSP.swift; sourceTree = "<group>"; };
 		5670D5941C9B3EFB00DDE7CA /* DataAnalyzer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataAnalyzer.swift; sourceTree = "<group>"; };
 		5670D5971C9B3FA500DDE7CA /* GPRSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRSession.swift; sourceTree = "<group>"; };
@@ -94,6 +93,8 @@
 		7125D48C1CAA8FC400624E39 /* MockDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDataSource.swift; sourceTree = "<group>"; };
 		7125D4921CAAA12800624E39 /* COPIPES.DZT */ = {isa = PBXFileReference; lastKnownFileType = text; name = COPIPES.DZT; path = ../../GPR/COPIPES.DZT; sourceTree = "<group>"; };
 		7125D4961CAAD05800624E39 /* Mocker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mocker.swift; sourceTree = "<group>"; };
+		717000C81CCBC26500B20A40 /* 5LINE07.dzt */ = {isa = PBXFileReference; lastKnownFileType = file; path = 5LINE07.dzt; sourceTree = "<group>"; };
+		717000C91CCEA8A300B20A40 /* GPRSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRSettings.swift; sourceTree = "<group>"; };
 		7173E6A61CAA2D3100356F32 /* GPRTrace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRTrace.swift; sourceTree = "<group>"; };
 		71938CD31CC5202C00B220F3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		71938CD51CC67B4800B220F3 /* Gravesite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gravesite.swift; sourceTree = "<group>"; };
@@ -185,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				7125D4921CAAA12800624E39 /* COPIPES.DZT */,
+				717000C81CCBC26500B20A40 /* 5LINE07.dzt */,
 				5670D5421C9B278500DDE7CA /* Assets.xcassets */,
 				5670D5471C9B278500DDE7CA /* Info.plist */,
 				5670D5441C9B278500DDE7CA /* LaunchScreen.storyboard */,
@@ -213,7 +215,6 @@
 		5670D56B1C9B2AB600DDE7CA /* Logic */ = {
 			isa = PBXGroup;
 			children = (
-				5670D58E1C9B3E9500DDE7CA /* GPRMode.swift */,
 				5670D5911C9B3EC400DDE7CA /* DSP.swift */,
 				5670D5941C9B3EFB00DDE7CA /* DataAnalyzer.swift */,
 			);
@@ -227,6 +228,7 @@
 				5670D59A1C9B3FEA00DDE7CA /* Displacement.swift */,
 				7173E6A61CAA2D3100356F32 /* GPRTrace.swift */,
 				71938CD51CC67B4800B220F3 /* Gravesite.swift */,
+				717000C91CCEA8A300B20A40 /* GPRSettings.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -384,7 +386,6 @@
 				564A78751CC6CE14008F70D9 /* Colors.swift in Sources */,
 				5670D56E1C9B2B5200DDE7CA /* Networking.swift in Sources */,
 				7125D4971CAAD05800624E39 /* Mocker.swift in Sources */,
-				5670D58F1C9B3E9500DDE7CA /* GPRMode.swift in Sources */,
 				5670D57D1C9B3BDA00DDE7CA /* GPRDataOutput.swift in Sources */,
 				5657C85F1CAAD01E003FD752 /* ViewController.swift in Sources */,
 				5670D5831C9B3D3C00DDE7CA /* GPRFileReader.swift in Sources */,
@@ -400,6 +401,7 @@
 				5670D53C1C9B278500DDE7CA /* AppDelegate.swift in Sources */,
 				7173E6A71CAA2D3100356F32 /* GPRTrace.swift in Sources */,
 				5670D59B1C9B3FEA00DDE7CA /* Displacement.swift in Sources */,
+				717000CA1CCEA8A300B20A40 /* GPRSettings.swift in Sources */,
 				71938CD61CC67B4800B220F3 /* Gravesite.swift in Sources */,
 				5670D5891C9B3DCB00DDE7CA /* GPRDataFileWriter.swift in Sources */,
 				5670D57A1C9B31EB00DDE7CA /* GPRSessionOutput.swift in Sources */,
