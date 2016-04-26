@@ -6,7 +6,7 @@
 
 import Foundation
 
-class GPRSetttings : NSObject {
+class GPRSettings : NSObject {
     var baseRdp : Double // Estimated relative dielectric permitivitty of soil measurements were taken in
     var minTargetDepth, maxTargetDepth : Double // During analysis, only consider targets within this range (meters)
     

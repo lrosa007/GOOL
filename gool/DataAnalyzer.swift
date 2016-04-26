@@ -12,14 +12,14 @@ import Foundation
 class DataAnalyzer {
     
     //precondition: data is in distance/distance form
-    static internal func analyze(data: [UInt8], settings: GPRSetttings) -> Double {
+    static internal func analyze(data: [UInt8], settings: GPRSettings) -> Double {
         //TODO: stub
         return drand48()
     }
     
     // Analyzes several traces at once; may provide better 
     // ideally 2D and 3D situations can be differentiated
-    static func analyze(traces: [GPRTrace], settings: GPRSetttings) -> [Double] {
+    static func analyze(traces: [GPRTrace], settings: GPRSettings) -> [Double] {
         var scores = [Double]()
         
         // should not actually do this, but synthesize multiple traces:
