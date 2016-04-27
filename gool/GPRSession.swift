@@ -192,7 +192,7 @@ class GPRSession : NSObject, NSStreamDelegate {
         return false
     }
     
-    func writeToFile(dest: GPRSessionOutput) {
+    func writeToFile(dest: GPRSessionStore) {
         dest.writeSession(self)
     }
 

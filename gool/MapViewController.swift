@@ -50,6 +50,15 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         DSP.findPeaks(testArr, dx: 1.0, minSlope: 0.5, minAmplitude: 1.9)
     }
     
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animateAlongsideTransition(nil, completion: {
+            _ in
+            
+            
+            self.refresh()
+        })
+    }
+    
     @IBOutlet weak var mapView: MKMapView! {
         didSet {
             mapView.delegate = self
