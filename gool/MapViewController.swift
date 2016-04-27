@@ -155,6 +155,11 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         
         // save & close
         alert.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.Default, handler: { action in
+            
+            let writer = GPRFileWriter()
+            
+            writer.writeSession(self.session!)
+            
             let vc: AnyObject! = self.storyboard!.instantiateInitialViewController()
             self.showViewController(vc as! ViewController, sender: vc)
         }))
