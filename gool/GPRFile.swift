@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class GPRFileWriter : GPRSessionOutput {
+public class GPRFile : GPRSessionStore {
     
     // MARK: initialization
     init() {
@@ -44,4 +44,10 @@ public class GPRFileWriter : GPRSessionOutput {
             print(error.localizedDescription)
         }
     }
+    
+    // MARK: GPRSessionSource
+    func readSession() -> GPRSession? {
+        return nil
+    }
+
 }
