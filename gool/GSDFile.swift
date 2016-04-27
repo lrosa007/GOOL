@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class GPRFile : GPRSessionStore {
+public class GSDFile : GPRSessionStore {
     
     // MARK: initialization
     init() {
