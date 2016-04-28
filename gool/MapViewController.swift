@@ -162,8 +162,15 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         // sorry nvm
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
         
+        // don't save & close
+        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Destructive, handler: { action in
+        
+            let vc: AnyObject! = self.storyboard!.instantiateInitialViewController()
+            self.showViewController(vc as! ViewController, sender: vc)
+        }))
+        
         // save & close
-        alert.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.Default, handler: { action in
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: { action in
             
             let writer = GSDFile()
             
