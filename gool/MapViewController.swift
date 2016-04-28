@@ -79,19 +79,6 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         mapView.setRegion(region, animated: true)
     }
     
-    // set up map stuff
-    //    private func initMap() {
-    //        if mapView == nil {
-    //            mapView = MKMapView()
-    //        }
-    //
-    //        let here = CLLocationCoordinate2D(latitude: CLLocationDegrees(28.6013431), longitude: CLLocationDegrees(-81.2009287))
-    //        let viewRegion = MKCoordinateRegionMakeWithDistance(here, 500, 500);
-    //        let adjustedRegion = mapView.regionThatFits(viewRegion);
-    //        mapView.setRegion(adjustedRegion, animated:true);
-    //        mapView.showsUserLocation = true;
-    //    }
-    
     // Mark: CLLocationManagerDelegate implementations
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         switch status {
@@ -124,35 +111,39 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
     }
     
     // Use this function to mark gravesites on map
-    func markObjectsOnMap(location: [CLLocation], trace: [GPRTrace], score: [Double]) {
+    func markObjectsOnMap(location: [CLLocation], trace: [GPRTrace], score: [Double], desc: [String]) {
         var annotations = [MKAnnotation]()
         
         for i in 0...location.count-1 {
+            if desc[i].isEmpty {
             annotations[i] = GraveSite(location: location[i], trace: trace[i], score: score[i])
+            }
+            else {
+                annotations[i] = GraveSite(location: location[i], trace: trace[i], score: score[i], description: desc[i])
+            }
         }
         
         addAnnotations(annotations)
     }
     
     @IBAction func runTraceClicked(sender: UIButton) {
-        var response:String
+        // Possible demo usage:
+        // open GPR data file and read each trace from it.
+        // whenever one has likely grave, report to user
         
-        let seqNo = Mocker.globalSession?.runTrace()
-        NSLog("Requested trace #\(seqNo)")
+        let sess = session!
+        let src = sess.dataSource!
+        var seqNo = 0
+        var loc = sess.origin
+        let delta = 0.3 // move 30 cm between readings
+        let bearing = 0.0 //locationManager?.heading != nil ? locationManager?.heading!
         
-        if true {
-            response = "we found it"
-        } else {
-            response = "dam nothing"
+        while src.hasFullMessage() {
+            sess.addTrace(src.getReadings(), traceNumber: seqNo, location: loc)
+            seqNo += 1
+            let coords = locationWithBearing(bearing, distanceMeters: delta, origin: loc.coordinate)
+            //loc.coordinate = coords
         }
-        
-        let alert = UIAlertController(title: "trace", message: response, preferredStyle: UIAlertControllerStyle.Alert)
-        
-        // cool got it
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-        
-        // show the alert
-        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     @IBAction func saveSession(sender: UIButton) {
@@ -179,6 +170,19 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         
     }
     
+    // Callback from data analyzer
+    func reportResults(trace: GPRTrace, score: Double, guesses: [[Material]], desc: String) {
+        session?.updateScore(trace, score: score)
+        
+        if score >= 60.0 {
+            let alert = UIAlertController(title: "Results", message: desc, preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            
+            // show the alert
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
     
     func searchForGPRDevice() {
         if CLLocationManager.authorizationStatus() != .AuthorizedWhenInUse {
@@ -219,5 +223,20 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
     
     func lostService(aNetSerice: NSNetService) {
         // report loss of connection via UI
+    }
+    
+    // helper function for moving location
+    private func locationWithBearing(bearing:Double, distanceMeters:Double, origin:CLLocationCoordinate2D) -> CLLocationCoordinate2D {
+        let distRadians = distanceMeters / (6372797.6)
+        
+        let rbearing = bearing * M_PI / 180.0
+        
+        let lat1 = origin.latitude * M_PI / 180
+        let lon1 = origin.longitude * M_PI / 180
+        
+        let lat2 = asin(sin(lat1) * cos(distRadians) + cos(lat1) * sin(distRadians) * cos(rbearing))
+        let lon2 = lon1 + atan2(sin(rbearing) * sin(distRadians) * cos(lat1), cos(distRadians) - sin(lat1) * sin(lat2))
+        
+        return CLLocationCoordinate2D(latitude: lat2 * 180 / M_PI, longitude: lon2 * 180 / M_PI)
     }
 }

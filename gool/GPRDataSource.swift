@@ -21,4 +21,5 @@ protocol GPRDataSource {
     func setFrequency(hertz: UInt)
     func hasFullMessage() -> Bool
     func getMessage() -> String
+    func getReadings() -> [UInt16]
 }

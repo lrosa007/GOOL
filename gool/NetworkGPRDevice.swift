@@ -150,6 +150,11 @@ class NetworkGPRDevice : GPRDataSource {
 
         return ""
     }
+    
+    func getReadings() -> [UInt16] {
+        // should not be called for this implementation of protocol?
+        return [UInt16]()
+    }
 
 
     // MARK: Callbacks

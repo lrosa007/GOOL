@@ -13,7 +13,7 @@ class DataAnalyzer {
     
     
     // TODO: add delegate parameter
-    static internal func analyzeAsync(trace: GPRTrace, settings: GPRSettings) {
+    static internal func analyzeAsync(trace: GPRTrace, settings: GPRSettings, delegate: MapViewController) {
         var signal = DSP.dataAsDoubles(trace)
         var score = 0.0
         var description = ""

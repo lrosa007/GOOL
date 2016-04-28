@@ -31,7 +31,7 @@ class GPRSession : NSObject, NSStreamDelegate {
     var gprReadings: [GPRTrace]
     var traceByLocation: [CLLocation: GPRTrace]
     var locationBySeqNo: [Int: CLLocation]
-    var gprResults: [Double]
+    var gprResults: [Int: Double] // seqNo -> score
     
     var dataSource: GPRDataSource?
     
@@ -51,7 +51,7 @@ class GPRSession : NSObject, NSStreamDelegate {
         gprReadings = [GPRTrace]()
         traceByLocation = [CLLocation: GPRTrace]()
         locationBySeqNo = [Int: CLLocation]()
-        gprResults = [Double]()
+        gprResults = [Int: Double]()
         //TODO: proper assignment of dataSource
         //dataSource = NetworkGPRDevice()
     }
@@ -122,7 +122,7 @@ class GPRSession : NSObject, NSStreamDelegate {
                                     // replace with delegate stuff
                                     let score = DataAnalyzer.analyze(trace, settings: settings)
                                     
-                                    gprResults.append(score)
+                                    gprResults[trace.seqNumber] = score
                                     
                                     // UI display score
                                     NSLog("\(score)")
@@ -155,13 +155,27 @@ class GPRSession : NSObject, NSStreamDelegate {
             // replace with delegate stuff
             let score = DataAnalyzer.analyze(trace, settings: settings)
             
-            gprResults.append(score)
+            gprResults[seqNo] = score
             
             // UI display score
             NSLog("\(score)")
         }
     }
     
+    
+    func addTrace(rawData: [UInt16], traceNumber: Int, location: CLLocation) {
+        let trace = GPRTrace(sequenceNumber: traceNumber, rawData: rawData)
+        
+        DataAnalyzer.analyzeAsync(trace, settings: settings, delegate: mainDisplay!)
+        
+        traceByLocation[location] = trace
+        locationBySeqNo[traceNumber] = location
+        gprReadings.append(trace)
+    }
+    
+    func updateScore(trace: GPRTrace, score: Double) {
+        gprResults[trace.seqNumber] = score
+    }
     
     // MARK: Functions
     
