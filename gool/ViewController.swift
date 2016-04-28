@@ -35,4 +35,13 @@ class ViewController: UIViewController {
         new.layer.borderColor = UIColor(white: 1.0, alpha: borderAlpha).CGColor
         new.layer.cornerRadius = cornerRadius
     }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animateAlongsideTransition(nil, completion: {
+            _ in
+            
+            
+            self.refresh()
+        })
+    }
 }
