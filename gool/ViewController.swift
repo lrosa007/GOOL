@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MapKit
 
 class ViewController: UIViewController {
     let borderAlpha : CGFloat = 0.7

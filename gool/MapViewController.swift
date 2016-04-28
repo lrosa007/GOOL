@@ -63,10 +63,6 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         didSet {
             mapView.delegate = self
             mapView.mapType = .Satellite
-            
-            //            if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
-            //                initMap()
-            //            }
         }
     }
     
@@ -78,19 +74,6 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         
         mapView.setRegion(region, animated: true)
     }
-    
-    // set up map stuff
-    //    private func initMap() {
-    //        if mapView == nil {
-    //            mapView = MKMapView()
-    //        }
-    //
-    //        let here = CLLocationCoordinate2D(latitude: CLLocationDegrees(28.6013431), longitude: CLLocationDegrees(-81.2009287))
-    //        let viewRegion = MKCoordinateRegionMakeWithDistance(here, 500, 500);
-    //        let adjustedRegion = mapView.regionThatFits(viewRegion);
-    //        mapView.setRegion(adjustedRegion, animated:true);
-    //        mapView.showsUserLocation = true;
-    //    }
     
     // Mark: CLLocationManagerDelegate implementations
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -134,6 +117,7 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         addAnnotations(annotations)
     }
     
+    // RUN TRACE button action
     @IBAction func runTraceClicked(sender: UIButton) {
         var response:String
         
@@ -155,6 +139,7 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
+    // DONE button action
     @IBAction func saveSession(sender: UIButton) {
         // create the alert
         let alert = UIAlertController(title: "session", message: "Would you like to save and close this session?", preferredStyle: UIAlertControllerStyle.Alert)

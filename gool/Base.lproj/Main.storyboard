@@ -22,6 +22,9 @@
                                 <rect key="frame" x="190" y="196" width="220" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Load Session"/>
+                                <connections>
+                                    <segue destination="eEF-Hk-1RR" kind="show" id="zwF-2n-kmH"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pjf-Gn-iDF">
                                 <rect key="frame" x="190" y="338" width="220" height="48"/>
@@ -52,6 +55,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-89" y="317"/>
+        </scene>
+        <!--Load View Controller-->
+        <scene sceneID="Cfq-YC-nny">
+            <objects>
+                <viewController id="eEF-Hk-1RR" customClass="LoadViewController" customModule="gool" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="72w-Q2-xVm"/>
+                        <viewControllerLayoutGuide type="bottom" id="1iq-GC-MQy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="whs-BT-RSR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="di1-Ic-D3s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-89" y="1159"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="WlH-F9-b5H">
