@@ -9,6 +9,7 @@ import Foundation
 class GPRSettings : NSObject {
     var baseRdp : Double // Estimated relative dielectric permitivitty of soil measurements were taken in
     var minTargetDepth, maxTargetDepth : Double // During analysis, only consider targets within this range (meters)
+    var 𝚫T : Double = 1e-10 // time elapsed between each consecutive sample, in seconds
     
     init(rdp: Double, minDepth:Double = 0.0, maxDepth:Double = 2.0) {
         baseRdp = rdp

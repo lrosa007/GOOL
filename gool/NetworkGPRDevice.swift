@@ -90,7 +90,8 @@ class NetworkGPRDevice : GPRDataSource {
             return false
         }
         
-        let formattedMessage = Constants.kMessageNumber + " " + (messageNumber++).description
+        messageNumber += 1
+        let formattedMessage = Constants.kMessageNumber + " " + messageNumber.description
             + " " + Constants.STX + msg + Constants.EOT
 
         return send(formattedMessage)

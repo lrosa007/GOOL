@@ -120,7 +120,7 @@ class GPRSession : NSObject, NSStreamDelegate {
                                     traceByLocation[trace.location!] = trace
                                     
                                     // replace with delegate stuff
-                                    let score = DataAnalyzer.analyze(DSP.filter(trace.data, settings: settings), settings: settings)
+                                    let score = DataAnalyzer.analyze(trace, settings: settings)
                                     
                                     gprResults.append(score)
                                     
@@ -153,7 +153,7 @@ class GPRSession : NSObject, NSStreamDelegate {
             traceByLocation[trace.location!] = trace
             
             // replace with delegate stuff
-            let score = DataAnalyzer.analyze(DSP.filter(trace.data, settings: settings), settings: settings)
+            let score = DataAnalyzer.analyze(trace, settings: settings)
             
             gprResults.append(score)
             
@@ -212,11 +212,7 @@ class GPRSession : NSObject, NSStreamDelegate {
         return buffer
     }
     
-    private func filterGprData(raw: [UInt8]) -> [UInt8] {
-        return DSP.filter(raw, settings: settings)
-    }
-    
-    private func scoreGprData(data: [UInt8], displacement: Displacement) -> Double {
-        return DataAnalyzer.analyze(data, settings: settings)
+    private func scoreGprData(trace: GPRTrace, displacement: Displacement) -> Double {
+        return DataAnalyzer.analyze(trace, settings: settings)
     }
 }

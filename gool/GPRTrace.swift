@@ -9,13 +9,19 @@ import Foundation
 import CoreLocation
 
 class GPRTrace {
-    var data : [UInt8]
+    var data : [UInt16]
     var location : CLLocation?
     var seqNumber, stackCount : Int
     
-    init(sequenceNumber: Int, rawData: [UInt8], stacked: Int = 1) {
+    init(sequenceNumber: Int, rawData: [UInt16], stacked: Int = 1) {
         seqNumber = sequenceNumber
         data = rawData
+        stackCount = stacked
+    }
+    
+    init(sequenceNumber: Int, rawData: [UInt8], stacked: Int = 1) {
+        seqNumber = sequenceNumber
+        data = DSP.repack(rawData, is8Bit: false)
         stackCount = stacked
     }
     

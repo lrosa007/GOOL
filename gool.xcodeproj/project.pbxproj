@@ -36,6 +36,7 @@
 		7125D4941CAAA12800624E39 /* COPIPES.DZT in Resources */ = {isa = PBXBuildFile; fileRef = 7125D4921CAAA12800624E39 /* COPIPES.DZT */; };
 		7125D4951CAAA12800624E39 /* COPIPES.DZT in Resources */ = {isa = PBXBuildFile; fileRef = 7125D4921CAAA12800624E39 /* COPIPES.DZT */; };
 		7125D4971CAAD05800624E39 /* Mocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125D4961CAAD05800624E39 /* Mocker.swift */; };
+		713F4D4B1CD13B6100B428F6 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F4D4A1CD13B6100B428F6 /* Material.swift */; };
 		717000CA1CCEA8A300B20A40 /* GPRSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717000C91CCEA8A300B20A40 /* GPRSettings.swift */; };
 		7173E6A71CAA2D3100356F32 /* GPRTrace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173E6A61CAA2D3100356F32 /* GPRTrace.swift */; };
 		71938CD41CC5202C00B220F3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71938CD31CC5202C00B220F3 /* MapKit.framework */; };
@@ -93,6 +94,7 @@
 		7125D48C1CAA8FC400624E39 /* MockDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDataSource.swift; sourceTree = "<group>"; };
 		7125D4921CAAA12800624E39 /* COPIPES.DZT */ = {isa = PBXFileReference; lastKnownFileType = text; name = COPIPES.DZT; path = ../../GPR/COPIPES.DZT; sourceTree = "<group>"; };
 		7125D4961CAAD05800624E39 /* Mocker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mocker.swift; sourceTree = "<group>"; };
+		713F4D4A1CD13B6100B428F6 /* Material.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
 		717000C81CCBC26500B20A40 /* 5LINE07.dzt */ = {isa = PBXFileReference; lastKnownFileType = file; path = 5LINE07.dzt; sourceTree = "<group>"; };
 		717000C91CCEA8A300B20A40 /* GPRSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRSettings.swift; sourceTree = "<group>"; };
 		7173E6A61CAA2D3100356F32 /* GPRTrace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRTrace.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				7173E6A61CAA2D3100356F32 /* GPRTrace.swift */,
 				71938CD51CC67B4800B220F3 /* Gravesite.swift */,
 				717000C91CCEA8A300B20A40 /* GPRSettings.swift */,
+				713F4D4A1CD13B6100B428F6 /* Material.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				5670D5861C9B3D8100DDE7CA /* GPRFileWriter.swift in Sources */,
 				5670D5771C9B30F300DDE7CA /* GPRSessionSource.swift in Sources */,
 				564A78711CC6A976008F70D9 /* MapViewController.swift in Sources */,
+				713F4D4B1CD13B6100B428F6 /* Material.swift in Sources */,
 				5670D5921C9B3EC400DDE7CA /* DSP.swift in Sources */,
 				7125D4871CAA88CA00624E39 /* NetworkBrowserDelegate.swift in Sources */,
 				5670D5981C9B3FA500DDE7CA /* GPRSession.swift in Sources */,

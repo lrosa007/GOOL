@@ -77,11 +77,12 @@ class MockDataSource : GPRDataSource {
     
     private func getRandomTrace(seqNo: Int) {
         
+        deviceMsgNo += 1
         let nBytes = 1 << 14
-        let header = Constants.kMessageNumber + " " + (deviceMsgNo++).description + " " + Constants.STX
+        let header = Constants.kMessageNumber + " " + deviceMsgNo.description + " " + Constants.STX
                    + Constants.kTraceResponseHeader + " " + seqNo.description + " " + Constants.SOH
         let tail = Constants.ETX + Constants.kTraceResponseTail + "\n"
-        var encodedHeader = [UInt8](header.utf8), encodedTail = [UInt8](tail.utf8)
+        let encodedHeader = [UInt8](header.utf8), encodedTail = [UInt8](tail.utf8)
         
         //let randomData = UnsafeMutablePointer<UInt8>()
         //SecRandomCopyBytes(kSecRandomDefault, nBytes, randomData)
@@ -92,7 +93,7 @@ class MockDataSource : GPRDataSource {
         outputStream.close()
         
         var encodedData = [UInt8]()
-        for i in 0...nBytes-1 {
+        for _ in 0...nBytes-1 {
             encodedData.append(UInt8(rand()%256))
         }
         

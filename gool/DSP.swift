@@ -47,21 +47,64 @@ class DSP {
         }
     }
     
+    
+    
     static let FWHM = 2.35482
+    static let C_m_s = 299_792_458.0        // speed of light in m/s
+    static let C_nm_s = C_m_s/1e9           // speed of light in nm/s
+    static let max8Bit = Double(UInt8.max)
+    static let max16Bit = Double(UInt16.max)
+    
+    
+    static func repack(bytes: [UInt8], is8Bit: Bool) -> [UInt16] {
+        var repacked: [UInt16]
+        
+        if is8Bit {
+            repacked = [UInt16](count: bytes.count, repeatedValue: 0)
+            for i in 0...bytes.count-1 {
+                let val = UInt16(bytes[i])
+                repacked.append(val + (val<<8))
+                // Each 8-bit val could come from 128 distinct 16-bit values
+                // scaled so 0->0, 128->32896, 255->65535
+                // Could also randomly select one of the 128
+            }
+        }
+        else { // may be efficient way to recast in Objective-C
+            let n = bytes.count / 2
+            repacked = [UInt16](count: n, repeatedValue: 0)
+            
+            for i in 0...n {
+                repacked[i] = UInt16(bytes[2*i]) << 8
+                repacked[i] += UInt16(bytes[2*i + 1])
+            }
+        }
+        
+        return repacked
+    }
+    
+    class func dataAsDoubles(trace: GPRTrace) -> [Double] {
+        return trace.data.map({(val: UInt16) -> Double in Double(val)})
+    }
+    
+    // Assuming constant material RDP and ignoring attenuation, determines
+    //  change in reflection depth between successive samples
+    class internal func dDepth(trace: GPRTrace, settings: GPRSettings) -> Double {
+        return estDepth_s(settings.𝚫T, avgRDP: settings.baseRdp)
+    }
     
     //TODO: stubbed
-    class internal func filter(signal: [UInt8], settings: GPRSettings) -> [UInt8] {
+    class internal func filter(signal: GPRTrace, settings: GPRSettings) -> [UInt16] {
         // plan: select transforms and/or filters based on mode
         
-        return signal
+        return signal.data
     }
     
     // does not check that traces match each other; just stacks their data
-    static func stackData(traces : [GPRTrace]) -> [UInt8] {
+    static func stackData(traces : [GPRTrace]) -> [UInt16] {
         // consider using vDSP_vavlin or _vavlinD
-        let n = UInt8(traces.count), len = traces[0].data.count
-        var stackedData = [UInt8](count: len, repeatedValue: 0)
-        var remainder = [UInt8](count: len, repeatedValue: 0)
+        let n = UInt16(traces.count), len = traces[0].data.count
+        var stackedData = [UInt16](count: len, repeatedValue: 0)
+        var remainder = [UInt16](count: len, repeatedValue: 0)
         
         for trace in traces {
             for (index, value) in trace.data.enumerate() {
@@ -164,10 +207,25 @@ class DSP {
             c /= D
         
         let position = -b/(2*c)
+        let sample = Int(round(position/dx))
         let height = a - c*position*position
         let width = FWHM/sqrt(-2*c)
         
-        return Peak(pos: position, h: height, w: width)
+        return Peak(sample: sample, pos: position, h: height, w: width)
+    }
+    
+    // Returns a list of possible materials for this item
+    static func guessMaterials(peak: Peak, settings: GPRSettings, base: Double, reflection: Double) -> [Material] {
+        var guesses = [Material]()
+        let rdp = estimateRDP(settings.baseRdp, baseIntensity: base, reflectedIntensity: reflection)
+        
+        for material in Material.MaterialList {
+            if rdp >= material.minRDP && rdp <= material.maxRDP {
+                guesses.append(material)
+            }
+        }
+        
+        return guesses
     }
     
     // linearly approximates first derivative of signal
@@ -263,13 +321,6 @@ class DSP {
         let weights = vDSP_create_fftsetupD(log2n, radix)
         vDSP_fft_zipD(weights, &splitComplex, 1, log2n, FFTDirection(FFT_FORWARD))
         
-//        var magnitudes = [Double](count: n, repeatedValue: 0.0)
-//        vDSP_zvmagsD(&splitComplex, 1, &magnitudes, 1, vDSP_Length(n))
-//        
-//        var sqrtMagnitudes = magnitudes.map(sqrt)
-//        var normalizedMagnitudes = [Double](count: n, repeatedValue: 0.0)
-//        vDSP_vsmulD(&sqrtMagnitudes, 1, [2.0/Double(n)], &magnitudes, 1, vDSP_Length(n))
-        
         // note that vDSP implementation of real FFT yields doubled values. No fix needed for complex
         // splitComplex now holds the Fourier transform of signal
         // zero out high frequencies to remove noise
@@ -289,6 +340,31 @@ class DSP {
         let nd = Double(n)
         return real.map({(x: Double) -> Double in return x/nd})
     }
+    
+    
+    // Given expected average RDP of medium, what reflection depth is indicated by a sample at time t?
+    static func estDepth_s(t: Double, avgRDP: Double) -> Double {
+        return C_m_s * t / (2.0 * sqrt(avgRDP))
+    }
+    
+    // same as estDepth_s but with time in nanoseconds instead of seconds
+    static func estDepth_ns(t: Double, avgRDP: Double) -> Double {
+        return C_nm_s * t / (2.0 * sqrt(avgRDP))
+    }
+    
+    
+    // Electromagnetic waves are reflected at interface of two materials based on their relative
+    //  dielectric permittivities (RDPs). Given expected RDP of first material, expected wave intensity
+    //  at interface, and measured reflected intensity, this yields the expected RDP of second material.
+    // This function does not account for attenuation/loss; all such adjustments must be made before calling.
+    // Returned value of > ~80 indicates second material is a conductor.
+    static func estimateRDP(baseRDP: Double, baseIntensity: Double, reflectedIntensity: Double) -> Double {
+        let plus = baseIntensity + reflectedIntensity
+        let diff = baseIntensity - reflectedIntensity
+        
+        return baseRDP * (plus*plus) / (diff*diff)
+    }
+    
     
     // Cubic spline function. results of interpolation are stored in yNew
     // based on JL_UTIL.C Spline() by Jeff Lucius, USGS Crustal Imaging and Characterization Team
@@ -378,8 +454,10 @@ class DSP {
 
 class Peak {
     var position, height, width: Double
+    var sampleNumber: Int
     
-    init(pos: Double, h: Double, w: Double) {
+    init(sample: Int, pos: Double, h: Double, w: Double) {
+        sampleNumber = sample
         position = pos
         height = h
         width = w
