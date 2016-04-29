@@ -11,6 +11,8 @@ import Foundation
 
 protocol GPRSessionStore {
     func writeSession(session: GPRSession)
-    func readSession() -> GPRSession?
+    func readSession(fileName: String) -> GPRSession?
     func serialize(session: GPRSession) -> String
+    func deserialize(str: String?) -> GPRSession?
+    func listFiles() -> [String]
 }

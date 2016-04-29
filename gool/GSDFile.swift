@@ -48,12 +48,12 @@ public class GSDFile : GPRSessionStore {
     }
     
     // MARK: GPRSessionStore
-    func readSession() -> GPRSession? {
+    func readSession(fileName: String) -> GPRSession? {
         // get the documents folder url
         let documentDirectoryURL = try! NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
         
         // create the destination url for the text file to be saved
-        let fileDestinationUrl = documentDirectoryURL.URLByAppendingPathComponent("file.txt")
+        let fileDestinationUrl = documentDirectoryURL.URLByAppendingPathComponent(fileName + ".gsd")
         
         // reading from disk
         do {
@@ -61,12 +61,41 @@ public class GSDFile : GPRSessionStore {
             
             print(mytext)   // "some text\n"
             
+            let session = self.deserialize(mytext)
+            
+            return session
+            
         } catch let error as NSError {
             print("error loading from url \(fileDestinationUrl)")
             print(error.localizedDescription)
         }
         
         return nil
+    }
+    
+    func listFiles() -> [String] {
+        let dirs = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) as? [String]
+        if dirs != nil {
+            let dir = dirs![0]
+            
+            do {
+                let fileList = try NSFileManager.defaultManager().contentsOfDirectoryAtPath(dir)
+                
+                print(fileList)
+                
+                return fileList as [String]
+                
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        } else {
+            let fileList = [""]
+            
+            return fileList
+        }
+        let fileList = [""]
+        return fileList
+        
     }
     
     func serialize(session: GPRSession) -> String {
@@ -133,6 +162,12 @@ public class GSDFile : GPRSessionStore {
         
         
         return str
+    }
+    
+    func deserialize(str: String?) -> GPRSession? {
+        let session: GPRSession?
+        
+        return nil
     }
 
 }
