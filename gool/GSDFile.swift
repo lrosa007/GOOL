@@ -20,18 +20,16 @@ public class GSDFile : GPRSessionStore {
     func writeSession(session: GPRSession) {
         let todaysDate:NSDate = NSDate()
         let dateFormatter:NSDateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
-        let DateInFormat:String = dateFormatter.stringFromDate(todaysDate)
         
-        print(DateInFormat)
+        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
+        
+        let DateInFormat:String = dateFormatter.stringFromDate(todaysDate)
         
         // get the documents folder url
         let documentDirectoryURL = try! NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
         
         // create the destination url for the text file to be saved
         let fileDestinationUrl = documentDirectoryURL.URLByAppendingPathComponent(DateInFormat + ".gsd")
-        
-        print(fileDestinationUrl)
 
         let contents = self.serialize(session)
         print(contents)
@@ -99,6 +97,35 @@ public class GSDFile : GPRSessionStore {
             str += "\(session.gprReadings[reading].seqNumber) | "
             str += "\(session.gprReadings[reading].stackCount) | "
             str += "\(session.gprReadings[reading].location)\n"
+        }
+        
+        str += "END\n"
+        
+        str += "TRACExLOCATION\n"
+        
+        for trace in 0 ..< session.traceByLocation.count {
+            str += "\(session.traceByLocation[session.gprReadings[trace].location!]?.data) | "
+            str += "\(session.traceByLocation[session.gprReadings[trace].location!]?.seqNumber) | "
+            str += "\(session.traceByLocation[session.gprReadings[trace].location!]?.stackCount) | "
+            str += "\(session.traceByLocation[session.gprReadings[trace].location!]?.location)\n"
+        }
+        
+        str += "END\n"
+        
+        str += "LOCATIONxSEQNO\n"
+        
+        for seqno in 0 ..< session.locationBySeqNo.count {
+            str += "\(session.gprReadings[seqno].seqNumber) | "
+            str += "\(session.locationBySeqNo[session.gprReadings[seqno].seqNumber])\n"
+        }
+        
+        str += "END\n"
+        
+        str += "RESULTS\n"
+        
+        for seqno in 0 ..< session.locationBySeqNo.count {
+            str += "\(session.gprReadings[seqno].seqNumber) | "
+            str += "\(session.gprResults[session.gprReadings[seqno].seqNumber])\n"
         }
         
         str += "END\n"
