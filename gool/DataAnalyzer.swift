@@ -24,7 +24,7 @@ class DataAnalyzer {
         let dx = DSP.dDepth(trace, settings: settings)
         
         // peaks indicate material interfaces
-        var interfaces = DSP.findPeaks(signal, dx: dx, minSlope: 1.0, minAmplitude: Double(1<<14))
+        let interfaces = DSP.findPeaks(signal, dx: dx, minSlope: 1.0, minAmplitude: Double(1<<14))
                             .filter( {(peak: DSP.Peak) -> Bool in
                                        peak.position >= settings.minTargetDepth
                                     && peak.position <= settings.maxTargetDepth} )

@@ -12,6 +12,7 @@ import MapKit
 class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
     var session:GPRSession?
     var locationManager: CLLocationManager?
+    var gotFirstLocation = false
     
     let borderAlpha : CGFloat = 0.7
     let cornerRadius : CGFloat = 5.0
@@ -29,6 +30,7 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         if CLLocationManager.authorizationStatus() != .AuthorizedWhenInUse {
             locationManager?.requestWhenInUseAuthorization()
         }
+        session = GPRSession(origin: CLLocation(), frequency: 300_000_000)
         
         run.frame = CGRectMake(100, 100, 200, 40)
         run.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
@@ -45,10 +47,8 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         done.layer.cornerRadius = cornerRadius
         
         
-        self.searchForGPRDevice()
-        
-        let testArr = [1.0, 2.0, 4.0, 6.5, 4.0, 2.0, 1.0]
-        DSP.findPeaks(testArr, dx: 1.0, minSlope: 0.5, minAmplitude: 1.9)
+        // For demo, don't search for physical device
+        //self.searchForGPRDevice()
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -69,6 +69,11 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let currentLoc = locations.last! as CLLocation
+        
+        if !gotFirstLocation {
+            gotFirstLocation = true
+            session?.origin = locations.first!
+        }
         
         let center = CLLocationCoordinate2D(latitude: currentLoc.coordinate.latitude, longitude: currentLoc.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001))
@@ -140,7 +145,7 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
             sess.addTrace(src.getReadings(), traceNumber: seqNo, location: loc)
             seqNo += 1
             let coords = locationWithBearing(bearing, distanceMeters: delta, origin: loc.coordinate)
-            //loc.coordinate = coords
+            loc = CLLocation(latitude: coords.latitude, longitude: coords.longitude)
         }
     }
     

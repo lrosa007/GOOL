@@ -53,6 +53,7 @@ class GPRSession: Serializable, NSStreamDelegate {
         locationBySeqNo = [Int: CLLocation]()
         gprResults = [Int: Double]()
         //TODO: proper assignment of dataSource
+        // this will be a GPR datafile source, unless we write a new constructor for that case
         //dataSource = NetworkGPRDevice()
     }
     
