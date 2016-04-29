@@ -155,11 +155,6 @@ class NetworkGPRDevice : GPRDataSource {
         // should not be called for this implementation of protocol?
         return [UInt16]()
     }
-    
-    internal func getRandomTrace(segNo: Int) {
-        
-    }
-
 
     // MARK: Callbacks
     func stopped() {

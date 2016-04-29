@@ -10,6 +10,6 @@
 import Foundation
 
 protocol GPRSessionStore {
-    func writeSession(session: GPRSession?)
+    func writeSession(session: GPRSession)
     func readSession() -> GPRSession?
 }

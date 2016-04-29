@@ -17,7 +17,7 @@ public class GSDFile : GPRSessionStore {
     
     // MARK: GPRSessionStore
     // open file, encode data, write data, close file
-    func writeSession(session: GPRSession?) {
+    func writeSession(session: GPRSession) {
         let todaysDate:NSDate = NSDate()
         let dateFormatter:NSDateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
@@ -33,7 +33,7 @@ public class GSDFile : GPRSessionStore {
         
         print(fileDestinationUrl)
 
-        let contents = session?.toJsonString()
+        let contents = session.toJsonString()
         
         print(contents)
         

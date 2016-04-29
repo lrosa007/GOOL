@@ -164,7 +164,7 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
             
             let writer = GSDFile()
             
-            writer.writeSession(nil)
+            writer.writeSession(self.session!)
             
             let vc: AnyObject! = self.storyboard!.instantiateInitialViewController()
             self.showViewController(vc as! ViewController, sender: vc)
@@ -201,12 +201,12 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
     }
     
     func serviceResolved(service: NSNetService) {
-        if (Mocker.mockEnabled) {
-            session = GPRSession(mock: MockDataSource())
-            session?.mainDisplay = self
-            Mocker.globalSession = session!
-            return
-        }
+//        if (Mocker.mockEnabled) {
+//            session = GPRSession(mock: MockDataSource())
+//            session?.mainDisplay = self
+//            Mocker.globalSession = session!
+//            return
+//        }
         
         // create NetworkGPRDevice like so:
         let gprDevice = NetworkGPRDevice(service: service)

@@ -65,12 +65,12 @@ class GPRSession: Serializable, NSStreamDelegate {
         dataSource = device
     }
     
-    convenience init(mock: MockDataSource) {
-        self.init(origin: CLLocation(), frequency: UInt(1e9), startTime: NSDate())
-        dataSource = mock
-        mock.inputStream.delegate = self
-        mock.outputStream.delegate = self
-    }
+//    convenience init(mock: MockDataSource) {
+//        self.init(origin: CLLocation(), frequency: UInt(1e9), startTime: NSDate())
+//        dataSource = mock
+//        mock.inputStream.delegate = self
+//        mock.outputStream.delegate = self
+//    }
     
     
     func stream(aStream: NSStream, handleEvent eventCode: NSStreamEvent) {
