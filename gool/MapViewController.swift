@@ -63,10 +63,6 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         didSet {
             mapView.delegate = self
             mapView.mapType = .Satellite
-            
-            //            if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
-            //                initMap()
-            //            }
         }
     }
     
@@ -126,6 +122,7 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         addAnnotations(annotations)
     }
     
+    // RUN TRACE button action
     @IBAction func runTraceClicked(sender: UIButton) {
         // Possible demo usage:
         // open GPR data file and read each trace from it.
@@ -146,6 +143,7 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         }
     }
     
+    // DONE button action
     @IBAction func saveSession(sender: UIButton) {
         // create the alert
         let alert = UIAlertController(title: "session", message: "Would you like to save and close this session?", preferredStyle: UIAlertControllerStyle.Alert)
@@ -153,12 +151,19 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         // sorry nvm
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
         
+        // don't save & close
+        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Destructive, handler: { action in
+        
+            let vc: AnyObject! = self.storyboard!.instantiateInitialViewController()
+            self.showViewController(vc as! ViewController, sender: vc)
+        }))
+        
         // save & close
-        alert.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.Default, handler: { action in
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: { action in
             
             let writer = GSDFile()
             
-            writer.writeSession(self.session!)
+            writer.writeSession(nil)
             
             let vc: AnyObject! = self.storyboard!.instantiateInitialViewController()
             self.showViewController(vc as! ViewController, sender: vc)

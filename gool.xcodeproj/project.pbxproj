@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		564A78711CC6A976008F70D9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564A78701CC6A976008F70D9 /* MapViewController.swift */; };
 		564A78751CC6CE14008F70D9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564A78741CC6CE14008F70D9 /* Colors.swift */; };
+		56561CDB1CD28EC300B14720 /* LoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56561CDA1CD28EC300B14720 /* LoadViewController.swift */; };
+		56561CDC1CD28EC300B14720 /* LoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56561CDA1CD28EC300B14720 /* LoadViewController.swift */; };
+		56561CDD1CD28EC300B14720 /* LoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56561CDA1CD28EC300B14720 /* LoadViewController.swift */; };
+		56561CE41CD2DE9A00B14720 /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56561CE31CD2DE9A00B14720 /* Serializable.swift */; };
+		56561CE51CD2DE9A00B14720 /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56561CE31CD2DE9A00B14720 /* Serializable.swift */; };
+		56561CE81CD2E0E200B14720 /* ArrayExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56561CE71CD2E0E200B14720 /* ArrayExt.swift */; };
+		56561CE91CD2E0E200B14720 /* ArrayExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56561CE71CD2E0E200B14720 /* ArrayExt.swift */; };
 		5657C85F1CAAD01E003FD752 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5657C85E1CAAD01E003FD752 /* ViewController.swift */; };
 		5670D53C1C9B278500DDE7CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670D53B1C9B278500DDE7CA /* AppDelegate.swift */; };
 		5670D5411C9B278500DDE7CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5670D53F1C9B278500DDE7CA /* Main.storyboard */; };
@@ -61,6 +68,9 @@
 /* Begin PBXFileReference section */
 		564A78701CC6A976008F70D9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		564A78741CC6CE14008F70D9 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		56561CDA1CD28EC300B14720 /* LoadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadViewController.swift; sourceTree = "<group>"; };
+		56561CE31CD2DE9A00B14720 /* Serializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
+		56561CE71CD2E0E200B14720 /* ArrayExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExt.swift; sourceTree = "<group>"; };
 		5657C85E1CAAD01E003FD752 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = gool/ViewController.swift; sourceTree = SOURCE_ROOT; };
 		5670D5381C9B278500DDE7CA /* gool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5670D53B1C9B278500DDE7CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +134,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		56561CE61CD2E06800B14720 /* Serializer */ = {
+			isa = PBXGroup;
+			children = (
+				56561CE31CD2DE9A00B14720 /* Serializable.swift */,
+				56561CE71CD2E0E200B14720 /* ArrayExt.swift */,
+			);
+			name = Serializer;
+			sourceTree = "<group>";
+		};
 		5670D52F1C9B278500DDE7CA = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +167,7 @@
 		5670D53A1C9B278500DDE7CA /* gool */ = {
 			isa = PBXGroup;
 			children = (
+				56561CE61CD2E06800B14720 /* Serializer */,
 				7125D48B1CAA8FAE00624E39 /* Mocking */,
 				5670D5691C9B2A7600DDE7CA /* Supporting Files */,
 				5670D56A1C9B2A9B00DDE7CA /* IO */,
@@ -158,6 +178,7 @@
 				5657C85E1CAAD01E003FD752 /* ViewController.swift */,
 				7125D4861CAA88CA00624E39 /* NetworkBrowserDelegate.swift */,
 				564A78741CC6CE14008F70D9 /* Colors.swift */,
+				56561CDA1CD28EC300B14720 /* LoadViewController.swift */,
 			);
 			path = gool;
 			sourceTree = "<group>";
@@ -380,6 +401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7125D48D1CAA8FC400624E39 /* MockDataSource.swift in Sources */,
+				56561CDB1CD28EC300B14720 /* LoadViewController.swift in Sources */,
 				564A78751CC6CE14008F70D9 /* Colors.swift in Sources */,
 				5670D56E1C9B2B5200DDE7CA /* Networking.swift in Sources */,
 				7125D4971CAAD05800624E39 /* Mocker.swift in Sources */,
@@ -391,6 +413,7 @@
 				5670D5921C9B3EC400DDE7CA /* DSP.swift in Sources */,
 				7125D4871CAA88CA00624E39 /* NetworkBrowserDelegate.swift in Sources */,
 				5670D5981C9B3FA500DDE7CA /* GPRSession.swift in Sources */,
+				56561CE41CD2DE9A00B14720 /* Serializable.swift in Sources */,
 				5670D5801C9B3C1E00DDE7CA /* NetworkGPRDevice.swift in Sources */,
 				5670D5951C9B3EFB00DDE7CA /* DataAnalyzer.swift in Sources */,
 				5670D5711C9B2FBC00DDE7CA /* GPRDataSource.swift in Sources */,
@@ -399,6 +422,7 @@
 				5670D59B1C9B3FEA00DDE7CA /* Displacement.swift in Sources */,
 				717000CA1CCEA8A300B20A40 /* GPRSettings.swift in Sources */,
 				71938CD61CC67B4800B220F3 /* Gravesite.swift in Sources */,
+				56561CE81CD2E0E200B14720 /* ArrayExt.swift in Sources */,
 				5670D5891C9B3DCB00DDE7CA /* GPRDataFileWriter.swift in Sources */,
 				5670D57A1C9B31EB00DDE7CA /* GPRSessionStore.swift in Sources */,
 				5670D58C1C9B3E1500DDE7CA /* Constants.swift in Sources */,
@@ -409,6 +433,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56561CE51CD2DE9A00B14720 /* Serializable.swift in Sources */,
+				56561CE91CD2E0E200B14720 /* ArrayExt.swift in Sources */,
+				56561CDC1CD28EC300B14720 /* LoadViewController.swift in Sources */,
 				5670D5511C9B278500DDE7CA /* goolTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,6 +444,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56561CDD1CD28EC300B14720 /* LoadViewController.swift in Sources */,
 				5670D55C1C9B278500DDE7CA /* goolUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
