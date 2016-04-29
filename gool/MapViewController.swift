@@ -159,7 +159,7 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
             
             let writer = GSDFile()
             
-            writer.writeSession(self.session!)
+            writer.writeSession(nil)
             
             let vc: AnyObject! = self.storyboard!.instantiateInitialViewController()
             self.showViewController(vc as! ViewController, sender: vc)
