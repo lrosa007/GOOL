@@ -1,5 +1,5 @@
 //
-//  GPRFileWriter.swift
+//  GSDFile.swift
 //  gool
 //
 //  Copyright © 2016 Dead Squad. All rights reserved.
@@ -33,20 +33,20 @@ public class GSDFile : GPRSessionStore {
         
         print(fileDestinationUrl)
 
-        if let contents = self.serialize(session) {
-            print(contents)
+        let contents = self.serialize(session)
+        print(contents)
             
-            do {
-                // writing to disk
-                try contents.writeToURL(fileDestinationUrl, atomically: true, encoding: NSUTF8StringEncoding)
+        do {
+            // writing to disk
+            try contents.writeToURL(fileDestinationUrl, atomically: true, encoding: NSUTF8StringEncoding)
                 
-                // saving was successful. any code posterior code goes here
-                
-            } catch let error as NSError {
-                print("error writing to url \(fileDestinationUrl)")
-                print(error.localizedDescription)
-            }
+            // saving was successful. any code posterior code goes here
+            print("save success")
+        } catch let error as NSError {
+            print("error writing to url \(fileDestinationUrl)")
+            print(error.localizedDescription)
         }
+        
     }
     
     // MARK: GPRSessionStore
@@ -71,9 +71,41 @@ public class GSDFile : GPRSessionStore {
         return nil
     }
     
-    func serialize(session: GPRSession) -> String? {
+    func serialize(session: GPRSession) -> String {
+        var str: String
         
-        return nil
+        str = "HEADER\n"
+        str += "\(session.status)\n"
+        str += "\(session.settings.𝚫T)"
+        str += "\(session.gprFrequency)"
+            
+        str += "\(session.startingTime)\n"
+        str += "END\n"
+            
+        str += "LOCATIONS\n"
+        
+        for location in 0 ..< session.graveLocations.count {
+            str += "\(session.graveLocations[location].coordinate)\n"
+        }
+        
+        str += "\(session.origin.coordinate)\n"
+        
+        str += "END\n"
+        
+        str += "READINGS\n"
+        
+        for reading in 0 ..< session.gprReadings.count {
+            str += "\(session.gprReadings[reading].data) | "
+            str += "\(session.gprReadings[reading].seqNumber) | "
+            str += "\(session.gprReadings[reading].stackCount) | "
+            str += "\(session.gprReadings[reading].location)\n"
+        }
+        
+        str += "END\n"
+        
+        
+        
+        return str
     }
 
 }
