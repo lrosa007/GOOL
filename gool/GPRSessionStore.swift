@@ -14,5 +14,5 @@ protocol GPRSessionStore {
     func readSession(fileName: String) -> GPRSession?
     func serialize(session: GPRSession) -> String
     func deserialize(str: String?) -> GPRSession?
-    func listFiles() -> [String]
+    func listFiles() -> [String?]
 }

@@ -73,29 +73,26 @@ public class GSDFile : GPRSessionStore {
         return nil
     }
     
-    func listFiles() -> [String] {
-        let dirs = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) as? [String]
-        if dirs != nil {
-            let dir = dirs![0]
-            
-            do {
-                let fileList = try NSFileManager.defaultManager().contentsOfDirectoryAtPath(dir)
-                
-                print(fileList)
-                
-                return fileList as [String]
-                
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            }
-        } else {
-            let fileList = [""]
-            
-            return fileList
-        }
-        let fileList = [""]
-        return fileList
+    func listFiles() -> [String?] {
+        // We need just to get the documents folder url
+        let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
         
+        do {
+            let directoryUrls = try  NSFileManager.defaultManager().contentsOfDirectoryAtURL(documentsUrl, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions())
+            
+            print(directoryUrls)
+            
+            let files = directoryUrls.filter{ $0.pathExtension == "gsd" }.map{ $0.lastPathComponent }
+            
+            print("GSD FILES:\n" + files.description)
+            
+            return files
+            
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        
+        return [nil]
     }
     
     func serialize(session: GPRSession) -> String {
