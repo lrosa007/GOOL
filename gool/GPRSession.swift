@@ -12,7 +12,7 @@
 import Foundation
 import CoreLocation
 
-class GPRSession: Serializable, NSStreamDelegate {
+class GPRSession: NSObject, NSStreamDelegate {
     enum GPRSessionStatus {
         case Unstarted
         case Active

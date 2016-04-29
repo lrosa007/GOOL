@@ -33,20 +33,20 @@ public class GSDFile : GPRSessionStore {
         
         print(fileDestinationUrl)
 
-        let contents = session.toJsonString()
-        
-        print(contents)
-        
-//        do {
-//            // writing to disk
-//            try contents.writeToURL(fileDestinationUrl, atomically: true, encoding: NSUTF8StringEncoding)
-//            
-//            // saving was successful. any code posterior code goes here
-//            
-//        } catch let error as NSError {
-//            print("error writing to url \(fileDestinationUrl)")
-//            print(error.localizedDescription)
-//        }
+        if let contents = self.serialize(session) {
+            print(contents)
+            
+            do {
+                // writing to disk
+                try contents.writeToURL(fileDestinationUrl, atomically: true, encoding: NSUTF8StringEncoding)
+                
+                // saving was successful. any code posterior code goes here
+                
+            } catch let error as NSError {
+                print("error writing to url \(fileDestinationUrl)")
+                print(error.localizedDescription)
+            }
+        }
     }
     
     // MARK: GPRSessionStore
@@ -67,6 +67,11 @@ public class GSDFile : GPRSessionStore {
             print("error loading from url \(fileDestinationUrl)")
             print(error.localizedDescription)
         }
+        
+        return nil
+    }
+    
+    func serialize(session: GPRSession) -> String? {
         
         return nil
     }
