@@ -1,11 +1,11 @@
-//
+
 //  MockDataSource.swift
 //  gool
 //
 //  For testing/demo. Does not handle any networking.
 //
 //  Copyright © 2016 Dead Squad. All rights reserved.
-//
+
 
 import Foundation
 
@@ -74,8 +74,12 @@ class MockDataSource : GPRDataSource {
         return Constants.kTraceResponseHeader
     }
     
+    func getReadings() -> [UInt16] {
+        return [UInt16]()
+    }
     
-    private func getRandomTrace(seqNo: Int) {
+    
+    internal func getRandomTrace(seqNo: Int) {
         
         deviceMsgNo += 1
         let nBytes = 1 << 14

@@ -22,4 +22,5 @@ protocol GPRDataSource {
     func hasFullMessage() -> Bool
     func getMessage() -> String
     func getReadings() -> [UInt16]
+    func getRandomTrace(segNo: Int)
 }

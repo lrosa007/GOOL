@@ -23,6 +23,13 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         super.viewDidLoad()
         self.refresh()
         
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        
+        if CLLocationManager.authorizationStatus() != .AuthorizedWhenInUse {
+            locationManager?.requestWhenInUseAuthorization()
+        }
+        
         run.frame = CGRectMake(100, 100, 200, 40)
         run.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         run.backgroundColor = UIColor.clearColor()
@@ -39,12 +46,6 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         
         
         self.searchForGPRDevice()
-        locationManager = CLLocationManager()
-        locationManager?.delegate = self
-        
-        if CLLocationManager.authorizationStatus() != .AuthorizedWhenInUse {
-            locationManager?.requestWhenInUseAuthorization()
-        }
         
         let testArr = [1.0, 2.0, 4.0, 6.5, 4.0, 2.0, 1.0]
         DSP.findPeaks(testArr, dx: 1.0, minSlope: 0.5, minAmplitude: 1.9)
