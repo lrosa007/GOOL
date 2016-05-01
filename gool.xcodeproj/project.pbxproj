@@ -42,6 +42,14 @@
 		7173E6A71CAA2D3100356F32 /* GPRTrace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173E6A61CAA2D3100356F32 /* GPRTrace.swift */; };
 		71938CD41CC5202C00B220F3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71938CD31CC5202C00B220F3 /* MapKit.framework */; };
 		71938CD61CC67B4800B220F3 /* Gravesite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71938CD51CC67B4800B220F3 /* Gravesite.swift */; };
+		7199246F1CD575BC002CE9D9 /* 5line07.txt in Resources */ = {isa = PBXBuildFile; fileRef = 719924681CD575BC002CE9D9 /* 5line07.txt */; };
+		719924701CD575BC002CE9D9 /* copipes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 719924691CD575BC002CE9D9 /* copipes.txt */; };
+		719924711CD575BC002CE9D9 /* darea.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7199246A1CD575BC002CE9D9 /* darea.txt */; };
+		719924721CD575BC002CE9D9 /* fivetanks.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7199246B1CD575BC002CE9D9 /* fivetanks.txt */; };
+		719924731CD575BC002CE9D9 /* flvoids.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7199246C1CD575BC002CE9D9 /* flvoids.txt */; };
+		719924741CD575BC002CE9D9 /* rebar.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7199246D1CD575BC002CE9D9 /* rebar.txt */; };
+		719924751CD575BC002CE9D9 /* twopipes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7199246E1CD575BC002CE9D9 /* twopipes.txt */; };
+		719924771CD57709002CE9D9 /* DemoDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719924761CD57709002CE9D9 /* DemoDatasource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +109,14 @@
 		7173E6A61CAA2D3100356F32 /* GPRTrace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPRTrace.swift; sourceTree = "<group>"; };
 		71938CD31CC5202C00B220F3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		71938CD51CC67B4800B220F3 /* Gravesite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gravesite.swift; sourceTree = "<group>"; };
+		719924681CD575BC002CE9D9 /* 5line07.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 5line07.txt; sourceTree = "<group>"; };
+		719924691CD575BC002CE9D9 /* copipes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = copipes.txt; sourceTree = "<group>"; };
+		7199246A1CD575BC002CE9D9 /* darea.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = darea.txt; sourceTree = "<group>"; };
+		7199246B1CD575BC002CE9D9 /* fivetanks.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fivetanks.txt; sourceTree = "<group>"; };
+		7199246C1CD575BC002CE9D9 /* flvoids.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = flvoids.txt; sourceTree = "<group>"; };
+		7199246D1CD575BC002CE9D9 /* rebar.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rebar.txt; sourceTree = "<group>"; };
+		7199246E1CD575BC002CE9D9 /* twopipes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = twopipes.txt; sourceTree = "<group>"; };
+		719924761CD57709002CE9D9 /* DemoDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoDatasource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +206,13 @@
 		5670D5691C9B2A7600DDE7CA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				719924681CD575BC002CE9D9 /* 5line07.txt */,
+				719924691CD575BC002CE9D9 /* copipes.txt */,
+				7199246A1CD575BC002CE9D9 /* darea.txt */,
+				7199246B1CD575BC002CE9D9 /* fivetanks.txt */,
+				7199246C1CD575BC002CE9D9 /* flvoids.txt */,
+				7199246D1CD575BC002CE9D9 /* rebar.txt */,
+				7199246E1CD575BC002CE9D9 /* twopipes.txt */,
 				7125D4921CAAA12800624E39 /* COPIPES.DZT */,
 				717000C81CCBC26500B20A40 /* 5LINE07.dzt */,
 				5670D5421C9B278500DDE7CA /* Assets.xcassets */,
@@ -211,6 +234,7 @@
 				5670D5851C9B3D8100DDE7CA /* GSDFile.swift */,
 				5670D5881C9B3DCB00DDE7CA /* GPRDataFileWriter.swift */,
 				5670D58B1C9B3E1500DDE7CA /* Constants.swift */,
+				719924761CD57709002CE9D9 /* DemoDatasource.swift */,
 			);
 			name = IO;
 			sourceTree = "<group>";
@@ -358,8 +382,15 @@
 			files = (
 				5670D5461C9B278500DDE7CA /* LaunchScreen.storyboard in Resources */,
 				5670D5431C9B278500DDE7CA /* Assets.xcassets in Resources */,
+				719924711CD575BC002CE9D9 /* darea.txt in Resources */,
+				719924701CD575BC002CE9D9 /* copipes.txt in Resources */,
 				7125D4931CAAA12800624E39 /* COPIPES.DZT in Resources */,
 				5670D5411C9B278500DDE7CA /* Main.storyboard in Resources */,
+				719924731CD575BC002CE9D9 /* flvoids.txt in Resources */,
+				719924751CD575BC002CE9D9 /* twopipes.txt in Resources */,
+				719924741CD575BC002CE9D9 /* rebar.txt in Resources */,
+				719924721CD575BC002CE9D9 /* fivetanks.txt in Resources */,
+				7199246F1CD575BC002CE9D9 /* 5line07.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +434,7 @@
 				5670D5801C9B3C1E00DDE7CA /* NetworkGPRDevice.swift in Sources */,
 				5670D5951C9B3EFB00DDE7CA /* DataAnalyzer.swift in Sources */,
 				5670D5711C9B2FBC00DDE7CA /* GPRDataSource.swift in Sources */,
+				719924771CD57709002CE9D9 /* DemoDatasource.swift in Sources */,
 				5670D53C1C9B278500DDE7CA /* AppDelegate.swift in Sources */,
 				7173E6A71CAA2D3100356F32 /* GPRTrace.swift in Sources */,
 				5670D59B1C9B3FEA00DDE7CA /* Displacement.swift in Sources */,

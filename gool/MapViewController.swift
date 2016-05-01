@@ -20,6 +20,9 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
     @IBOutlet weak var run: UIButton!
     @IBOutlet weak var done: UIButton!
     
+    private static var demoCount = 0
+    private var spacing = 0.3
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.refresh()
@@ -45,6 +48,15 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         done.layer.borderWidth = 1.0
         done.layer.borderColor = UIColor(white: 1.0, alpha: borderAlpha).CGColor
         done.layer.cornerRadius = cornerRadius
+        
+        
+        // TODO: check if all demo files are exhausted instead of crashing
+        let src = DemoDatasource(demo: MapViewController.demoCount)
+        session?.dataSource = src
+        MapViewController.demoCount += 1
+        session?.settings.𝚫T = src.deltaT
+        session?.settings.baseRdp = src.baseRDP
+        spacing = src.deltaX == 0 ? 0.3 : src.deltaX
         
         
         // For demo, don't search for physical device
@@ -138,7 +150,7 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         let src = sess.dataSource!
         var seqNo = 0
         var loc = sess.origin
-        let delta = 0.3 // move 30 cm between readings
+        let delta = spacing // move 30 cm between readings
         let bearing = 0.0 //locationManager?.heading != nil ? locationManager?.heading!
         
         while src.hasFullMessage() {
