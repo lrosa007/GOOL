@@ -92,11 +92,11 @@ class DemoDatasource: NSObject, GPRDataSource {
     
     
     // MARK: Sample file info
-    static let fileNames = ["5line07","copipes","darea","fivetanks","flvoids","rebar","twopipes"]
-    static let traceCounts = [813, 380, 472, 461, 1, 290, 329]
-    static let baseRDPs = [9.0, 12.0, 9.0, 9.463, 7.0, 7.0, 7.9] // uncertain about first two
+    static let fileNames = ["fivetanks","flvoids","twopipes","copipes","rebar","5line07","darea"]
+    static let traceCounts = [461, 1, 290, 813, 472, 329, 380]
+    static let baseRDPs = [9.463, 7.0, 7.9, 12.0, 7.0, 9.0, 9.0] // uncertain about 5line and copipes
     //Each file has 512 samples per trace, so given range in ns, we can calculate dt between successive samples
-    static let deltaTs = [102.0/512.0, 49.9/512.0, 100.0/512.0, 60.0/512.0, 15.0/512.0, 12.4366/512.0, 30.0/512.0]
+    static let deltaTs = [60.0/512.0, 15.0/512.0, 30.0/512.0, 49.9/512.0, 12.4366/512.0, 102.0/512.0, 100.0/512.0]
     // dx is distance in meters between successive traces. 0 if unknown
-    static let dxs = [0.0, 0.0, 0.04, 0.0, 0.0, 0.0254, 0.04]
+    static let dxs = [0.0, 0.0, 0.04, 0.0, 0.0254, 0.0, 0.04]
 }

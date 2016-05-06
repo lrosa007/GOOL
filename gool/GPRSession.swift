@@ -121,12 +121,12 @@ class GPRSession: NSObject, NSStreamDelegate {
                                     traceByLocation[trace.location!] = trace
                                     
                                     // replace with delegate stuff
-                                    let score = DataAnalyzer.analyze(trace, settings: settings)
-                                    
-                                    gprResults[trace.seqNumber] = score
-                                    
-                                    // UI display score
-                                    NSLog("\(score)")
+//                                    let score = DataAnalyzer.analyze(trace, settings: settings)
+//                                    
+//                                    gprResults[trace.seqNumber] = score
+//                                    
+//                                    // UI display score
+//                                    NSLog("\(score)")
                                     
                                     break
                                 }
@@ -154,24 +154,29 @@ class GPRSession: NSObject, NSStreamDelegate {
             traceByLocation[trace.location!] = trace
             
             // replace with delegate stuff
-            let score = DataAnalyzer.analyze(trace, settings: settings)
-            
-            gprResults[seqNo] = score
-            
-            // UI display score
-            NSLog("\(score)")
+//            let score = DataAnalyzer.analyze(trace, settings: settings)
+//            
+//            gprResults[seqNo] = score
+//            
+//            // UI display score
+//            NSLog("\(score)")
         }
     }
     
     
-    func addTrace(rawData: [UInt16], traceNumber: Int, location: CLLocation) {
+    func addTrace(rawData: [UInt16], traceNumber: Int, location: CLLocation, analyze: Bool = true) -> GPRTrace {
         let trace = GPRTrace(sequenceNumber: traceNumber, rawData: rawData)
+        trace.location = location
         
-        DataAnalyzer.analyzeAsync(trace, settings: settings, delegate: mainDisplay!)
+        if analyze {
+            DataAnalyzer.analyzeAsync(trace, settings: settings, delegate: mainDisplay!)
+        }
         
         traceByLocation[location] = trace
         locationBySeqNo[traceNumber] = location
         gprReadings.append(trace)
+        
+        return trace
     }
     
     func updateScore(trace: GPRTrace, score: Double) {
@@ -225,9 +230,5 @@ class GPRSession: NSObject, NSStreamDelegate {
         var buffer = [UInt8](count: nBytes, repeatedValue: 0)
         dataSource!.dataStream.read(&buffer, maxLength: nBytes)
         return buffer
-    }
-    
-    private func scoreGprData(trace: GPRTrace, displacement: Displacement) -> Double {
-        return DataAnalyzer.analyze(trace, settings: settings)
     }
 }

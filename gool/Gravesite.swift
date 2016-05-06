@@ -14,13 +14,13 @@ class GraveSite: NSObject, MKAnnotation {
         coordinate = location.coordinate
         
         title = "Likely Gravesite"
-        subtitle = "\(Int(score*100))% likelihood"
+        subtitle = "\(Int(score))% likelihood"
     }
     
     init(location: CLLocation, trace: GPRTrace, score: Double, description: String) {
         coordinate = location.coordinate
         
-        title = "Likely Gravesite -- \(Int(score*100))% likelihood"
+        title = "Likely Gravesite -- \(Int(score))% likelihood"
         subtitle = description
     }
 }

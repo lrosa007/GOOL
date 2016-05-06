@@ -13,6 +13,7 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
     var session:GPRSession?
     var locationManager: CLLocationManager?
     var gotFirstLocation = false
+    private var lastLocation: CLLocation?
     
     let borderAlpha : CGFloat = 0.7
     let cornerRadius : CGFloat = 5.0
@@ -21,7 +22,7 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
     @IBOutlet weak var done: UIButton!
     
     private static var demoCount = 0
-    private var spacing = 0.3
+    private var spacing = 0.05
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,6 +87,12 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
             gotFirstLocation = true
             session?.origin = locations.first!
         }
+        else if lastLocation!.distanceFromLocation(currentLoc) < 5.0 {
+            // don't force map back unless we've moved a lot
+            return
+        }
+        
+        lastLocation = currentLoc
         
         let center = CLLocationCoordinate2D(latitude: currentLoc.coordinate.latitude, longitude: currentLoc.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001))
@@ -140,6 +147,18 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         addAnnotations(annotations)
     }
     
+    func markObjectOnMap(location: CLLocation, trace: GPRTrace, score: Double, desc: String) {
+        var annotations = [MKAnnotation]()
+        if desc.isEmpty {
+            annotations.append(GraveSite(location: location, trace: trace, score: score))
+        }
+        else {
+            annotations.append(GraveSite(location: location, trace: trace, score: score, description: desc))
+        }
+        
+        addAnnotations(annotations)
+    }
+    
     // RUN TRACE button action
     @IBAction func runTraceClicked(sender: UIButton) {
         // Possible demo usage:
@@ -153,14 +172,23 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         }
         var seqNo = 0
         var loc = sess.origin
-        let delta = spacing // move 30 cm between readings
+        let delta = spacing // move 10 cm between readings
         let bearing = 0.0 //locationManager?.heading != nil ? locationManager?.heading!
         
+        var traces = [GPRTrace]()
+        
         while src.hasFullMessage() {
-            sess.addTrace(src.getReadings(), traceNumber: seqNo, location: loc)
+            let trace = sess.addTrace(src.getReadings(), traceNumber: seqNo, location: loc, analyze: false)
+            traces.append(trace)
+            
             seqNo += 1
             let coords = locationWithBearing(bearing, distanceMeters: delta, origin: loc.coordinate)
             loc = CLLocation(latitude: coords.latitude, longitude: coords.longitude)
+
+        }
+        
+        if !traces.isEmpty {
+            DataAnalyzer.analyzeAsync(traces, settings: sess.settings, delegate: self, dx: spacing)
         }
     }
     
@@ -201,13 +229,22 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         session?.updateScore(trace, score: score)
         
         if score >= 60.0 {
-            let alert = UIAlertController(title: "Results", message: desc, preferredStyle: UIAlertControllerStyle.Alert)
+            //markObjectsOnMap([trace.location!], trace: [trace], score: [score], desc: [desc])
+            markObjectOnMap(trace.location!, trace: trace, score: score, desc: desc)
             
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             
-            // show the alert
-            self.presentViewController(alert, animated: true, completion: nil)
         }
+    }
+    
+    // callback when finished with all analyses
+    func reportFinished(flagged: Int, possible: Int) {
+        let desc = "Out of \(possible) potential sites, marked \(flagged) likely gravesites"
+        let alert = UIAlertController(title: "Results", message: desc, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        
+        // show the alert
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func searchForGPRDevice() {

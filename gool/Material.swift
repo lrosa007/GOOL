@@ -14,12 +14,21 @@ class Material : NSObject {
     let casketMaterial, remains: Bool
     private let _description: String
     
+    var mid: Double {
+        get { return (minRDP + maxRDP) / 2.0 }
+    }
+    
     private init(min: Double, max: Double, casket: Bool = false, body: Bool = false, name: String) {
         minRDP = min
         maxRDP = max
         casketMaterial = casket
         remains = body
         _description = name
+    }
+    
+    // used for sorting "best" guess
+    func isBetterGuess(rhs: Material, rdp: Double) -> Bool {
+        return abs(mid - rdp) <= abs(rhs.mid - rdp)
     }
     
     override var description: String {
@@ -46,13 +55,13 @@ class Material : NSObject {
     static let Porcelain = Material(min: 6.0, max: 8.0, name: "Porcelain")
     static let Sheetrock = Material(min: 2.3, max: 2.5, name: "Sheetrock")
     
-    static let GenericWoodDry = Material(min: 1.4, max: 6.0, casket: true, name: "Wood (generic, dry)")
-    static let GenericWoodWet = Material(min: 10.0, max: 20.0, name: "Wood (generic, wet)")
+    static let GenericWoodDry = Material(min: 1.4, max: 6.0, casket: true, name: "Wood (dry)")
+    static let GenericWoodWet = Material(min: 10.0, max: 20.0, name: "Wood (wet)")
     
     // materials possibly indicative of human remains
     static let Bone = Material(min: 14.1, max: 14.6, body: true, name: "Bone (wet)")
     static let Muscle = Material(min: 45, max: 50, body: true, name: "Muscle")
-    static let Skin = Material(min: 33, max: 44, body: true, name: "Skin (not mummified)")
+    static let Skin = Material(min: 33, max: 44, body: true, name: "Skin (fresh)")
     
     
     

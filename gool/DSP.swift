@@ -122,6 +122,35 @@ class DSP {
         return stackedData
     }
     
+    static func findEdges(vector: [Double], minAmp: Double) -> [Bool] {
+        let mid = Double(1<<15)
+        
+        let n = vector.count
+        var edge = [Bool](count: n, repeatedValue: false)
+        
+        let smoothedDeriv = smoothFourier(deriv(vector, dx: 1.0), portion: 0.2)
+        //{(m1: Material, m2: Material) -> Bool in m1.isBetterGuess(m2, rdp: rdp)}
+        let sortedDerivs = smoothedDeriv.sort( {(d1: Double, d2: Double) -> Bool in abs(d1) < abs(d2)} )
+        let minSlope = sortedDerivs[Int(Double(n) * 0.85)]
+        
+        var i = 1
+        while i < n {
+            if abs(smoothedDeriv[i]) >= minSlope && abs(vector[i] - mid) > minAmp {
+                edge[i] = true
+                i += 1
+                while i < n && (abs(smoothedDeriv[i]) >= minSlope || abs(vector[i] - mid) > minAmp) {
+                    edge[i] = true
+                    i+=1
+                }
+            }
+            else {
+                i += 1
+            }
+        }
+        
+        return edge
+    }
+    
     static func findPeaks(vector: [Double], dx: Double, minSlope: Double, minAmplitude: Double) -> [Peak] {
         // 1) Find derivative
         // 2) Smooth derivative
@@ -130,15 +159,18 @@ class DSP {
         // TODO: update to determine (or be passed) values for optimal smoothing ratio
         let smoothedDeriv = smooth(deriv(vector, dx: dx), width: 3)
         let n = vector.count
+        let mid = Double(1<<15)
+        let ampCheck = minAmplitude < mid ? minAmplitude : Double(1<<12)
         
         
         var peaks = [Peak]()
         
         for i in 1 ... n-2 {
             // zero crossing
-            if smoothedDeriv[i-1] >= 0 && smoothedDeriv[i] <= 0 && smoothedDeriv[i-1] != smoothedDeriv[i] {
+            if (smoothedDeriv[i-1] >= 0 && smoothedDeriv[i] <= 0 && smoothedDeriv[i-1] != smoothedDeriv[i])
+               || (smoothedDeriv[i-1] <= 0 && smoothedDeriv[i] >= 0 && smoothedDeriv[i-1] != smoothedDeriv[i]) {
                 // meets amplitude threshold
-                if vector[i] > minAmplitude || vector[i+1] > minAmplitude {
+                if abs(vector[i] - mid) >= ampCheck || abs(vector[i+1] - mid) >= ampCheck {
                     // meets slope threshold
                     let slope = max(abs(smoothedDeriv[i+1]-smoothedDeriv[i]), abs(smoothedDeriv[i]-smoothedDeriv[i-1])) // use dx?
                     if slope >= minSlope {
@@ -228,6 +260,8 @@ class DSP {
                 guesses.append(material)
             }
         }
+        
+        guesses.sortInPlace({(m1: Material, m2: Material) -> Bool in m1.isBetterGuess(m2, rdp: rdp)})
         
         return guesses
     }
@@ -487,15 +521,18 @@ class DSP {
             yNew[j] = h * temp
         }
     }
+}
 
 class Peak {
     var position, height, width: Double
     var sampleNumber: Int
+    var trace: GPRTrace?
     
-    init(sample: Int, pos: Double, h: Double, w: Double) {
+    init(sample: Int, pos: Double, h: Double, w: Double, tr: GPRTrace? = nil) {
         sampleNumber = sample
         position = pos
         height = h
         width = w
+        trace = tr
     }
-}}
+}
