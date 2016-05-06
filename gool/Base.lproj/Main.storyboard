@@ -60,25 +60,32 @@
         <scene sceneID="xd5-5a-mIP">
             <objects>
                 <tableViewController id="ndC-LG-hDT" customClass="LoadTableViewController" customModule="gool" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="42" sectionHeaderHeight="28" sectionFooterHeight="28" id="VtT-JI-WMk">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="53" sectionHeaderHeight="28" sectionFooterHeight="28" id="VtT-JI-WMk">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionTableViewCell" rowHeight="42" id="ah1-4a-Q4j" customClass="SessionTableViewCell" customModule="gool" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="42"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionTableViewCell" rowHeight="53" id="ah1-4a-Q4j" customClass="SessionTableViewCell" customModule="gool" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="53"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ah1-4a-Q4j" id="GOi-Lg-buw">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="41"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="52.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDH-kM-lnD">
-                                            <rect key="frame" x="268" y="12" width="61" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDH-kM-lnD">
+                                            <rect key="frame" x="200" y="23" width="201" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="201" id="RiY-JY-obL"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="QDH-kM-lnD" firstAttribute="top" secondItem="GOi-Lg-buw" secondAttribute="topMargin" constant="15" id="OLh-Jy-8Ac"/>
+                                        <constraint firstItem="QDH-kM-lnD" firstAttribute="centerX" secondItem="GOi-Lg-buw" secondAttribute="centerX" id="mvP-mU-O1k"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="sessionLabel" destination="QDH-kM-lnD" id="fW8-fC-1dD"/>
