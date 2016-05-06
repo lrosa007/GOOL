@@ -20,6 +20,7 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
     
     @IBOutlet weak var run: UIButton!
     @IBOutlet weak var done: UIButton!
+    @IBOutlet weak var demoTitle: UILabel!
     
     private static var demoCount = 0
     private var spacing = 0.05
@@ -59,6 +60,15 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         session?.settings.baseRdp = src.baseRDP
         spacing = src.deltaX == 0 ? 0.3 : src.deltaX
         
+        let count = MapViewController.demoCount
+        if count < 8 {
+            demoTitle!.text = "Demo \(count)/7:  \"\(DemoDatasource.fileNames[count-1])\""
+            demoTitle.textColor = UIColor.whiteColor()
+            demoTitle.textAlignment = .Center
+        }
+        else {
+            demoTitle = nil
+        }
         
         // For demo, don't search for physical device
         //self.searchForGPRDevice()
