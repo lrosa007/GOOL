@@ -72,6 +72,10 @@ class DataAnalyzer {
                     //only target objects of width >= 25 cm  width >= 0.25
                     if edge.maxI - edge.minI > 4 {
                         let mid = (edge.minI+edge.maxI)/2
+                        
+                        // would be ideal to check if low minJ obscures deeper results
+                        
+                        
                         let dDepth = DSP.dDepth(traces[mid], settings: settings)
                         let depth = dDepth * Double(edge.minJ)
                         let height = dDepth * Double(1 + edge.maxJ - edge.minJ)
@@ -159,9 +163,9 @@ class DataAnalyzer {
         return !(i >= grid.count || j < 0 || j >= grid[i].count || !grid[i][j])
     }
     
-    private static func getEdge(inout grid: [[Bool]], i: Int, j: Int, inout edge: Edge, inout incl: [Int], peaked: Bool) -> Bool {
+    private static func getEdge(inout grid: [[Bool]], i: Int, j: Int, inout edge: Edge, inout incl: [Int], peaked: Bool) {
         if j < 0 || i >= grid.count || j >= grid[i].count || !grid[i][j] {
-            return false
+            return
         }
         
         grid[i][j] = false
@@ -177,33 +181,22 @@ class DataAnalyzer {
             edge.maxI = i
         }
         
-        var hit = false
-        
         if !peaked {
             if check(grid, i: i+1, j: j-2) {
-                hit = getEdge(&grid, i: i+1, j: j-2, edge: &edge, incl: &incl, peaked: false)
+                getEdge(&grid, i: i+1, j: j-2, edge: &edge, incl: &incl, peaked: false)
             }
-            if !hit && check(grid, i: i+1, j: j-1) {
-                hit = hit || getEdge(&grid, i: i+1, j: j-1, edge: &edge, incl: &incl, peaked: false)
+            if check(grid, i: i+1, j: j-1) {
+                getEdge(&grid, i: i+1, j: j-1, edge: &edge, incl: &incl, peaked: false)
             }
-            if !hit {
-                hit = hit || getEdge(&grid, i: i+1, j: j, edge: &edge, incl: &incl, peaked: false)
-            }
+            getEdge(&grid, i: i+1, j: j, edge: &edge, incl: &incl, peaked: false)
+        }
+            
+        else {
+            getEdge(&grid, i: i+1, j: j+1, edge: &edge, incl: &incl, peaked: true)
+            getEdge(&grid, i: i+1, j: j+2, edge: &edge, incl: &incl, peaked: true)
         }
         
-        if peaked || !hit {
-            hit = hit || getEdge(&grid, i: i+1, j: j, edge: &edge, incl: &incl, peaked: true)
-            if !hit {
-                hit = hit || getEdge(&grid, i: i+1, j: j+1, edge: &edge, incl: &incl, peaked: true)
-            }
-            if !hit {
-                hit = hit || getEdge(&grid, i: i+1, j: j+2, edge: &edge, incl: &incl, peaked: true)
-            }
-        }
-        
-        //getEdge(&grid, i: i, j: j+1, edge: &edge, incl: &incl, peaked: peaked)
-        
-        return hit
+        getEdge(&grid, i: i, j: j+1, edge: &edge, incl: &incl, peaked: peaked)
     }
     
     static internal func analyzeAsync(trace: GPRTrace, settings: GPRSettings, delegate: MapViewController) {
