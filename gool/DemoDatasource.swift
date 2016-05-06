@@ -25,23 +25,45 @@ class DemoDatasource: NSObject, GPRDataSource {
         
         
         //open appropriate file
+        let bundle = NSBundle.mainBundle()
         let fileName = DemoDatasource.fileNames[demo]
-        if let dir = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true).first {
-            let path = NSURL(fileURLWithPath: dir).URLByAppendingPathComponent(fileName)
-            
-            do {
-                let lines = try NSString(contentsOfURL: path, encoding: NSUTF8StringEncoding).componentsSeparatedByString("\n")
-                for line in lines {
-                    var trace = [UInt16]()
-                    let samples = line.componentsSeparatedByString("\t")
-                    for sample in samples {
+        let path = bundle.pathForResource(fileName, ofType: "txt")
+        do {
+            let lines = try NSString(contentsOfFile: path!, encoding: NSUTF8StringEncoding).componentsSeparatedByString("\n")
+            for line in lines {
+                var trace = [UInt16]()
+                let samples = line.componentsSeparatedByString("\t")
+                for sample in samples {
+                    if !sample.isEmpty {
                         trace.append(UInt16(sample)!)
                     }
+                }
+                if !trace.isEmpty {
                     readings.append(trace)
                 }
             }
-            catch {}
+        } catch let error as NSError {
+            print("error loading from url \(fileName).txt")
+            print(error.localizedDescription)
         }
+        
+        
+//        if let dir = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true).first {
+//            let path = NSURL(fileURLWithPath: dir).URLByAppendingPathComponent(fileName)
+//            
+//            do {
+//                let lines = try NSString(contentsOfURL: path, encoding: NSUTF8StringEncoding).componentsSeparatedByString("\n")
+//                for line in lines {
+//                    var trace = [UInt16]()
+//                    let samples = line.componentsSeparatedByString("\t")
+//                    for sample in samples {
+//                        trace.append(UInt16(sample)!)
+//                    }
+//                    readings.append(trace)
+//                }
+//            }
+//            catch {}
+//        }
     }
     
     // MARK: GPRDataSource functions

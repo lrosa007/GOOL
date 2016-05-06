@@ -89,7 +89,7 @@ class DSP {
     // Assuming constant material RDP and ignoring attenuation, determines
     //  change in reflection depth between successive samples
     class internal func dDepth(trace: GPRTrace, settings: GPRSettings) -> Double {
-        return estDepth_s(settings.𝚫T, avgRDP: settings.baseRdp)
+        return estDepth_ns(settings.𝚫T, avgRDP: settings.baseRdp)
     }
     
     //TODO: stubbed
@@ -131,6 +131,7 @@ class DSP {
         let smoothedDeriv = smooth(deriv(vector, dx: dx), width: 3)
         let n = vector.count
         
+        
         var peaks = [Peak]()
         
         for i in 1 ... n-2 {
@@ -143,7 +144,7 @@ class DSP {
                     if slope >= minSlope {
                         // not sure the best way to determine range
                         let from = max(0, i-10), to = min(n-1, i+10)
-                        peaks.append(getPeak(vector, dx: dx, from: from, to: to))
+                        peaks.append(getPeak(vector, dx: dx, from: from, to: to, sample: i))
                     }
                 }
             }
@@ -153,8 +154,9 @@ class DSP {
     }
     
     // Uses quadratic least-squares regression to estimate peak attributes
-    static private func getPeak(vector: [Double], dx: Double, from: Int, to: Int) -> Peak {
-        let n = from+1-to
+    // There have been problems using this technique with actual data, so we're simplifying it for now
+    static private func getPeak(vector: [Double], dx: Double, from: Int, to: Int, sample: Int) -> Peak {
+        /*let n = from+1-to
         var sumX = 0.0,
             sumY = 0.0,
             sumXY = 0.0,
@@ -207,11 +209,13 @@ class DSP {
             c /= D
         
         let position = -b/(2*c)
-        let sample = Int(round(position/dx))
+        //let sample = Int(round(position/dx))
         let height = a - c*position*position
         let width = FWHM/sqrt(-2*c)
-        
-        return Peak(sample: sample, pos: position, h: height, w: width)
+        */
+        let position = dx * Double(sample)
+        let height = max(abs(vector[sample]-vector[sample-1]), vector[sample+1]-vector[sample])
+        return Peak(sample: sample, pos: position, h: height, w: 2)
     }
     
     // Returns a list of possible materials for this item
@@ -363,6 +367,38 @@ class DSP {
         let diff = baseIntensity - reflectedIntensity
         
         return baseRDP * (plus*plus) / (diff*diff)
+    }
+    
+    static func subAvg(inout vector: [Double]) {
+        let n = vector.count
+        
+        var sum = 0.0
+        vDSP_sveD(&vector, 1, &sum, vDSP_Length(n))
+        
+        let avg = sum / Double(n)
+        
+        for i in 0...n-1 {
+            vector[i] -= avg
+        }
+    }
+    
+    static func subAvg2D(inout vectors: [[Double]]) {
+        let samples = vectors[0].count
+        var avgs = [Double]()
+        
+        for i in 0...samples-1 {
+            var sum = 0.0
+            for vector in vectors {
+                sum += vector[i]
+            }
+            avgs.append(sum/Double(samples))
+        }
+        
+        for var trace in vectors {
+            for i in 0...samples-1 {
+                trace[i] -= avgs[i]
+            }
+        }
     }
     
     

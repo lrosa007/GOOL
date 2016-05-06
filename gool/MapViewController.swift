@@ -148,6 +148,9 @@ class MapViewController: UIViewController, NetworkBrowserDelegate, MKMapViewDele
         
         let sess = session!
         let src = sess.dataSource!
+        if sess.mainDisplay == nil {
+            sess.mainDisplay = self
+        }
         var seqNo = 0
         var loc = sess.origin
         let delta = spacing // move 30 cm between readings

@@ -12,9 +12,9 @@ import Foundation
 class DataAnalyzer {
     
     
-    // TODO: add delegate parameter
     static internal func analyzeAsync(trace: GPRTrace, settings: GPRSettings, delegate: MapViewController) {
         var signal = DSP.dataAsDoubles(trace)
+        DSP.subAvg(&signal)
         var score = 0.0
         var description = ""
         
@@ -23,6 +23,7 @@ class DataAnalyzer {
         
         let dx = DSP.dDepth(trace, settings: settings)
         
+        // !!! numeric parameters to findPeaks need some work
         // peaks indicate material interfaces
         let interfaces = DSP.findPeaks(signal, dx: dx, minSlope: 1.0, minAmplitude: Double(1<<14))
                             .filter( {(peak: DSP.Peak) -> Bool in
@@ -64,7 +65,7 @@ class DataAnalyzer {
             guesses.append(mats)
         }
         
-        // TODO: callback
+        delegate.reportResults(trace, score: score, guesses: guesses, desc: description)
     }
     
     
