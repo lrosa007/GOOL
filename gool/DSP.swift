@@ -128,8 +128,8 @@ class DSP {
         let n = vector.count
         var edge = [Bool](count: n, repeatedValue: false)
         
-        let smoothedDeriv = smoothFourier(deriv(vector, dx: 1.0), portion: 0.2)
-        //{(m1: Material, m2: Material) -> Bool in m1.isBetterGuess(m2, rdp: rdp)}
+        //let smoothedDeriv = smoothFourier(deriv(vector, dx: 1.0), portion: 0.1)
+        let smoothedDeriv = smooth(deriv(vector, dx: 1.0), width: 3)
         let sortedDerivs = smoothedDeriv.sort( {(d1: Double, d2: Double) -> Bool in abs(d1) < abs(d2)} )
         let minSlope = sortedDerivs[Int(Double(n) * 0.85)]
         
